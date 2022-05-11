@@ -1,3 +1,14 @@
+<script>
+export default {
+  inject: ['currentRoutePath'],
+  methods: {
+    parsePath2(path) {
+      return path.split('/').filter(Boolean);
+    },
+  },
+};
+</script>
+
 <template>
-  <div>Route->route1->hello</div>
+  <div>{{ currentRoutePath }}</div>
 </template>

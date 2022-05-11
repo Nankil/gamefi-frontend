@@ -1,7 +1,9 @@
 <script>
 export default {
-  setup() {
-
+  data() {
+    return {
+      lang: 'cn',
+    };
   },
 };
 </script>
@@ -20,11 +22,6 @@ export default {
                 <div class="inline-block p-3 m-2 right-0
                 bg-green-100 text-center
                 align-middle">My Account</div>
-            </div>
-            <div class="w-full bg-slate-200 flex flex-row">
-                <div class="w-1/2 inline-block m-2 right-0">
-                    Language
-                </div>
             </div>
         </div>
 
