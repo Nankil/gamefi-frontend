@@ -22,12 +22,24 @@ export const routes = [
         component: () => import('./views/AccountPromotion.vue'),
       },
       {
-        path: 'task',
+        path: 'tasks',
         component: () => import('./views/AccountTask.vue'),
       },
       {
         path: 'credit',
         component: () => import('./views/AccountCredit.vue'),
+      },
+      {
+        path: 'assets',
+        component: () => import('./views/AccountAsset.vue'),
+      },
+      {
+        path: 'nft',
+        component: () => import('./views/AccountNFT.vue'),
+      },
+      {
+        path: 'investment',
+        component: () => import('./views/AccountInvestment.vue'),
       },
     ],
   },
