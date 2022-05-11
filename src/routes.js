@@ -17,6 +17,18 @@ export const routes = [
         path: 'info',
         component: () => import('./views/AccountInfo.vue'),
       },
+      {
+        path: 'promotion',
+        component: () => import('./views/AccountPromotion.vue'),
+      },
+      {
+        path: 'task',
+        component: () => import('./views/AccountTask.vue'),
+      },
+      {
+        path: 'credit',
+        component: () => import('./views/AccountCredit.vue'),
+      },
     ],
   },
   {path: '/:path(.*)', component: NotFound},
