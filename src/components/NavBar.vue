@@ -35,10 +35,10 @@ export default {
 </script>
 
 <template>
-    <div class="dark:bg-black">
+    <div class="dark:bg-black w-full">
       <div v-for="route in routes" :key="route">
       <div v-if="route.path == currentRoutePath"
-      class="dark:text-white p-2 border-r-0 border-2 border-x-white"
+      class="dark:text-white p-2 border-r-0 border-2 border-x-white bg-gray-400"
       >{{ route.display_name }}</div>
       <div v-else class="dark:text-white p-2
       border-r-2 border-x-white">{{ route.display_name }}</div>
