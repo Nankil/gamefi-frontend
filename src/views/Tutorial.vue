@@ -1,5 +1,47 @@
 <script>
+import PostsContainer from '../components/PostsContainer.vue';
 export default {
+  data() {
+    return {
+      posts: {
+        offcial: [
+          {
+            update_time: '2020-01-01',
+            author: 'official',
+            game_name: 'Dota 2',
+            filename: 'data.word',
+          },
+          {
+            update_time: '2020-01-01',
+            author: 'official',
+            game_name: 'Dota 2',
+            filename: 'data.word',
+          },
+          {
+            update_time: '2020-01-01',
+            author: 'official',
+            game_name: 'Dota 2',
+            filename: 'data.word',
+          },
+        ],
+        users: [
+          {
+            update_time: '2020-01-01',
+            author: 'official',
+            game_name: 'Dota 2',
+            filename: 'data.word',
+          },
+          {
+            update_time: '2020-01-01',
+            author: 'official',
+            game_name: 'Dota 2',
+            filename: 'data.word',
+          },
+        ],
+      },
+    };
+  },
+  components: {PostsContainer},
 };
 </script>
 
@@ -25,7 +67,13 @@ export default {
       </div>
     </div>
     <div class="w-full mt-5">
-      <div class="text-purple-500 text-2xl font-bold">Official tutorial</div>
+      <PostsContainer :posts="posts.offcial" :post_name="'official post'"
+      :link="'https://baidu.com'" />
+    </div>
+    <div class="w-full mt-5">
+      <PostsContainer :posts="posts.users" :post_name="'users'"
+      :link="'https://baidu.com'"
+      :upload="true" />
     </div>
   </div>
 </template>

@@ -40,6 +40,26 @@ export default {
           name: 'Turorial',
           display_name: 'Turorial',
         },
+        {
+          path: '/media',
+          name: 'Media',
+          display_name: 'Media',
+        },
+        {
+          path: '/roadmap',
+          name: 'RoadMap',
+          display_name: 'Road Map',
+        },
+        {
+          path: '/gamephase',
+          name: 'GamePhase',
+          display_name: 'Game Phase',
+        },
+        {
+          path: '/contactus',
+          name: 'ContactUs',
+          display_name: 'Contact Us',
+        },
       ],
     };
   },
