@@ -48,6 +48,22 @@ export const routes = [
   {path: '/tutorial', component: () => import('./views/Tutorial.vue'),
     meta: {title: 'Tutorial'},
   },
+  {path: '/media', component: () => import('./views/Media.vue'),
+    meta: {title: 'Media'},
+    children: [
+      {
+        path: 'photos',
+        component: () => import('./views/MediaPhoto.vue'),
+      },
+      {
+        path: 'videos',
+        component: () => import('./views/MediaVideo.vue'),
+      },
+    ],
+  },
+  {path: '/roadmap', component: () => import('./views/RoadMap.vue')},
+  {path: '/gamephase', component: () => import('./views/GamePhase.vue')},
+  {path: '/contactus', component: () => import('./views/ContactUs.vue')},
   {path:'/events', component: () => import('./views/Events.vue')
     ,meta: {title: 'Events'},
     children: [
