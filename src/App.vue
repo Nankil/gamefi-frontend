@@ -7,6 +7,42 @@ import Route from './components/Route.vue';
 
 <script>
 export default {
+  data() {
+    return {
+      routes: [
+        {
+          path: '/',
+          name: 'Home',
+          display_name: 'Home',
+        },
+        {
+          path: '/events',
+          name: 'Events',
+          display_name: 'Events',
+        },
+        {
+          path: '/community',
+          name: 'Community',
+          display_name: 'Community',
+        },
+        {
+          path: '/lock',
+          name: 'Lock',
+          display_name: 'Lock',
+        },
+        {
+          path: '/account',
+          name: 'Account',
+          display_name: 'Account',
+        },
+        {
+          path: '/tutorial',
+          name: 'Turorial',
+          display_name: 'Turorial',
+        },
+      ],
+    };
+  },
   computed: {
     currentRoutePath() {
       return this.$route.path;
@@ -27,7 +63,7 @@ export default {
     </div>
     <div class="flex flex-row w-full">
       <div class="w-1/6 bg-slate-100">
-        <NavBar />
+        <NavBar :routes="routes" />
       </div>
       <div class="w-5/6 p-3 bg-gray-400 border-t-2">
         <div>

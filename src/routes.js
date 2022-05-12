@@ -1,7 +1,6 @@
 import Home from './views/Home.vue';
 import NotFound from './views/NotFound.vue';
 import Account from './views/Account.vue';
-import Strategies from './views/Strategies.vue';
 
 /** @type {import('vue-router').RouterOptions['routes']} */
 export const routes = [
@@ -46,6 +45,8 @@ export const routes = [
   },
   {path: '/community', component: () => import('./views/Community.vue'),
     meta: {title: 'Community'}},
-  {path: '/strategies', component: Strategies},
+  {path: '/tutorial', component: () => import('./views/Tutorial.vue'),
+    meta: {title: 'Tutorial'},
+  },
   {path: '/:path(.*)', component: NotFound},
 ];
