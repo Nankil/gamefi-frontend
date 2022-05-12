@@ -64,5 +64,21 @@ export const routes = [
   {path: '/roadmap', component: () => import('./views/RoadMap.vue')},
   {path: '/gamephase', component: () => import('./views/GamePhase.vue')},
   {path: '/contactus', component: () => import('./views/ContactUs.vue')},
+  {path:'/events', component: () => import('./views/Events.vue')
+    ,meta: {title: 'Events'},
+    children: [
+      {
+        path: '',
+        component: () => import('./views/EventsContent.vue'),
+        meta: {title: 'Events Content'},
+
+      },
+      {
+        path: 'details',
+        component: () => import('./views/EventsDetails.vue'),
+        meta: {title: 'Event Details'},
+      }
+    ]
+  },
   {path: '/:path(.*)', component: NotFound},
 ];
