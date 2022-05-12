@@ -4,7 +4,7 @@
       <tbody>
         <tr>
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white">
+          <td class="border border-white p-2">
             <div>标题</div>
             <div>time</div>
             <div>content</div>
@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white">
+          <td class="border border-white p-2">
             <div>标题</div>
             <div>time</div>
             <div>content</div>
@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white">
+          <td class="border border-white p-2">
             <div>标题</div>
             <div>time</div>
             <div>content</div>
@@ -28,7 +28,7 @@
         </tr>
         <tr>
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white">
+          <td class="border border-white p-2">
             <div>标题</div>
             <div>time</div>
             <div>content</div>
@@ -36,7 +36,7 @@
         </tr>
         <tr>
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white">
+          <td class="border border-white p-2">
             <div>标题</div>
             <div>time</div>
             <div>content</div>
@@ -44,7 +44,7 @@
         </tr>
         <tr>
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white">
+          <td class="border border-white p-2">
             <div>标题</div>
             <div>time</div>
             <div>content</div>
@@ -52,7 +52,7 @@
         </tr>
         <tr>
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white">
+          <td class="border border-white p-2">
             <div>标题</div>
             <div>time</div>
             <div>content</div>
