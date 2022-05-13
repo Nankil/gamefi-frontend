@@ -1,8 +1,8 @@
 <script setup>
-import Heading from './components/Heading.vue';
-import {RouterView} from 'vue-router';
-import NavBar from './components/NavBar.vue';
-import Route from './components/Route.vue';
+import Heading from "./components/Heading.vue";
+import { RouterView } from "vue-router";
+import NavBar from "./components/NavBar.vue";
+import Route from "./components/Route.vue";
 </script>
 
 <script>
@@ -11,61 +11,67 @@ export default {
     return {
       routes: [
         {
-          path: '/',
-          name: 'Home',
-          display_name: 'Home',
+          path: "/",
+          name: "Home",
+          display_name: "Home",
         },
         {
-          path: '/events',
-          name: 'Events',
-          display_name: 'Events',
+          path: "/events",
+          name: "Events",
+          display_name: "Events",
         },
         {
-          path: '/community',
-          name: 'Community',
-          display_name: 'Community',
+          path: "/community",
+          name: "Community",
+          display_name: "Community",
         },
         {
-          path: '/lock',
-          name: 'Lock',
-          display_name: 'Lock',
+          path: "/lock",
+          name: "Lock",
+          display_name: "Lock",
         },
         {
-          path: '/account',
-          name: 'Account',
-          display_name: 'Account',
+          path: "/account",
+          name: "Account",
+          display_name: "Account",
         },
         {
-          path: '/tutorial',
-          name: 'Turorial',
-          display_name: 'Turorial',
+          path: "/tutorial",
+          name: "Turorial",
+          display_name: "Turorial",
         },
         {
-          path: '/media',
-          name: 'Media',
-          display_name: 'Media',
+          path: "/media",
+          name: "Media",
+          display_name: "Media",
         },
         {
-          path: '/roadmap',
-          name: 'RoadMap',
-          display_name: 'Road Map',
+          path: "/roadmap",
+          name: "RoadMap",
+          display_name: "Road Map",
         },
         {
-          path: '/gamephase',
-          name: 'GamePhase',
-          display_name: 'Game Phase',
+          path: "/gamephase",
+          name: "GamePhase",
+          display_name: "Game Phase",
         },
         {
-          path: '/contactus',
-          name: 'ContactUs',
-          display_name: 'Contact Us',
+          path: "/contactus",
+          name: "ContactUs",
+          display_name: "Contact Us",
         },
       ],
     };
   },
+
   computed: {
     currentRoutePath() {
       return this.$route.path;
+    },
+    isBarActive() {
+      console.log(this.$route.path.slice(0,8));
+
+      return this.$route.path.slice(0,8)==="/account"?false:true;
     },
   },
   provide() {
@@ -76,14 +82,14 @@ export default {
 };
 </script>
 
-<template>
-<div class="container mx-auto dark w-full h-screen bg-gray-900">
+<template >
+  <div class="container mx-auto dark w-full h-screen bg-gray-900">
     <div class="h-1/15 w-full">
       <Heading />
     </div>
     <div class="flex flex-row w-full">
-      <div class="w-1/6 bg-slate-100">
-        <NavBar :routes="routes" />
+      <div v-if="isBarActive" class="w-1/6 bg-slate-100">
+        <NavBar  :routes="routes" />
       </div>
       <div class="w-5/6 p-3 bg-gray-400 border-t-2">
         <div>
@@ -92,5 +98,5 @@ export default {
         <router-view></router-view>
       </div>
     </div>
-</div>
+  </div>
 </template>

@@ -7,12 +7,12 @@ export default {
         {
           path: '/media/photos',
           name: 'photos',
-          display_name: 'photos',
+          display_name: this.$t('Media.photo'),
         },
         {
           path: '/media/videos',
           name: 'videos',
-          display_name: 'videos',
+          display_name: this.$t('Media.video'),
         },
       ],
     };

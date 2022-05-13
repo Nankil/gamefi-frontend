@@ -13,10 +13,10 @@ export default {
   </div>
       <div class="border">
         <div class="flex flex-row border-b bg-gray-600 text-center p-2">
-          <div class="w-1/6">Updated Time</div>
-          <div class="w-1/6">Author</div>
-          <div class="w-1/6">Game name</div>
-          <div class="w-1/2">Filename</div>
+          <div class="w-1/6">{{$t("Turorial.Updatetime")}}</div>
+          <div class="w-1/6">{{$t('Turorial.Author')}}</div>
+          <div class="w-1/6">{{$t('Turorial.Gamename')}}</div>
+          <div class="w-1/2">{{$t('Turorial.Filename')}}</div>
         </div>
         <div v-for="post in posts" :key="post.name" class="text-center p-2">
         <div v-if="post == posts[0]" class="text-orange-200 flex flex-row">

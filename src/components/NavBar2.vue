@@ -48,7 +48,7 @@ export default {
 
 <template>
   <div class="w-full flex flex-wrap">
-    <div v-for="route in routes" :key="route" class="w-1/6 m-2"
+    <div v-for="route in routes" :key="route" class=" w-1/6 p-2"
     @click="$router.push(route.path)">
       <button v-if="currentRoutePath==route.path"
       class="bg-orange-400 w-full"> {{ route.display_name }}</button>

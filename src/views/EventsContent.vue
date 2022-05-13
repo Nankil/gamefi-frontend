@@ -2,59 +2,11 @@
   <div>
     <table class="table-auto border-collapse h-96 w-full">
       <tbody>
-        <tr>
+        <tr v-for="n in trcount" :key="n">
           <td class="w-1/4 border border-white"><img src="" alt="" /></td>
           <td class="border border-white p-2">
-            <div>标题</div>
-            <div>time</div>
-            <div>content</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white p-2">
-            <div>标题</div>
-            <div>time</div>
-            <div>content</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white p-2">
-            <div>标题</div>
-            <div>time</div>
-            <div>content</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white p-2">
-            <div>标题</div>
-            <div>time</div>
-            <div>content</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white p-2">
-            <div>标题</div>
-            <div>time</div>
-            <div>content</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white p-2">
-            <div>标题</div>
-            <div>time</div>
-            <div>content</div>
-          </td>
-        </tr>
-        <tr>
-          <td class="w-1/4 border border-white"><img src="" alt="" /></td>
-          <td class="border border-white p-2">
-            <div>标题</div>
-            <div>time</div>
+            <div class="text-blue-600 ">标题</div>
+            <div class="text-blue-600">time</div>
             <div>content</div>
           </td>
         </tr>
@@ -62,18 +14,15 @@
     </table>
     <div class="flex justify-center">
       <div class="mx-0.5">&lt;</div>
-      <div class="mx-0.5">1</div>
-      <div class="mx-0.5">2</div>
-      <div class="mx-0.5">3</div>
-      <div class="mx-0.5">4</div>
-      <div class="mx-0.5">5</div>
-      <div class="mx-0.5">6</div>
+      <div v-for="n in pagecount" :key="n" class="mx-0.5">{{n}}</div>
       <div class="mx-0.5">></div>
     </div>
   </div>
 </template>
-
 <script setup>
+import {ref } from 'vue';
+let trcount=ref(7);
+let pagecount=ref(6);
 </script>
 <style>
 </style>

@@ -2,8 +2,10 @@
   <router-view></router-view>
 </template>
 
-<script>
+<script setup>
+import { getCurrentInstance } from 'vue';
 
+console.log(getCurrentInstance());
 </script>
 
 <style>

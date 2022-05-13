@@ -1,7 +1,8 @@
+
 <template>
-  <div class="dark:text-white bg-black text-purple-600">
+  <div class="dark:text-white text-purple-600">
     <div class="relative h-10">
-      <span class="absolute bottom-0 text-purple-500">最新消息</span>
+      <span class="absolute bottom-0 text-purple-500">{{ $t('Home.message') }}</span>
     </div>
     <div class="h-52 flex">
       <div class="w-3/4 h-full border-2 border-solid border-white">
@@ -34,7 +35,7 @@
     <div class="flex flex-row">
       <div class="flex-1 mr-10">
         <div class="relative h-10">
-          <span class="absolute bottom-0 text-purple-500">社区金库</span>
+          <span class="absolute bottom-0 text-purple-500">{{$t('Home.communitybank')}}</span>
         </div>
         <div class="border-2 border-solid border-white h-96">
           <div class="text-center">总资产</div>
@@ -102,7 +103,7 @@
       </div>
       <div class="flex-1">
         <div class="relative h-10">
-          <span class="absolute bottom-0 text-purple-500">用户数量设计</span>
+          <span class="absolute bottom-0 text-purple-500">{{$t('Home.usercount')}}</span>
         </div>
         <div
           class="
@@ -144,7 +145,7 @@
       </div>
     </div>
     <div class="relative h-14">
-      <span class="absolute bottom-0 text-purple-500">代币经济</span>
+      <span class="absolute bottom-0 text-purple-500">{{$t('Home.tokenconomy')}}</span>
     </div>
     <div
       class="flex flex-row border-2 border-solid border-white text-purple-500"
@@ -242,7 +243,20 @@
         </div>
       </div>
     </div>
-    <div class="h-20 my-10" >项目发展路线图</div>
-    <div class="h-20">合作方</div>
+    <div class="h-20 my-10 text-4xl text-purple-500">{{$t('Home.PDR')}}</div>
+    <div class="h-20 text-4xl text-purple-500">{{$t('Home.partners')}}</div>
   </div>
 </template>
+<script>
+export default {
+  name: "app",
+  data() {
+    return { locale: "en" };
+  },
+  watch: {
+    locale(val) {
+      this.$i18n.locale = val;
+    },
+  },
+};
+</script>

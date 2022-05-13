@@ -14,3 +14,9 @@
   font-named-instance: 'Italic';
   src: url('Inter-italic.var.woff2') format('woff2');
 }
+@font-face {
+  font-family: 'PingFang';
+  src: url('./PingFang\ Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

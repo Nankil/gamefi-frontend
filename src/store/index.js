@@ -12,6 +12,7 @@ for (route of routes) {
 export default createStore({
   state: {
     routes: exploitedRoutes,
+    
   },
   getters: {
   },

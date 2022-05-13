@@ -1,0 +1,69 @@
+{
+    "Home": {
+        "message": "spot news",
+        "communitybank": "community bank",
+        "usercount": "user count",
+        "tokeneconomy": "token economy",
+        "PDR": "Project Development Roadmap",
+        "partners": "partners"
+    },
+    "Account": {
+        "routes": [
+            {
+                "path": "/account/info",
+                "name": "Info",
+                "display_name": "Info"
+            },
+            {
+                "path": "/account/tasks",
+                "name": "Tasks",
+                "display_name": "Tasks"
+            },
+            {
+                "path": "/account/credit",
+                "name": "Credit",
+                "display_name": "Credit"
+            },
+            {
+                "path": "/account/assets",
+                "name": "Assets",
+                "display_name": "Assets"
+            },
+            {
+                "path": "/account/nft",
+                "name": "NFT",
+                "display_name": "NFT"
+            },
+            {
+                "path": "/account/investment",
+                "name": "Investment",
+                "display_name": "Investment"
+            }
+        ]
+    },
+    "Turorial": {
+        "Wallet": {
+            "Create": "Create a new wallet",
+            "Transfer": "Transfer tokens",
+            "Buy": "Buy",
+            "Content": "Content"
+        },
+        "Updatetime": "Update time",
+        "Author": "Author",
+        "Gamename": "Game name",
+        "Filename": "File name",
+        "official": "Official",
+        "user": "User"
+    },
+    "Media": {
+        "photo": "photo",
+        "video": "video"
+    },
+    "ICO": {
+        "ru": "Registration",
+        "Parties": " Parties",
+        "Holders": " Holders",
+        "Market Size": " Market Size"
+    },
+    "RoadMap": "RoadMap"
+}

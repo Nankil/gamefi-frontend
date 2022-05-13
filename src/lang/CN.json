@@ -1,0 +1,69 @@
+{
+  "Home": {
+    "message": "最新消息",
+    "communitybank": "社區金庫",
+    "usercount": "用戶數量統計",
+    "tokeneconomy": "代幣經濟",
+    "PDR": "項目發展路線圖",
+    "partners": "合作方"
+  },
+  "Account": {
+    "routes": [
+      {
+        "path": "/account/info",
+        "name": "Info",
+        "display_name": "信息"
+      },
+      {
+        "path": "/account/tasks",
+        "name": "Tasks",
+        "display_name": "任务"
+      },
+      {
+        "path": "/account/credit",
+        "name": "Credit",
+        "display_name": "信用"
+      },
+      {
+        "path": "/account/assets",
+        "name": "Assets",
+        "display_name": "资产"
+      },
+      {
+        "path": "/account/nft",
+        "name": "NFT",
+        "display_name": "NFT"
+      },
+      {
+        "path": "/account/investment",
+        "name": "Investment",
+        "display_name": "投资"
+      }
+    ]
+  },
+  "Turorial": {
+    "Wallet": {
+      "Create": "創建錢包",
+      "Transfer": "轉賬",
+      "Buy": "購買",
+      "Content": "錢包內容"
+    },
+    "Updatetime": "更新時間",
+    "Author": "作者",
+    "Gamename": "游戲名稱",
+    "Filename": "檔案名稱",
+    "offcial": "官網",
+    "user": "用戶"
+  },
+  "Media": {
+    "photo": "相片",
+    "video": "影片"
+  },
+  "ICO": {
+    "ru": "注册用户数量",
+    "Parties": "合作方",
+    "Holders": "持有者",
+    "Market Size": "市場规模"
+  },
+  "RoadMap": "項目發展路線圖"
+}

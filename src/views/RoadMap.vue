@@ -21,7 +21,7 @@ export default {
 
 <template>
   <div>
-    <div class="text-purple-500">Road Map</div>
+    <div class="text-purple-500">{{$t('RoadMap')}}</div>
     <div v-for="phase in phases" :key="phase.title" class="mt-10">
       <Phase :title="phase.title" :tasks="phase.tasks" />
     </div>

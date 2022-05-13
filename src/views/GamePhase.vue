@@ -10,19 +10,19 @@
   </div>
   <div class="border bg-black grid grid-cols-3 mt-10">
     <div class="p-5">
-      <div class="font-bold text-purple-500 m-2 text-2xl">Registered</div>
+      <div class="font-bold text-purple-500 m-2 text-2xl">{{$t('ICO.ru')}}</div>
       <div class="font-bold text-orange-400 m-2 text-xl">1000000</div>
     </div>
     <div class="p-5">
-      <div class="font-bold text-purple-500 m-2 text-2xl">Parties</div>
+      <div class="font-bold text-purple-500 m-2 text-2xl">{{$t('ICO.Parties')}}</div>
       <div class="font-bold text-orange-400 m-2 text-xl">30000</div>
     </div>
     <div class="p-5">
-      <div class="font-bold text-purple-500 m-2 text-2xl">Holders</div>
+      <div class="font-bold text-purple-500 m-2 text-2xl">{{$t('ICO.Holders')}}</div>
       <div class="font-bold text-orange-400 m-2 text-xl">20000</div>
     </div>
     <div class="p-5">
-      <div class="font-bold text-purple-500 m-2 text-2xl">Market Size</div>
+      <div class="font-bold text-purple-500 m-2 text-2xl">{{$t('ICO.Market Size')}}</div>
       <div class="font-bold text-orange-400 m-2 text-xl">$100000</div>
     </div>
   </div>
