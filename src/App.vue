@@ -79,6 +79,13 @@ export default {
       currentRoutePath: this.currentRoutePath,
     };
   },
+  mounted() {
+    const ethereum = window.ethereum;
+    if (ethereum === undefined) {
+      alert('Please install MetaMask to use this website.');
+    }
+    this.$store.dispatch('setWeb3', window.ethereum);
+  },
 };
 </script>
 

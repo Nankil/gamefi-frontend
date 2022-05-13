@@ -7,6 +7,7 @@ import {createI18n} from 'vue-i18n';
 import CN from './lang/CN.json';
 import EN from './lang/EN.json';
 import 'flowbite';
+import store from './store';
 
 
 const app = createApp(App);
@@ -27,4 +28,5 @@ const router = createRouter({
 
 app.use(i18n);
 app.use(router);
+app.use(store);
 app.mount('#app');
