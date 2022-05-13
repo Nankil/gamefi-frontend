@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full px-8">
     <NavBar2 :routes="routes" />
     <br />
     <router-view></router-view>

@@ -90,20 +90,25 @@ export default {
 </script>
 
 <template >
-  <div class="container mx-auto dark w-full h-screen bg-gray-900">
+  <div class="container mx-auto dark w-full  ">
     <div class="h-1/15 w-full">
       <Heading />
     </div>
-    <div class="flex flex-row w-full">
-      <div v-if="isBarActive" class="w-1/6 bg-slate-100">
+    <div class="flex flex-row w-full h-full bg-black">
+      <div v-if="isBarActive" class="w-1/6 " style="background-color:black">
         <NavBar  :routes="routes" />
       </div>
-      <div class="w-5/6 p-3 bg-gray-400 border-t-2">
-        <div>
+      <div class="w-5/6 px-3 main   #262626 border-t-2" >
+        <div >
           <Route />
         </div>
-        <router-view></router-view>
+        <router-view class="dark:text-white bg-black"></router-view>
       </div>
     </div>
   </div>
 </template>
+<style>
+.main {
+  height: fit-content;
+}
+</style>

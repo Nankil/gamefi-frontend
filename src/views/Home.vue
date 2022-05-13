@@ -1,6 +1,6 @@
 
 <template>
-  <div class="dark:text-white text-purple-600">
+  <div class="dark:text-white text-purple-600 h-full bg-black">
     <div class="relative h-10">
       <span class="absolute bottom-0 text-purple-500">{{ $t('Home.message') }}</span>
     </div>
