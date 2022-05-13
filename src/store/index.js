@@ -1,6 +1,15 @@
 import {createStore} from 'vuex';
 
 /**
+ *
+ * @param {Number} time ms
+ * @return {Promise}
+ */
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+/**
  *  switch to bsc network
  */
 export default createStore({
@@ -27,6 +36,15 @@ export default createStore({
     },
     setWeb3(state, web3) {
       state.ethereum = web3;
+    },
+    pushInfoLog(state, info) {
+      state.infoLog.push(info);
+    },
+    pushErrorLog(state, error) {
+      state.errorLog.push(error);
+    },
+    shiftInfoLog(state) {
+      state.infoLog.shift();
     },
   },
   actions: {
@@ -74,7 +92,9 @@ export default createStore({
       const accounts =
               await ethereum.request({method: 'eth_requestAccounts'});
       commit('updateWalletAddr', accounts[0]);
-      console.log(accounts[0]);
+      commit('pushInfoLog', 'wallet connected');
+      await delay(5000);
+      commit('shiftInfoLog');
     },
   },
   modules: {

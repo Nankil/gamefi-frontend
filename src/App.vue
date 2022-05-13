@@ -3,9 +3,11 @@ import Heading from './components/Heading.vue';
 import {RouterView} from 'vue-router';
 import NavBar from './components/NavBar.vue';
 import Route from './components/Route.vue';
+import Log from './components/Log.vue';
 </script>
 
 <script>
+import {mapState} from 'vuex';
 import {FundingContract} from './api/bsc';
 // import {ethers} from 'ethers';
 import contractInterface from './contracts/Funding.json';
@@ -64,11 +66,16 @@ export default {
           display_name: 'Contact Us',
         },
       ],
+      alertMsg: {
+        color: '',
+        msg: '',
+      },
     };
   },
 
 
   computed: {
+    ...mapState(['errorLog', 'infoLog']),
     currentRoutePath() {
       return this.$route.path;
     },
@@ -91,11 +98,26 @@ export default {
     contract.fundOf('0xbabF784Cb81452b43055233BeE50d80a866609a6')
         .then((v) => console.log(v));
   },
+  watch: {
+    errorLog(val) {
+      this.alertMsg.color = 'red';
+      this.alertMsg.msg = val;
+    },
+    infoLog(val) {
+      console.log('info changed to: ', val);
+      this.alertMsg.color = 'blue';
+      this.alertMsg.msg = val;
+    },
+  },
 };
 </script>
 
 <template >
-  <div class="container mx-auto dark w-full  ">
+  <div class="container mx-auto dark w-full">
+    <div class="text-white w-1/5 absolute bottom-4 right-4"
+    v-if="infoLog.length > 0">
+      <Log :msg="infoLog[0]" :color="'blue'" />
+    </div>
     <div class="h-1/15 w-full">
       <Heading />
     </div>
