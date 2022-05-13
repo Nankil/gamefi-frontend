@@ -1,5 +1,5 @@
 <script >
-import NavBar2 from "@/components/NavBar2.vue";
+import NavBar2 from '@/components/NavBar2.vue';
 export default {
   data() {
     return {
@@ -33,16 +33,17 @@ export default {
           path: this.$t('Account.routes[5].path'),
           name: this.$t('Account.routes[5].name'),
           display_name: this.$t('Account.routes[5].display_name'),
-        }
-      ]
+        },
+      ],
     };
   },
   components: {
     NavBar2,
   },
-  mounted(){
+  mounted() {
     console.log(this);
-  }
+  },
+
 };
 </script>
 

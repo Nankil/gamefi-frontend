@@ -22,7 +22,7 @@ export default {
             <div class="flex flex-row">
                 <div class="inline-block p-3 m-2 right-0
                 bg-orange-100 text-center
-                align-middle">
+                align-middle hover:cursor-pointer" @click="connectWallet">
                 Connect Wallet</div>
                 <div class="inline-block p-3 m-2 right-0
                 bg-green-100 text-center
