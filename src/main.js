@@ -12,7 +12,7 @@ import 'flowbite';
 const app = createApp(App);
 const i18n = createI18n(
   {
-    locale: 'CN',
+    locale: 'EN',
     messages: {
       "CN": CN,
       "EN": EN
