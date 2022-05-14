@@ -31,7 +31,7 @@ export default {
                 bg-orange-100 text-center
                 align-middle hover:cursor-pointer" @click="connectWallet"
                 v-if="userInfo.walletAddr === ''">
-                Connect Wallet</div>
+                {{$t('header.cw')}}</div>
                 <div class="inline-block p-3 m-2 right-0
                 bg-orange-100 text-center
                 align-middle hover:cursor-pointer"

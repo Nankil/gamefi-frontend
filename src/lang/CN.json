@@ -1,4 +1,7 @@
 {
+  "header":{
+    "cw":"连接钱包"
+  },
   "Home": {
     "message": "最新消息",
     "communitybank": "社區金庫",
@@ -8,16 +11,25 @@
     "partners": "合作方"
   },
   "Account": {
+    "Info":{
+      "promote_code": "推廣碼",
+      "wallet_addr": "錢包地址",
+      "id": "ID",
+      "privilege": "權限",
+      "username": "用戶名",
+      "phone": "手機號",
+      "email": "郵箱"
+    },
     "routes": [
       {
         "path": "/account/info",
         "name": "Info",
-        "display_name": "信息"
+        "display_name": "賬戶信息"
       },
       {
         "path": "/account/tasks",
         "name": "Tasks",
-        "display_name": "任务"
+        "display_name": "任務"
       },
       {
         "path": "/account/credit",
@@ -27,7 +39,7 @@
       {
         "path": "/account/assets",
         "name": "Assets",
-        "display_name": "资产"
+        "display_name": "資產"
       },
       {
         "path": "/account/nft",
@@ -37,7 +49,7 @@
       {
         "path": "/account/investment",
         "name": "Investment",
-        "display_name": "投资"
+        "display_name": "投資"
       }
     ]
   },
@@ -75,32 +87,32 @@
     {
       "path": "/events",
       "name": "Events",
-      "display_name": "活动"
+      "display_name": "活動"
     },
     {
       "path": "/community",
       "name": "Community",
-     "display_name": "社区"
+     "display_name": "社區"
     },
     {
       "path": "/lock",
       "name": "Lock",
-      "display_name": "锁仓"
+      "display_name": "鎖仓"
     },
     {
       "path": "/account",
       "name": "Account",
-      "display_name": "账户"
+      "display_name": "賬戶"
     },
     {
       "path": "/tutorial",
       "name": "Turorial",
-      "display_name": "教程"
+      "display_name": "教學"
     },
     {
       "path": "/media",
       "name": "Media",
-      "display_name": "媒体"
+      "display_name": "媒體"
     },
     {
       "path": "/roadmap",
@@ -110,12 +122,12 @@
     {
       "path": "/gamephase",
       "name": "GamePhase",
-      "display_name": "游戏阶段"
+      "display_name": "遊戲階段"
     },
     {
       "path": "/contactus",
       "name": "ContactUs",
-      "display_name": "联系我们"
+      "display_name": "聯繫我們"
     }
   ]
 }

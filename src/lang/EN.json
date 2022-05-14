@@ -1,4 +1,7 @@
 {
+    "header": {
+        "cw": "Connect Wallet"
+    },
     "Home": {
         "message": "spot news",
         "communitybank": "community bank",
@@ -8,6 +11,15 @@
         "partners": "partners"
     },
     "Account": {
+        "Info": {
+            "promote_code": "Promote Code",
+            "wallet_addr": "Wallet",
+            "id": "ID",
+            "privilege": "Privilege",
+            "username": "Username",
+            "phone": "Phone",
+            "email": "Email"
+        },
         "routes": [
             {
                 "display_name": "Info"

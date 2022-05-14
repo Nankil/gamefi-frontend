@@ -15,7 +15,7 @@ import store from './store';
 const app = createApp(App);
 const i18n = createI18n(
     {
-      locale: 'EN',
+      locale: 'CN',
       messages: {
         'CN': CN,
         'EN': EN,
