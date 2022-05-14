@@ -65,5 +65,57 @@
     "Holders": "持有者",
     "Market Size": "市場规模"
   },
-  "RoadMap": "項目發展路線圖"
+  "RoadMap": "項目發展路線圖",
+  "routes": [
+    {
+      "path": "/",
+      "name": "Home",
+      "display_name": "首頁"
+    },
+    {
+      "path": "/events",
+      "name": "Events",
+      "display_name": "活动"
+    },
+    {
+      "path": "/community",
+      "name": "Community",
+     "display_name": "社区"
+    },
+    {
+      "path": "/lock",
+      "name": "Lock",
+      "display_name": "锁仓"
+    },
+    {
+      "path": "/account",
+      "name": "Account",
+      "display_name": "账户"
+    },
+    {
+      "path": "/tutorial",
+      "name": "Turorial",
+      "display_name": "教程"
+    },
+    {
+      "path": "/media",
+      "name": "Media",
+      "display_name": "媒体"
+    },
+    {
+      "path": "/roadmap",
+      "name": "RoadMap",
+      "display_name": "項目發展路線圖"
+    },
+    {
+      "path": "/gamephase",
+      "name": "GamePhase",
+      "display_name": "游戏阶段"
+    },
+    {
+      "path": "/contactus",
+      "name": "ContactUs",
+      "display_name": "联系我们"
+    }
+  ]
 }

@@ -21,52 +21,52 @@ export default {
         {
           path: "/",
           name: "Home",
-          display_name: "Home",
+          display_name: this.$t("routes[0].display_name"),
         },
         {
           path: "/events",
           name: "Events",
-          display_name: "Events",
+          display_name: this.$t("routes[1].display_name"),
         },
         {
           path: "/community",
           name: "Community",
-          display_name: "Community",
+          display_name: this.$t("routes[2].display_name"),
         },
         {
           path: "/lock",
           name: "Lock",
-          display_name: "Lock",
+          display_name: this.$t("routes[3].display_name"),
         },
         {
           path: "/account",
           name: "Account",
-          display_name: "Account",
+          display_name: this.$t("routes[4].display_name"),
         },
         {
           path: "/tutorial",
           name: "Turorial",
-          display_name: "Turorial",
+          display_name: this.$t("routes[5].display_name"),
         },
         {
           path: "/media",
           name: "Media",
-          display_name: "Media",
+          display_name: this.$t("routes[6].display_name"),
         },
         {
           path: "/roadmap",
           name: "RoadMap",
-          display_name: "Road Map",
+          display_name: this.$t("routes[7].display_name"),
         },
         {
           path: "/gamephase",
           name: "GamePhase",
-          display_name: "Game Phase",
+          display_name: this.$t("routes[8].display_name"),
         },
         {
           path: "/contactus",
           name: "ContactUs",
-          display_name: "Contact Us",
+          display_name: this.$t("routes[9].display_name"),
         },
       ],
       alertMsg: {
@@ -134,10 +134,14 @@ export default {
       <Heading />
     </div>
     <div class="flex flex-row w-full h-full bg-black">
-      <div v-if="isBarActive" class="w-1/6" >
+      <div v-if="isBarActive" class="w-1/6">
         <NavBar :routes="routes" />
       </div>
-      <div class=" px-3 main #262626 border-t-2 bgc" :class="[isBarActive?'w-5/6':'w-full']">
+      
+      <div
+        class="px-3 main #262626 border-t-2 bgc"
+        :class="[isBarActive ? 'w-5/6' : 'w-full']"
+      >
         <div>
           <Route />
         </div>

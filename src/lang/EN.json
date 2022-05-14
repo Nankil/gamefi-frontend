@@ -10,33 +10,21 @@
     "Account": {
         "routes": [
             {
-                "path": "/account/info",
-                "name": "Info",
                 "display_name": "Info"
             },
             {
-                "path": "/account/tasks",
-                "name": "Tasks",
                 "display_name": "Tasks"
             },
             {
-                "path": "/account/credit",
-                "name": "Credit",
                 "display_name": "Credit"
             },
             {
-                "path": "/account/assets",
-                "name": "Assets",
                 "display_name": "Assets"
             },
             {
-                "path": "/account/nft",
-                "name": "NFT",
                 "display_name": "NFT"
             },
             {
-                "path": "/account/investment",
-                "name": "Investment",
                 "display_name": "Investment"
             }
         ]
@@ -65,5 +53,37 @@
         "Holders": " Holders",
         "Market Size": " Market Size"
     },
-    "RoadMap": "RoadMap"
+    "RoadMap": "RoadMap",
+    "routes": [
+        {
+            "display_name": "Home"
+        },
+        {
+            "display_name": "Events"
+        },
+        {
+            "display_name": "Community"
+        },
+        {
+            "display_name": "Lock"
+        },
+        {
+            "display_name": "Account"
+        },
+        {
+            "display_name": "Turorial"
+        },
+        {
+            "display_name": "Media"
+        },
+        {
+            "display_name": "Road Map"
+        },
+        {
+            "display_name": "Game Phase"
+        },
+        {
+            "display_name": "Contact Us"
+        }
+    ]
 }
