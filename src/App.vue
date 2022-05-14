@@ -114,9 +114,13 @@ export default {
 
 <template >
   <div class="container mx-auto dark w-full">
-    <div class="text-white w-1/5 absolute bottom-4 right-4"
+    <div class="text-white w-1/5 absolute bottom-10 right-4"
     v-if="infoLog.length > 0">
       <Log :msg="infoLog[0]" :color="'blue'" />
+    </div>
+    <div class="text-white w-1/5 absolute bottom-3 right-4"
+    v-if="errorLog.length > 0">
+      <Log :msg="errorLog[0]" :color="'red'" />
     </div>
     <div class="h-1/15 w-full">
       <Heading />

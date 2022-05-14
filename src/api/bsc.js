@@ -43,6 +43,14 @@ export class FundingContract {
 
   /**
    *
+   * @return {Number}
+   */
+  async fundersLen() {
+    return await this.contract.funders_len();
+  }
+
+  /**
+   *
    * @param {Number} amount amount of BNB to fund
    * @return {Number}
    */

@@ -1,3 +1,5 @@
+import {UnicodeNormalizationForm} from 'ethers/lib/utils';
+import {saturate} from 'tailwindcss/defaultTheme';
 import {createStore} from 'vuex';
 
 /**
@@ -45,6 +47,9 @@ export default createStore({
     },
     shiftInfoLog(state) {
       state.infoLog.shift();
+    },
+    shiftErrorLog(state) {
+      state.errorLog.shift();
     },
   },
   actions: {
@@ -95,6 +100,14 @@ export default createStore({
       commit('pushInfoLog', 'wallet connected');
       await delay(5000);
       commit('shiftInfoLog');
+    },
+    async transferTo({commit, state}) {
+      if (state.ethereum === undefined) {
+        state.errorLog.push('web3 is undefined');
+      }
+    },
+    pushErrorLog({commit}, error) {
+      commit('pushErrorLog', error);
     },
   },
   modules: {
