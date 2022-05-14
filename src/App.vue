@@ -137,7 +137,7 @@ export default {
       <div v-if="isBarActive" class="w-1/6" >
         <NavBar :routes="routes" />
       </div>
-      <div class="w-5/6 px-3 main #262626 border-t-2 bgc">
+      <div class=" px-3 main #262626 border-t-2 bgc" :class="[isBarActive?'w-5/6':'w-full']">
         <div>
           <Route />
         </div>
