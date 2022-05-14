@@ -32,7 +32,7 @@ export default {
       <div v-for="route in routes" :key="route"
       @click="$router.push(route.path)">
       <div v-if="matchOfCurrentPath==route.name"
-      class="dark:text-white p-2 border-r-0 border-2 border-x-white bg-gray-400"
+      class="dark:text-white p-2 border-r-0 border-2 border-x-white bgc"
       >{{ route.display_name }}</div>
       <div v-else class="dark:text-white p-2
       border-r-2 border-x-white">{{ route.display_name }}</div>
