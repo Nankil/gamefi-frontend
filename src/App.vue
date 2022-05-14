@@ -3,6 +3,7 @@ import Heading from "./components/Heading.vue";
 import { RouterView } from "vue-router";
 import NavBar from "./components/NavBar.vue";
 import Route from "./components/Route.vue";
+import Log from "./components/Log.vue";
 </script>
 
 
@@ -13,15 +14,15 @@ import Route from "./components/Route.vue";
       <Heading />
     </div>
     <div class="flex flex-row w-full h-full bgc">
-      <div v-if="isBarActive" class="w-1/6 " style="background-color: black">
-        <NavBar :routes="routes" id="navbar"/>
-        <div class="border-r-2 border-white" id="baise" ></div>
+      <div v-if="isBarActive" class="w-1/6" style="background-color: black">
+        <NavBar :routes="routes" id="navbar" />
+        <div class="border-r-2 border-white" id="baise"></div>
       </div>
       <div class="w-5/6 px-3 main #262626 border-t-2">
         <div>
           <Route />
         </div>
-        <div >
+        <div>
           <router-view id="content" class="dark:text-white bgc"></router-view>
         </div>
       </div>
@@ -29,6 +30,7 @@ import Route from "./components/Route.vue";
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 import { FundingContract } from "./api/bsc";
 // import {ethers} from 'ethers';
 import contractInterface from "./contracts/Funding.json";
@@ -87,10 +89,15 @@ export default {
           display_name: "Contact Us",
         },
       ],
+      alertMsg: {
+        color: "",
+        msg: "",
+      },
     };
   },
 
   computed: {
+    ...mapState(["errorLog", "infoLog"]),
     currentRoutePath() {
       return this.$route.path;
     },
@@ -114,9 +121,51 @@ export default {
     contract
       .fundOf("0xbabF784Cb81452b43055233BeE50d80a866609a6")
       .then((v) => console.log(v));
-  }
+  },
+  watch: {
+    errorLog(val) {
+      this.alertMsg.color = "red";
+      this.alertMsg.msg = val;
+    },
+    infoLog(val) {
+      console.log("info changed to: ", val);
+      this.alertMsg.color = "blue";
+      this.alertMsg.msg = val;
+    },
+  },
 };
 </script>
+
+<template >
+  <div class="container mx-auto dark w-full">
+    <div
+      class="text-white w-1/5 absolute bottom-10 right-4"
+      v-if="infoLog.length > 0"
+    >
+      <Log :msg="infoLog[0]" :color="'blue'" />
+    </div>
+    <div
+      class="text-white w-1/5 absolute bottom-3 right-4"
+      v-if="errorLog.length > 0"
+    >
+      <Log :msg="errorLog[0]" :color="'red'" />
+    </div>
+    <div class="h-1/15 w-full">
+      <Heading />
+    </div>
+    <div class="flex flex-row w-full h-full bg-black">
+      <div v-if="isBarActive" class="w-1/6" style="background-color: black">
+        <NavBar :routes="routes" />
+      </div>
+      <div class="w-5/6 px-3 main #262626 border-t-2">
+        <div>
+          <Route />
+        </div>
+        <router-view class="dark:text-white bg-black"></router-view>
+      </div>
+    </div>
+  </div>
+</template>
 <style>
 .main {
   height: fit-content;

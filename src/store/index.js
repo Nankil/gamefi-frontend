@@ -1,4 +1,15 @@
+import {UnicodeNormalizationForm} from 'ethers/lib/utils';
+import {saturate} from 'tailwindcss/defaultTheme';
 import {createStore} from 'vuex';
+
+/**
+ *
+ * @param {Number} time ms
+ * @return {Promise}
+ */
+function delay(time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 
 /**
  *  switch to bsc network
@@ -27,6 +38,18 @@ export default createStore({
     },
     setWeb3(state, web3) {
       state.ethereum = web3;
+    },
+    pushInfoLog(state, info) {
+      state.infoLog.push(info);
+    },
+    pushErrorLog(state, error) {
+      state.errorLog.push(error);
+    },
+    shiftInfoLog(state) {
+      state.infoLog.shift();
+    },
+    shiftErrorLog(state) {
+      state.errorLog.shift();
     },
   },
   actions: {
@@ -74,7 +97,17 @@ export default createStore({
       const accounts =
               await ethereum.request({method: 'eth_requestAccounts'});
       commit('updateWalletAddr', accounts[0]);
-      console.log(accounts[0]);
+      commit('pushInfoLog', 'wallet connected');
+      await delay(5000);
+      commit('shiftInfoLog');
+    },
+    async transferTo({commit, state}) {
+      if (state.ethereum === undefined) {
+        state.errorLog.push('web3 is undefined');
+      }
+    },
+    pushErrorLog({commit}, error) {
+      commit('pushErrorLog', error);
     },
   },
   modules: {

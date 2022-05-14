@@ -1,5 +1,5 @@
 <script>
-import {mapActions} from 'vuex';
+import {mapActions, mapState} from 'vuex';
 export default {
   data() {
     return {
@@ -8,6 +8,13 @@ export default {
   },
   methods: {
     ...mapActions(['connectWallet']),
+  },
+  computed: {
+    ...mapState(['userInfo']),
+    truncatedAddr() {
+      return this.userInfo.walletAddr.slice(0, 4) +
+      '...' + this.userInfo.walletAddr.slice(38, -1);
+    },
   },
 };
 </script>
@@ -22,11 +29,17 @@ export default {
             <div class="flex flex-row">
                 <div class="inline-block p-3 m-2 right-0
                 bg-orange-100 text-center
-                align-middle hover:cursor-pointer" @click="connectWallet">
+                align-middle hover:cursor-pointer" @click="connectWallet"
+                v-if="userInfo.walletAddr === ''">
                 Connect Wallet</div>
                 <div class="inline-block p-3 m-2 right-0
+                bg-orange-100 text-center
+                align-middle hover:cursor-pointer"
+                v-else>{{ truncatedAddr }}</div>
+                <div class="inline-block p-3 m-2 right-0
                 bg-green-100 text-center
-                align-middle">Home</div>
+                align-middle hover:cursor-pointer"
+                @click="$router.push('/')">Home</div>
             </div>
         </div>
 

@@ -10,13 +10,12 @@ import 'flowbite';
 import store from './store';
 
 // import * as Web3 from '../node_modules/web3/dist/web3.min.js';
-import {ethers} from 'ethers';
 
 
 const app = createApp(App);
 const i18n = createI18n(
     {
-      locale: 'EN',
+      locale: 'CN',
       messages: {
         'CN': CN,
         'EN': EN,
