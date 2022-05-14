@@ -116,24 +116,32 @@ export default {
 };
 </script>
 
-
 <template >
   <div class="container mx-auto dark w-full">
+    <div
+      class="text-white w-1/5 absolute bottom-10 right-4"
+      v-if="infoLog.length > 0"
+    >
+      <Log :msg="infoLog[0]" :color="'blue'" />
+    </div>
+    <div
+      class="text-white w-1/5 absolute bottom-3 right-4"
+      v-if="errorLog.length > 0"
+    >
+      <Log :msg="errorLog[0]" :color="'red'" />
+    </div>
     <div class="h-1/15 w-full">
       <Heading />
     </div>
-    <div class="flex flex-row w-full h-full bgc">
-      <div v-if="isBarActive" class="w-1/6" style="background-color: black">
-        <NavBar :routes="routes" id="navbar" />
-        <div class="border-r-2 border-white" id="baise"></div>
+    <div class="flex flex-row w-full h-full bg-black">
+      <div v-if="isBarActive" class="w-1/6" >
+        <NavBar :routes="routes" />
       </div>
-      <div class="w-5/6 px-3 main #262626 border-t-2">
+      <div class="w-5/6 px-3 main #262626 border-t-2 bgc">
         <div>
           <Route />
         </div>
-        <div>
-          <router-view id="content" class="dark:text-white bgc"></router-view>
-        </div>
+        <router-view class="dark:text-white bgc"></router-view>
       </div>
     </div>
   </div>
