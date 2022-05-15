@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 .center {
   position: absolute;
   left: 50%;
@@ -9,7 +9,7 @@
   left: 0;
 }
 .nav-container {
-  background-image: url("/imgs/comm_vouch.png");
+  background-image: url("./imgs/comm_vouch.png");
   background-size: 100% 100%;
   margin-left: 10%;
   margin-right: 10%;
