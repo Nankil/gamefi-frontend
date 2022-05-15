@@ -28,14 +28,25 @@ export default {
 </script>
 
 <template>
-    <div class="dark:bg-black w-full">
+    <div class="w-full nav-container p-6">
       <div v-for="route in routes" :key="route"
-      @click="$router.push(route.path)">
+      @click="$router.push(route.path)" class="text-center">
       <div v-if="matchOfCurrentPath==route.name"
-      class="dark:text-white p-2 border-r-0 border-2 border-x-white bgc"
+      class="dark:text-white p-2 selected"
       >{{ route.display_name }}</div>
       <div v-else class="dark:text-white p-2
       border-r-2 border-x-white">{{ route.display_name }}</div>
       </div>
     </div>
 </template>
+
+<style scoped>
+.nav-container {
+  background-image: url('/imgs/nav_left.png');
+  background-size: 100% 100%;
+}
+.selected {
+  background-image: url('/imgs/nav_selected.png');
+  background-size: 100% 100%;
+}
+</style>
