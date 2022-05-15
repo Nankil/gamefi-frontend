@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ['routes'],
+  props: ["routes"],
   data() {
     return {
       // routes: [
@@ -47,13 +47,25 @@ export default {
 </script>
 
 <template>
-  <div class="w-full flex flex-wrap">
-    <div v-for="route in routes" :key="route" class=" w-1/6 p-2"
-    @click="$router.push(route.path)">
-      <button v-if="currentRoutePath==route.path"
-      class="bg-orange-400 w-full"> {{ route.display_name }}</button>
-      <button v-else
-      class="bg-orange-200 w-full">{{ route.display_name }}</button>
+  <div class="w-full flex flex-wrap ">
+    <div
+      v-for="route in routes"
+      :key="route"
+      class="w-1/6 p-2"
+      @click="$router.push(route.path)"
+    >
+      <button
+        v-if="currentRoutePath == route.path"
+        class="bg-orange-400 w-full"
+      >
+        {{ route.display_name }}
+      </button>
+      <button v-else class="bg-orange-200 w-full">
+        {{ route.display_name }}
+      </button>
     </div>
   </div>
 </template>
+<style>
+
+</style>

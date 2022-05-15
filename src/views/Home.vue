@@ -1,4 +1,4 @@
-<style>
+<style scoped>
 .center {
   position: absolute;
   left: 50%;
@@ -9,7 +9,7 @@
   left: 0;
 }
 .nav-container {
-  background-image: url("/imgs/comm_vouch.png");
+  background-image: url("./imgs/comm_vouch.png");
   background-size: 100% 100%;
 }
 .container2 {
@@ -26,7 +26,7 @@
 }
 </style>
 <template>
-  <div class="dark:text-white text-purple-600 h-full bg-green-500 px-10">
+  <div class="dark:text-white text-purple-600 h-full  px-10">
     <img src="imgs\new_message.png" alt="" />
     <div class="h-52 flex">
       <div class="w-3/4 h-full border-2 border-solid border-white">

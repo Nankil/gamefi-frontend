@@ -47,9 +47,15 @@ export default {
 </script>
 
 <template>
-  <div class="w-full h-full px-8">
+  <div class="w-full h-full px-8 nav-container">
     <NavBar2 :routes="routes" />
     <br />
     <router-view></router-view>
   </div>
 </template>
+<style>
+.nav-container {
+  background-image: url("/imgs/nav_top.png");
+  background-size: 100% 100%;
+}
+</style>
