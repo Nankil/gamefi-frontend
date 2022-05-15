@@ -1,6 +1,6 @@
 <template>
 <div class="w-full">
-  <div class="invest-open h-12"></div>
+  <div class="invest-open h-14"></div>
   <div class="w-full invest-container p-4">
       <div class="w-full invest-tab1 tab">
         <a href="/account/investment">seeds</a>

@@ -135,7 +135,9 @@ export default {
     <div class="flex flex-row w-full h-full">
       <div v-if="isBarActive" class="w-1/8">
         <NavBar :routes="routes" />
-        <NavInvest />
+        <div class="w-full ml-3 mr-3 mt-20">
+          <NavInvest />
+        </div>
       </div>
 
 
@@ -154,5 +156,9 @@ export default {
 <style>
 .main {
   height: fit-content;
+}
+.container {
+  background-image: url('/imgs/background_white.png');
+  background-size: 100% auto;
 }
 </style>

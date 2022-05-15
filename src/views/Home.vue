@@ -11,23 +11,31 @@
 .nav-container {
   background-image: url("/imgs/comm_vouch.png");
   background-size: 100% 100%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .container2 {
   background-image: url("/imgs/user_stat.png");
   background-size: 100% 100%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .container3 {
-  background-image: url("imgs/token2.png");
+  background-image: url("/imgs/token2.png");
   background-size: 100% 100%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 .container4 {
-  background-image: url("imgs/token1.png");
+  background-image: url("/imgs/token1.png");
   background-size: 100% 100%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 </style>
 <template>
-  <div class="dark:text-white text-purple-600 h-full bg-green-500 px-10">
-    <img src="imgs\new_message.png" alt="" />
+  <div class="dark:text-white text-purple-600 h-full px-10">
+    <img src="/imgs/new_message.png" alt="" class="w-full" />
     <div class="h-52 flex">
       <div class="w-3/4 h-full border-2 border-solid border-white">
         <img src="" alt="" />
@@ -44,9 +52,12 @@
       </div>
     </div>
     <div class="text-right">
-      <img class="inline h-9" src="imgs\more.png" alt="" />
+      <img class="inline h-9" src="/imgs/more.png" alt="" />
     </div>
-    <div class="flex flex-row">
+
+    <img src="/imgs/spliter1.png" alt="splitter">
+
+    <div class="grid grid-cols-2">
       <div class="flex-1 nav-container p-14">
         <div class="border-2 border-solid border-white w-4/5">
           <div class="text-center">总资产</div>
@@ -84,10 +95,11 @@
       </div>
     </div>
 
-    <img src="imgs\economic_bar.png" alt="" />
+    <img src="/imgs/spliter2.png" alt="splitter">
+    <img src="/imgs/economic_bar.png" alt="" />
 
     <div
-      class="flex flex-row border-2 border-solid border-white text-purple-500"
+      class="grid grid-cols-2 text-purple-500"
     >
       <div class="flex-1 container3 p-14">
         <div class="border-2 border-solid border-white h-96">
@@ -135,8 +147,8 @@
         </div>
       </div>
       <div class="flex-1 container4 p-14">
-        <div class="border-2 border-solid border-white h-96">
-          <div class="flex border-b-2 border-solid border-white">
+        <div class="border-2 h-96">
+          <div class="flex border-solid border-white">
             <div class="w-1/4"><img src="" alt="" /></div>
             <div>
               <div>haha</div>
@@ -170,9 +182,9 @@
 </template>
 <script>
 export default {
-  name: "app",
+  name: 'app',
   data() {
-    return { locale: "en" };
+    return {locale: 'en'};
   },
   watch: {
     locale(val) {
