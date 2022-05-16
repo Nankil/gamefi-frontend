@@ -28,7 +28,7 @@ export default {
 </script>
 
 <template>
-    <div class="w-full nav-container p-6">
+    <div class="w-full nav-container p-6 " >
       <div v-for="route in routes" :key="route"
       @click="$router.push(route.path)" class="text-center">
       <div v-if="matchOfCurrentPath==route.name"
@@ -48,4 +48,5 @@ export default {
   background-image: url('/imgs/nav_selected.png');
   background-size: 100% 100%;
 }
+
 </style>
