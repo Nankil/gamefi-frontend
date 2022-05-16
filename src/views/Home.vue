@@ -9,7 +9,7 @@
   left: 0;
 }
 .nav-container {
-  background-image: url("./imgs/comm_vouch.png");
+  background-image: url("/imgs/comm_vouch.png");
   background-size: 100% 100%;
   margin-left: 10%;
   margin-right: 10%;
@@ -57,7 +57,7 @@
 
     <img src="/imgs/spliter1.png" alt="splitter">
 
-    <div class="grid grid-cols-2">
+    <div class="grid lg:grid-cols-2 sm:grid-cols-1">
       <div class="flex-1 nav-container p-14">
         <div class="border-2 border-solid border-white w-4/5">
           <div class="text-center">总资产</div>

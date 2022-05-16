@@ -49,8 +49,17 @@ export default {
                 <img src="/imgs/sun.png" alt="sun"
                 class="h-10 hover:cursor-pointer">
             </div>
+            <div class="flex flex-row ml-20 w-full">
+              <div class="flex flex-row items-center">
+                <img src="/imgs/utc+8.png" alt="">
+                <div class="ml-2">08:00 </div>
+              </div>
+              <div class="flex flex-row items-center ml-5">
+                <img src="/imgs/utc+8.png" alt="">
+                <div class="ml-2">08:00 </div>
+              </div>
+            </div>
         </div>
-
     </div>
 </template>
 
