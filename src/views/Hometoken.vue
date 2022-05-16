@@ -1,56 +1,102 @@
 <template>
-  <div class="grid grid-cols-2">
-    <div class="container3 p-16">
-      <div class="flex">
-        <img class="w-1/4" src="" alt="图图" />
-        <div class="ce570e6">
-          <div class="text-2xl">name</div>
-          <div class="">简介</div>
+  <div class="grid lg:grid-cols-2 sm:grid-cols-1">
+    <div class="container3 p-16 w-full flex flex-col items-center">
+      <div class="flex flex-row 
+      items-center border-b pb-4 border-pink-400 w-3/4">
+        <img src="https://picsum.photos/id/2/100/100" class="rounded-full border-4 border-pink-400" />
+        <div class="token-info ml-2 text-pink-400">
+          <div class="token-title text-2xl font-bold">
+            Gene Player Coin
+          </div>
+          <div class="token-symbol text-xl">(SSC / BNB)</div>
         </div>
       </div>
-
-      <hr color="#e570e6" class="my-10" />
-
-      <div class="flex my-4" v-for="x in 5" :key="x">
-        <div class="w-1/2">24小时涨跌</div>
-        <div class=" w-1/2 ce570e6 text-right">100%</div>
+      <div class="flex flex-col w-3/4 mt-4">
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">24d小时涨跌</div>
+          <div class="self-end text-pink-400">300%</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">币价</div>
+          <div class="self-end text-pink-400">$ 10</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">市值</div>
+          <div class="self-end text-pink-400">$10,000,000</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">持币地址</div>
+          <div class="self-end text-pink-400">100,000</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">滑点</div>
+          <div class="self-end text-pink-400">买0.1% 卖0.1%</div>
+        </div>
       </div>
-
-      <div>haha</div>
-      <div class="text-sm">haha</div>
-
-      <div class=" my-3 border1">0x5068…Cc2f2b3 [ 複製 ]</div>
-      <div class="flex justify-around ce570e6">
-        <button>合約機制查看</button>
-        <button>222222</button>
-        <button>3333</button>
+      <div class="flex flex-col w-3/4 mt-4">
+        <div class="flex flex-col w-3/4 text-lg">
+          <div> Binance Smart Chain </div>
+          <div>(GPC合约地址)</div>
+        </div>
+        <div class="flex flex-row w-full">
+          <div class="rounded-lg border border-pink-400 text-xl text-center w-11/12">0x5068…Cc2f2b3</div>
+          <img src="/imgs/copy.png" alt="copy" class="h-8">
+        </div>
+        <div class="flex flex-row justify-between mt-6 text-sm">
+          <div class="btn-red">合约地址查看</div>
+          <div class="btn-red">勘察插值网站</div>
+          <div class="btn-red">购买 $GPC</div>
+        </div>
       </div>
     </div>
 
-    <div class="container4 p-16">
-      <div class="flex">
-        <img class="w-1/4" src="" alt="图图" />
-        <div class="ce570e6">
-          <div class="text-2xl">name</div>
-          <div class="">简介</div>
+    <div class="container4 p-16 w-full flex flex-col items-center">
+      <div class="flex flex-row 
+      items-center border-b pb-4 border-green-500 w-3/4">
+        <img src="https://picsum.photos/id/2/100/100" class="rounded-full border-4 border-green-400" />
+        <div class="token-info ml-2 text-green-400">
+          <div class="token-title text-2xl font-bold">
+            Gene Player Coin
+          </div>
+          <div class="token-symbol text-xl">(SSC / BNB)</div>
         </div>
       </div>
-
-      <hr color="#e570e6" class="my-10" />
-
-      <div class="flex my-4" v-for="x in 5" :key="x">
-        <div class="w-1/2">24小时涨跌</div>
-        <div class="text-yellow-600 w-1/2 text-right">100%</div>
+      <div class="flex flex-col w-3/4 mt-4">
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">24d小时涨跌</div>
+          <div class="self-end text-green-400">300%</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">币价</div>
+          <div class="self-end text-green-400">$ 10</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">市值</div>
+          <div class="self-end text-green-400">$10,000,000</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">持币地址</div>
+          <div class="self-end text-green-400">100,000</div>
+        </div>
+        <div class="flex flex-row justify-between text-lg mt-2">
+          <div class="self-start">滑点</div>
+          <div class="self-end text-green-400">买0.1% 卖0.1%</div>
+        </div>
       </div>
-
-      <div>haha</div>
-      <div>haha</div>
-
-      <div class="my-3 border2">0x5068…Cc2f2b3 [ 複製 ]</div>
-      <div class="flex justify-around ce570e6">
-        <button>合約機制查看</button>
-        <button>222222</button>
-        <button>3333</button>
+      <div class="flex flex-col w-3/4 mt-4">
+        <div class="flex flex-col w-3/4 text-lg">
+          <div> Binance Smart Chain </div>
+          <div>(GPC合约地址)</div>
+        </div>
+        <div class="flex flex-row w-full">
+          <div class="rounded-lg border border-green-400 text-xl text-center w-11/12">0x5068…Cc2f2b3</div>
+          <img src="/imgs/copy.png" alt="copy" class="h-8">
+        </div>
+        <div class="flex flex-row justify-between mt-6 text-sm">
+          <div class="btn-green">合约地址查看</div>
+          <div class="btn-green">勘察插值网站</div>
+          <div class="btn-green">购买 $GPC</div>
+        </div>
       </div>
     </div>
   </div>
@@ -60,29 +106,33 @@
 </script>
 
 <style scoped>
+
 .container3 {
-  background-image: url("/imgs/token2.png");
-  background-size: 100% 100%;
-  margin-left: 10%;
-  margin-right: 10%;
+    background-image: url('/imgs/token2.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
 }
 .container4 {
-  background-image: url("/imgs/token1.png");
+    background-image: url('/imgs/token1.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-red {
+  background-image: url('/imgs/red_button.svg');
   background-size: 100% 100%;
-  margin-left: 10%;
-  margin-right: 10%;
+  padding: 3%;
 }
-.ce570e6 {
-  color: #e570e6;
-}
-.border1{
-    border: 1px solid #e570e6;
-    border-radius: 20px;
-    padding: 5px;
-}
-.border2{
-    border: 1px solid #79c5c5;
-    border-radius: 20px;
-    padding: 5px;
+
+.btn-green {
+  background-image: url('/imgs/green_button.svg');
+  background-size: 100% 100%;
+  padding: 3%;
 }
 </style>
