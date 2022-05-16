@@ -62,13 +62,17 @@
 <style scoped>
 .container3 {
   background-image: url("/imgs/token2.png");
-  background-size: 100% 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+
   margin-left: 10%;
   margin-right: 10%;
 }
 .container4 {
   background-image: url("/imgs/token1.png");
-  background-size: 100% 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+
   margin-left: 10%;
   margin-right: 10%;
 }

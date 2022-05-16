@@ -39,13 +39,16 @@ let totalasset = ref(0);
 <style scoped>
 .nav-container {
   background-image: url("./imgs/comm_vouch.png");
-  background-size: 100% 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-left: 10%;
   margin-right: 10%;
 }
 .container2 {
   background-image: url("/imgs/user_stat.png");
-  background-size: 100% 100%;
+  background-size:contain;
+  background-repeat: no-repeat;
+
   margin-left: 10%;
   margin-right: 10%;
 }
