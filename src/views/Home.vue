@@ -1,3 +1,6 @@
+<style scoped>
+
+</style>
 <template>
   <div class="dark:text-white px-10">
     <img src="/imgs/new_message.png" alt="" class="w-full" />
@@ -7,6 +10,10 @@
     </div>
     <img src="/imgs/spliter1.png" alt="splitter" />
     <HomeNewMessage />
+
+    <img src="/imgs/spliter1.png" alt="splitter">
+
+
 
     <img src="/imgs/spliter2.png" alt="splitter">
     <img src="/imgs/economic_bar.png" alt="" />
