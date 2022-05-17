@@ -22,7 +22,7 @@
 
     <Hometoken />
     <div class="w-full">
-      <LineChart />
+      <LINECHART />
     </div>
 
     <div class="h-20 my-10 text-4xl text-purple-500">{{ $t("Home.PDR") }}</div>

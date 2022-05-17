@@ -13,28 +13,28 @@
       </div>
       <div class="flex flex-col w-3/4 mt-4">
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">24d小时涨跌</div>
-          <div class="self-end text-pink-400">300%</div>
+          <div class="self-start text-gray-300 font-semibold">24d小时涨跌</div>
+          <div class="self-end text-pink-400"><img class="inline" src="" alt=""> 300%</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">币价</div>
+          <div class="self-start text-gray-300 font-semibold">币价</div>
           <div class="self-end text-pink-400">$ 10</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">市值</div>
+          <div class="self-start text-gray-300 font-semibold">市值</div>
           <div class="self-end text-pink-400">$10,000,000</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">持币地址</div>
+          <div class="self-start text-gray-300 font-semibold">持币地址</div>
           <div class="self-end text-pink-400">100,000</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">滑点</div>
+          <div class="self-start text-gray-300 font-semibold">滑点</div>
           <div class="self-end text-pink-400">买0.1% 卖0.1%</div>
         </div>
       </div>
       <div class="flex flex-col w-3/4 mt-4">
-        <div class="flex flex-col w-3/4 text-lg">
+        <div class="flex flex-col w-3/4 text-lg text-gray-300 font-semibold">
           <div> Binance Smart Chain </div>
           <div>(GPC合约地址)</div>
         </div>
@@ -63,29 +63,29 @@
       </div>
       <div class="flex flex-col w-3/4 mt-4">
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">24d小时涨跌</div>
-          <div class="self-end text-green-400">300%</div>
+          <div class="self-start text-gray-300 font-semibold ">24d小时涨跌</div>
+          <div class="self-end text-green-400"><img class="inline" src="" alt=""> 300%</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">币价</div>
+          <div class="self-start text-gray-300 font-semibold">币价</div>
           <div class="self-end text-green-400">$ 10</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">市值</div>
+          <div class="self-start text-gray-300 font-semibold">市值</div>
           <div class="self-end text-green-400">$10,000,000</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">持币地址</div>
+          <div class="self-start text-gray-300 font-semibold">持币地址</div>
           <div class="self-end text-green-400">100,000</div>
         </div>
         <div class="flex flex-row justify-between text-lg mt-2">
-          <div class="self-start">滑点</div>
+          <div class="self-start text-gray-300 font-semibold">滑点</div>
           <div class="self-end text-green-400">买0.1% 卖0.1%</div>
         </div>
       </div>
       <div class="flex flex-col w-3/4 mt-4">
-        <div class="flex flex-col w-3/4 text-lg">
-          <div> Binance Smart Chain </div>
+        <div class="flex flex-col w-3/4 text-lg text-gray-300 font-semibold">
+          <div > Binance Smart Chain </div>
           <div>(GPC合约地址)</div>
         </div>
         <div class="flex flex-row w-full">
