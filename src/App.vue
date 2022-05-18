@@ -116,7 +116,7 @@ export default {
 </script>
 
 <template >
-  <div class="container mx-auto w-full">
+  <div>
     <div
       class="text-white w-1/5 absolute bottom-10 right-4"
       v-if="infoLog.length > 0"
@@ -135,15 +135,15 @@ export default {
     <div class="flex flex-row w-full h-full">
       <div v-if="isBarActive" class="navbar w-1/8">
         <NavBar :routes="routes" />
-        <div class="w-full  mr-3 mt-20">
+        <div class="w-full">
           <NavInvest />
         </div>
       </div>
 
 
       <div
-        class="px-3 main #262626 border-t-2"
-        :class="[isBarActive ? 'w-5/6' : 'w-full']"
+        class="main #262626 border-t-2"
+        :class="[isBarActive ? 'w-7/8' : 'w-full']"
       >
         <div>
           <Route />
@@ -156,10 +156,6 @@ export default {
 <style scoped>
 .main {
   height: fit-content;
-}
-.container {
-  background-image: url('/imgs/background_white.png');
-  background-size: 100% auto;
 }
 .navbar{
   background-image: url('/imgs/nav_left_bg.png');

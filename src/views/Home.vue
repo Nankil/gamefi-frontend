@@ -4,7 +4,7 @@
 }
 </style>
 <template>
-  <div class="dark:text-white px-10">
+  <div class="dark:text-white">
     <img src="/imgs/new_message.png" alt="" class="fengeimg h-20" />
     <Homeswiper />
     <div class="text-right">
@@ -14,16 +14,10 @@
 
     <HomeNewMessage />
 
-    <img src="/imgs/spliter1.png" alt="splitter">
-
-
     <img src="/imgs/spliter2.png" alt="splitter">
     <img src="/imgs/economic_bar.png " class="fengeimg h-20" alt="" />
 
     <Hometoken />
-    <div class="w-full">
-      <LINECHART />
-    </div>
 
     <div class="h-20 my-10 text-4xl text-purple-500">{{ $t("Home.PDR") }}</div>
     <div class="h-20 text-4xl text-purple-500">{{ $t("Home.partners") }}</div>
@@ -33,7 +27,6 @@
 import HomeNewMessage from './HomeNewMessage.vue';
 import Homeswiper from './Homeswiper.vue';
 import Hometoken from './Hometoken.vue';
-import LineChart from '@/components/LineChart.vue';
 export default {
   name: 'app',
   data() {
@@ -44,6 +37,6 @@ export default {
       this.$i18n.locale = val;
     },
   },
-  components: {Homeswiper, HomeNewMessage, Hometoken, LineChart},
+  components: {Homeswiper, HomeNewMessage, Hometoken},
 };
 </script>

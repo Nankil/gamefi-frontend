@@ -28,13 +28,16 @@ export default {
 </script>
 
 <template>
-    <div class="w-full nav-container p-6 " >
-      <div v-for="route in routes" :key="route"
-      @click="$router.push(route.path)" class="text-center">
-      <div v-if="matchOfCurrentPath==route.name"
-      class="dark:text-white p-2 selected m-2"
-      >{{ route.display_name }}</div>
-      <div v-else class="dark:text-white p-2 m-2">{{ route.display_name }}</div>
+    <div class="w-full nav-container" >
+      <div class="w-full p-6 px-10">
+        <div v-for="route in routes" :key="route"
+        @click="$router.push(route.path)" class="text-center">
+          <div v-if="matchOfCurrentPath==route.name"
+          class="dark:text-white p-2 selected m-2"
+          >{{ route.display_name }}</div>
+          <div v-else
+          class="dark:text-white p-2 m-2">{{ route.display_name }}</div>
+        </div>
       </div>
     </div>
 </template>
