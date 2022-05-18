@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex px-40">
     <div class="w-3/4 border-2 border-solid border-white">
       <img src="/imgs/main.png" alt="俺的图图呢" />
     </div>

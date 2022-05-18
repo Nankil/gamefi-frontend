@@ -51,12 +51,14 @@ export default {
             </div>
             <div class="flex flex-row mr-5 justify-end">
               <div class="flex flex-row  items-center">
-                <img src="/imgs/utc+8.png" alt="">
                 <div class="ml-2">08:00 </div>
+                <img src="/imgs/utc+8.png" alt="">
+
               </div>
               <div class="flex flex-row items-center ml-5">
-                <img src="/imgs/utc+8.png" alt="">
                 <div class="ml-2">08:00 </div>
+                <img src="/imgs/utc.png" class="" alt="">
+
               </div>
             </div>
         </div>

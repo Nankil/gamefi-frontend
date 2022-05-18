@@ -1,6 +1,6 @@
 <template>
-  <div class="grid lg:grid-cols-2 sm:grid-cols-1">
-    <div class="container3 p-16 w-full flex flex-col items-center">
+  <div class="grid lg:grid-cols-2 sm:grid-cols-1 px-40">
+    <div class="container3 pr-80 py-16 w-full flex flex-col items-center">
       <div class="flex flex-row 
       items-center border-b pb-4 border-pink-400 w-3/4">
         <img src="https://picsum.photos/id/2/100/100" class="rounded-full border-4 border-pink-400" />
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="container4 p-16 w-full flex flex-col items-center">
+    <div class="container4 pl-80 py-16 w-full flex flex-col items-center">
       <div class="flex flex-row 
       items-center border-b pb-4 border-green-500 w-3/4">
         <img src="https://picsum.photos/id/2/100/100" class="rounded-full border-4 border-green-400" />
@@ -110,7 +110,7 @@
 .container3 {
     background-image: url('/imgs/token2.png');
     background-size: contain;
-    background-position: center;
+    background-position: left;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
@@ -118,7 +118,7 @@
 .container4 {
     background-image: url('/imgs/token1.png');
     background-size: contain;
-    background-position: center;
+    background-position: right;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;

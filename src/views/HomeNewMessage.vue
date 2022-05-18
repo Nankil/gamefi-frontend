@@ -50,8 +50,8 @@ export default {
 </script>
 
 <template>
-  <div class="grid lg:grid-cols-2 sm:grid-cols-1">
-    <div class="container3 p-16 w-full flex flex-col items-center">
+  <div class="grid lg:grid-cols-2 sm:grid-cols-1 px-40">
+    <div class="container3 pr-80 py-16 w-full flex flex-col items-center">
       <div class="flex flex-col border-b border-pink-500 w-3/4 pb-4">
         <div>总资产</div>
         <div class="text-pink-500 font-bold text-3xl text-center">
@@ -65,7 +65,7 @@ export default {
       <div class="w-3/4"><CoinInfo /></div>
     </div>
 
-    <div class="container4 p-16 w-full flex flex-col items-center" ref="graphs">
+    <div class="container4 pl-80 py-16 w-full flex flex-col items-center" ref="graphs">
       <div v-for="stat in user_stats" :key="stat.title" class="p-2 w-3/4">
         <IncreStat :title="stat.title" :incre="stat.incre" :data="stat.data" />
       </div>
@@ -77,7 +77,7 @@ export default {
 .container3 {
   background-image: url("/imgs/comm_vouch.png");
   background-size: contain;
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
@@ -90,7 +90,7 @@ export default {
 .container4 {
   background-image: url("/imgs/user_stat.png");
   background-size: contain;
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
   width: 100%;
   height: 100%;
