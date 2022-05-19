@@ -133,9 +133,9 @@ export default {
       <Heading />
     </div>
     <div class="flex flex-row w-full h-full">
-      <div v-if="isBarActive" class="navbar w-1/8">
+      <div v-if="isBarActive" class="navbar">
         <NavBar :routes="routes" />
-        <div class="w-full">
+        <div class="w-full mt-10">
           <NavInvest />
         </div>
       </div>
@@ -143,11 +143,11 @@ export default {
 
       <div
         class="main #262626 border-t-2"
-        :class="[isBarActive ? 'w-7/8' : 'w-full']"
+        :class="[isBarActive ? 'content' : 'w-full']"
       >
-        <div>
+        <!-- <div>
           <Route />
-        </div>
+        </div> -->
         <router-view></router-view>
       </div>
     </div>
@@ -159,6 +159,14 @@ export default {
 }
 .navbar{
   background-image: url('/imgs/nav_left_bg.png');
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 18%;
+  padding-left: 3.2%;
+  padding-right: 2.4%;
+}
+
+.content {
+  width: 81.9%;
 }
 </style>

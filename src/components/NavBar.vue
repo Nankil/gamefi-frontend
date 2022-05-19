@@ -29,14 +29,14 @@ export default {
 
 <template>
     <div class="w-full nav-container" >
-      <div class="w-full p-6 px-10">
+      <div class="w-full p-6 px-10 text-lg">
         <div v-for="route in routes" :key="route"
         @click="$router.push(route.path)" class="text-center">
           <div v-if="matchOfCurrentPath==route.name"
-          class="dark:text-white p-2 selected m-2"
+          class="dark:text-white selected mt-10 mb-10"
           >{{ route.display_name }}</div>
           <div v-else
-          class="dark:text-white p-2 m-2">{{ route.display_name }}</div>
+          class="dark:text-white mt-10 mb-10">{{ route.display_name }}</div>
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 <template>
-  <div class="flex px-40">
-    <div class="w-3/4 border-2 border-solid border-white">
+  <div class="flex w-full">
+    <div class="border-2 border-solid border-white left-cover">
       <img src="/imgs/main.png" alt="俺的图图呢" />
     </div>
-    <div class="w-1/4 Infoshow">
+    <div class="right-info">
       <div  v-for="(x, index) in data" :key="index" class="py-2 px-1 active">
         <div class="message">{{ x.message }}</div>
         <div class="text-xs">{{ x.time }}</div>
@@ -13,28 +13,28 @@
 </template>
 
 <script setup>
-import { onMounted, reactive } from "vue";
+import {onMounted, reactive} from 'vue';
 
-let data = reactive([
+const data = reactive([
   {
-    message: "hahadddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
-    time: "2020-01-01",
+    message: 'hahadddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
+    time: '2020-01-01',
   },
   {
-    message: "haha",
-    time: "2020-01-01",
+    message: 'haha',
+    time: '2020-01-01',
   },
   {
-    message: "haha",
-    time: "2020-01-01",
+    message: 'haha',
+    time: '2020-01-01',
   },
   {
-    message: "haha",
-    time: "2020-01-01",
+    message: 'haha',
+    time: '2020-01-01',
   },
   {
-    message: "haha",
-    time: "2020-01-01",
+    message: 'haha',
+    time: '2020-01-01',
   },
 ]);
 onMounted(() => {
@@ -46,11 +46,16 @@ onMounted(() => {
 img {
   overflow: hidden;
 }
-.Infoshow {
+
+.left-cover {
+  width: 74%;
+}
+.right-info {
   background-color: #fff;
   opacity: 0.8;
   color: black;
   font-weight: 1;
+  width: 26%;
 }
 .active {
   border: black solid 1px;

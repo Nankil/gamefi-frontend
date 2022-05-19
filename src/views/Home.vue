@@ -1,14 +1,23 @@
 <style scoped>
-.fengeimg{
-  margin:0 auto;
+
+
+.message-container {
+  width: 85.4%;
+}
+
+.message-bar {
+  margin-left: 18.42%;
+  margin-right: 14.57%;
+  margin-bottom: 3%;
 }
 </style>
 <template>
-  <div class="dark:text-white  ">
-    <img src="/imgs/new_message.png" alt="" class="fengeimg h-20" />
-    <Homeswiper />
-    <div class="text-right">
-      <img class="inline h-9 pr-40" src="/imgs/more.png" alt="" />
+  <div class="dark:text-white flex flex-col items-center">
+    <div class="message-container flex flex-col">
+      <img src="/imgs/new_message.png" alt=""
+      class="message-bar h-20" />
+      <Homeswiper />
+      <img class="h-10 self-end icon-more" src="/imgs/more.png" alt="" />
     </div>
     <img src="/imgs/spliter1.png" alt="splitter"  />
 
