@@ -129,20 +129,20 @@ export default {
     >
       <Log :msg="errorLog[0]" :color="'red'" />
     </div>
-    <div class="h-1/15 w-full">
+    <div class="w-full">
       <Heading />
     </div>
     <div class="flex flex-row w-full h-full">
       <div v-if="isBarActive" class="navbar">
         <NavBar :routes="routes" />
-        <div class="w-full mt-10">
+        <div class="w-full mt-10 invest-wrapper">
           <NavInvest />
         </div>
       </div>
 
 
       <div
-        class="main #262626 border-t-2"
+        class="main #262626"
         :class="[isBarActive ? 'content' : 'w-full']"
       >
         <!-- <div>
@@ -161,12 +161,11 @@ export default {
   background-image: url('/imgs/nav_left_bg.png');
   background-size: cover;
   background-repeat: no-repeat;
-  width: 18%;
-  padding-left: 3.2%;
-  padding-right: 2.4%;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.content {
-  width: 81.9%;
+.invest-wrapper {
+  margin-top: 96px;
 }
 </style>

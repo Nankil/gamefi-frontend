@@ -3,13 +3,13 @@
   <div class="invest-open h-14"></div>
   <div class="w-full invest-container p-4">
       <div class="w-full invest-tab1 tab">
-        <a href="/account/investment">seeds</a>
+        <a href="/account/investment">种子轮</a>
       </div>
       <div class="w-full invest-tab2 tab">
-        <a href="/account/investment">seeds</a>
+        <a href="/account/investment">私募轮</a>
       </div>
       <div class="w-full invest-tab3 tab">
-        <a href="/account/investment">seeds</a>
+        <a href="/account/investment">预售轮</a>
       </div>
     </div>
 </div>
@@ -19,15 +19,14 @@
 <style scoped>
 .invest-container {
   background-image: url('/imgs/invest_container.png');
+  width: 247px;
+  height: 320px;
   background-size: 100% 100%;
-  padding-top: 10%;
-  padding-bottom: 20%;
-  padding-left: 10%;
-  padding-right: 20%;
 }
 .invest-tab1 {
   background-image: url('/imgs/invest_tab1.png');
   background-size: 100% 100%;
+  margin-top: 15px;
 }
 
 .invest-tab2 {
@@ -40,13 +39,24 @@
   background-size: 100% 100%;
 }
 .tab {
-  padding: 10%;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  width: 189px;
+  height: 62px;
+  margin-bottom: 23px;
+  margin-left: 22px;
+  margin-right: 34px;
 }
 .invest-open {
   background-image: url('/imgs/invest_open.png');
   background-size: 100% 100%;
-  margin-bottom: -8%;
+  height: 70px;
+  margin-bottom: -19px;
+}
+
+.tab > a {
+  margin-top: 28px;
+  margin-left: 64px;
+  position: absolute;
+  color: #8e8e8e;
+  font-size: 23px;
 }
 </style>

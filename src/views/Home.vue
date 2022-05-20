@@ -15,7 +15,7 @@
   <div class="dark:text-white flex flex-col items-center">
     <div class="message-container flex flex-col">
       <img src="/imgs/new_message.png" alt=""
-      class="message-bar h-20" />
+      class="message-bar" />
       <Homeswiper />
       <img class="h-10 self-end icon-more" src="/imgs/more.png" alt="" />
     </div>
