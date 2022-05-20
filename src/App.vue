@@ -144,6 +144,7 @@ export default {
       <div
         class="main "
         :class="[isBarActive ? 'content' : 'w-full']"
+        style="margin:0 auto"
       >
         <!-- <div>
           <Route />
