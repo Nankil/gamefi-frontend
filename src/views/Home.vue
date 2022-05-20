@@ -21,22 +21,12 @@
 }
 </style>
 <template>
-<<<<<<< HEAD
   <div class="dark:text-white flex flex-col Home">
     <img src="/imgs/new_message.png" alt="" class="message-bar" />
     <Homeswiper />
     <img class="self-end icon-more" src="/imgs/more.png" alt="" />
     <img src="/imgs/spliter1.png" alt="splitter" />
-=======
-  <div class="dark:text-white flex flex-col items-center">
-    <div class="message-container flex flex-col">
-      <img src="/imgs/new_message.png" alt=""
-      class="message-bar" />
-      <Homeswiper />
-      <img class="h-10 self-end icon-more" src="/imgs/more.png" alt="" />
-    </div>
-    <img src="/imgs/spliter1.png" alt="splitter"  />
->>>>>>> 7556457b18e9c6b91cd2c9a30f9a7d4f160e5751
+
 
     <HomeNewMessage />
 

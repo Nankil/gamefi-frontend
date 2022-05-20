@@ -142,7 +142,7 @@ export default {
 
 
       <div
-        class="main #262626"
+        class="main "
         :class="[isBarActive ? 'content' : 'w-full']"
       >
         <!-- <div>
