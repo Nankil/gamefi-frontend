@@ -15,8 +15,34 @@
   src: url('Inter-italic.var.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'PingFang';
+  font-family: PingFang;
   src: url('./PingFang\ Regular.ttf');
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: DIN-Black;
+  src: url(./DIN-Black社区金库总资产字体.otf);
+}
+@font-face{
+  font-family: PingFang-extra-light;
+  src: url(./PingFang\ ExtraLight.ttf);
+}
+@font-face {
+  font-family: PingFang-bold;
+  src: url(./PingFang\ Bold.ttf);
+}
+@font-face {
+  font-family: PingFang-light;
+  src: url(./PingFang\ Light.ttf);
+}
+
+@font-face {
+  font-family: PingFang-medium;
+  src: url(./PingFang\ Medium.ttf);
+}
+@font-face {
+  font-family: PingFang-heavy;
+  src: url(./PingFang\ Heavy.ttf);
+}
+

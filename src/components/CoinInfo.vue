@@ -1,18 +1,42 @@
 <template>
-<div class="flex flex-row items-center justify-between w-full mt-4">
-    <div class="flex flex-row">
-        <img src="/imgs/bnb_coin.png" alt="" class="h-10">
-        <div class="flex flex-col ml-2">
-        <div class="text-lg">BNB</div>
-        <div class="flex flex-row items-center">
-            <div class="text-sm">0x5068…Cc2f2b3</div>
-            <img src="/imgs/copy.png" alt="" class="h-3">
+  <div class="flex flex-row Coininfo justify-between">
+    <div class="flex flex-row ">
+      <img src="/imgs/bnb_coin.png" alt="" class="bnb_coin" />
+      <div class="flex flex-col ">
+        <div class="bnb">BNB</div>
+        <div class="flex flex-row  ">
+          <div class="number">0x5068…Cc2f2b3</div>
+          <img src="/imgs/copy.png" alt="" class="h-3" />
         </div>
-        </div> 
+      </div>
     </div>
     <div>
-        <div class="text-lg">1000</div>
-        <div class="text-sm">$400</div>
+      <div class="bnb">1000</div>
+      <div class="number">$400</div>
     </div>
-</div>
+  </div>
 </template>
+<style scoped>
+.Coininfo{
+    margin-bottom: 33px;
+}
+.bnb_coin {
+  width: 40px;
+  height: 40px;
+  margin-right: 22px;
+}
+.bnb{
+    line-height: 27px;
+    font-size: 27px;
+    color:#2d2d2d;
+    text-align: left;
+    margin-bottom: 7px;
+
+}
+.number{
+    line-height: 13px;
+    font-size: 13px;
+    color:#2d2d2d;
+    text-align: left;
+}
+</style>

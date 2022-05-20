@@ -1,38 +1,38 @@
 <script>
-import CoinInfo from '@/components/CoinInfo.vue';
-import IncreStat from '@/components/IncreStat.vue';
+import CoinInfo from "@/components/CoinInfo.vue";
+import IncreStat from "@/components/IncreStat.vue";
 export default {
   data() {
     return {
       user_stats: [
         {
-          title: '会员注册人数',
-          incre: '9524',
+          title: "会员注册人数",
+          incre: "9524",
           data: [1, 2, 43, 4],
         },
         {
-          title: 'GPC地址数',
-          incre: '15453',
+          title: "GPC地址数",
+          incre: "15453",
           data: [1, 2, 43, 4],
         },
         {
-          title: 'SSC地址数',
-          incre: '10481',
+          title: "SSC地址数",
+          incre: "10481",
           data: [1, 2, 43, 4],
         },
         {
-          title: '电报人数',
-          incre: '24567',
+          title: "电报人数",
+          incre: "24567",
           data: [1, 2, 43, 4],
         },
         {
-          title: 'DC人数',
-          incre: '20013',
+          title: "DC人数",
+          incre: "20013",
           data: [1, 2, 43, 4],
         },
         {
-          title: 'twitter追踪数',
-          incre: '10088',
+          title: "twitter追踪数",
+          incre: "10088",
           data: [1, 2, 43, 4],
         },
       ],
@@ -42,31 +42,26 @@ export default {
     CoinInfo,
     IncreStat,
   },
-  computed: {
-  },
-  methods: {
-  },
+  computed: {},
+  methods: {},
 };
 </script>
 
 <template>
-  <div class="grid lg:grid-cols-2 sm:grid-cols-1 px-40">
-    <div class="container3 pr-80 py-16 w-full flex flex-col items-center">
-      <div class="flex flex-col border-b border-pink-500 w-3/4 pb-4">
+  <div class="flex">
+    <div class="container3 flex flex-col">
+      <div class="flex flex-col totalassets">
         <div>总资产</div>
-        <div class="text-pink-500 font-bold text-3xl text-center">
-          =$1,800,000,000
-        </div>
+        <div class="totalassets1">=$1,800,000,000</div>
       </div>
-      <div class="w-3/4"><CoinInfo /></div>
-      <div class="w-3/4"><CoinInfo /></div>
-      <div class="w-3/4"><CoinInfo /></div>
-      <div class="w-3/4"><CoinInfo /></div>
-      <div class="w-3/4"><CoinInfo /></div>
+      <div class="coininfo">
+        <CoinInfo /><CoinInfo /><CoinInfo /><CoinInfo /><CoinInfo />
+      </div>
     </div>
 
-    <div class="container4 pl-80 py-16 w-full flex flex-col items-center" ref="graphs">
-      <div v-for="stat in user_stats" :key="stat.title" class="p-2 w-3/4">
+    <div class="fill"></div>
+    <div class="container4 flex flex-col" ref="graphs">
+      <div v-for="stat in user_stats" :key="stat.title" class="">
         <IncreStat :title="stat.title" :incre="stat.incre" :data="stat.data" />
       </div>
     </div>
@@ -74,26 +69,45 @@ export default {
 </template>
 
 <style scoped>
+.fill {
+  width: 90px;
+}
 .container3 {
   background-image: url("/imgs/comm_vouch.png");
-  background-size: contain;
-  background-position: left;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-  /* width: 100%;
-    height: 0;
-    padding-top: 134.48%; */
-  /* (img-height / img-width * container-width) */
-  /* (853 / 1280 * 100) */
+  background-size: cover;
+  height: 757px;
+  width: 644px;
+  flex-shrink: 0;
+}
+.totalassets {
+  height: 223px;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  padding-left: 60px;
+}
+.totalassets1 {
+  width: 439px;
+  padding-left: 40px;
+  font-size: 49px;
+  font-family: DIN-Black;
+  color: #f36cf7;
+  line-height: 49px;
+  text-align: left;
+}
+.coininfo {
+  padding-top: 55px;
+  padding-left: 60px;
+  padding-right: 68px;
 }
 .container4 {
   background-image: url("/imgs/user_stat.png");
-  background-size: contain;
-  background-position: right;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
+  background-size: cover;
+  height: 757px;
+  width: 644px;
+  padding-right: 64px;
+  padding-left: 60px;
+  padding-top: 120px;
+  flex-shrink: 0;
 }
 
 .btn-red {
