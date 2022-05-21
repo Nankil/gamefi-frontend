@@ -27,7 +27,7 @@
           <div class="self-end middle-number">$10,000,000</div>
         </div>
         <div class="flex flex-row justify-between">
-          <div class="self-start mi middle-numberddle-message">持币地址</div>
+          <div class="self-start middle-message">持币地址</div>
           <div class="self-end middle-number">100,000</div>
         </div>
         <div class="flex flex-row justify-between">
@@ -86,7 +86,7 @@
           <div class="self-end middle-number1">$10,000,000</div>
         </div>
         <div class="flex flex-row justify-between">
-          <div class="self-start mi middle-numberddle-message">持币地址</div>
+          <div class="self-start middle-message">持币地址</div>
           <div class="self-end middle-number1">100,000</div>
         </div>
         <div class="flex flex-row justify-between">
@@ -215,7 +215,7 @@
   width: 644px;
   padding-right: 66px;
   padding-left: 60px;
-  padding-top: 90px;
+  padding-top: 87px;
 }
 .id {
   width: 463px;
@@ -234,23 +234,25 @@
 
 .btn-red {
   background-image: url("/imgs/red_button.svg");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   width: 134px;
+  height: 45px;
   text-align: center;
   font-size: 20px;
-  line-height: 20px;
+  line-height: 45px;
   color: #dd51e2;
 }
 
 .btn-green {
   background-image: url("/imgs/green_button.svg");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   width: 134px;
+  height: 45px;
   text-align: center;
     font-size: 20px;
-  line-height: 20px;
+  line-height: 45px;
   color:#009d9e;
 }
 </style>

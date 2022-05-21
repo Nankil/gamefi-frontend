@@ -1,6 +1,6 @@
 <style scoped>
 .Home {
-  margin: 0 auto;
+  margin: 0 auto; 
   width: 1385px;
 }
 .icon-more{
@@ -8,9 +8,7 @@
 .message-bar {
   margin: 0 auto;
   margin-top: 15px;
-  margin-bottom: 51px;
-  width: 923px;
-  height: 85px;
+  margin-bottom: 47px;
 }
 .economic-bar {
   margin: 0 auto;
@@ -22,7 +20,7 @@
 </style>
 <template>
   <div class="dark:text-white flex flex-col Home">
-    <img src="/imgs/new_message.png" alt="" class="message-bar" />
+    <img src="/imgs/new_message.png" width="894" height="88" alt="" class="message-bar" />
     <Homeswiper />
     <img class="self-end icon-more" src="/imgs/more.png" alt="" />
     <img src="/imgs/spliter1.png" alt="splitter" />

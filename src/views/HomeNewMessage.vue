@@ -106,7 +106,7 @@ export default {
   width: 644px;
   padding-right: 64px;
   padding-left: 60px;
-  padding-top: 120px;
+  padding-top: 117px;
   flex-shrink: 0;
 }
 
