@@ -1,7 +1,12 @@
 <style scoped>
 .Home {
-  margin: 0 auto; 
+  margin: 0 auto;
   width: 1385px;
+}
+
+.new-message {
+  margin-top: 43px;
+  margin-bottom: 54px;
 }
 .icon-more{
 }
@@ -23,12 +28,16 @@
     <img src="/imgs/new_message.png" width="894" height="88" alt="" class="message-bar" />
     <Homeswiper />
     <img class="self-end icon-more" src="/imgs/more.png" alt="" />
-    <img src="/imgs/spliter1.png" alt="splitter" />
 
+  </div>
+  <img src="/imgs/spliter1.png" alt="splitter" class="spliter"/>
 
+  <div class="dark:text-white flex flex-col Home new-message">
     <HomeNewMessage />
+  </div>
+  <img src="/imgs/spliter2.png" alt="splitter" class="spliter" />
 
-    <img src="/imgs/spliter2.png" alt="splitter" />
+  <div class="dark:text-white flex flex-col Home">
     <img src="/imgs/economic_bar.png " class="economic-bar" alt="" />
 
     <Hometoken />
@@ -41,20 +50,21 @@
     </div>
   </div>
 </template>
+
 <script>
-import HomeNewMessage from "./HomeNewMessage.vue";
-import Homeswiper from "./Homeswiper.vue";
-import Hometoken from "./Hometoken.vue";
+import HomeNewMessage from './HomeNewMessage.vue';
+import Homeswiper from './Homeswiper.vue';
+import Hometoken from './Hometoken.vue';
 export default {
-  name: "app",
+  name: 'app',
   data() {
-    return { locale: "en" };
+    return {locale: 'en'};
   },
   watch: {
     locale(val) {
       this.$i18n.locale = val;
     },
   },
-  components: { Homeswiper, HomeNewMessage, Hometoken },
+  components: {Homeswiper, HomeNewMessage, Hometoken},
 };
 </script>

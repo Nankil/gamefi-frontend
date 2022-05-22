@@ -205,7 +205,7 @@
   padding-top: 54px;
 }
 .justify-between {
-  margin-bottom: 48px;
+  margin-bottom: 35px;
 }
 
 .container4 {

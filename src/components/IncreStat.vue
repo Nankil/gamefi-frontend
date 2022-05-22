@@ -29,6 +29,7 @@ export default {
   color: rgba(45,45,45,0.8);
   text-align: left;
   margin-bottom: 15px;
+  font-family: PingFang;
 }
 .incre{
   font-size:40px;
@@ -36,7 +37,7 @@ export default {
   color: #28c2c2;
   text-align: left;
   margin-bottom: 30px;
-  
+  font-family: 'PingFang-bold';
 }
 
 </style>

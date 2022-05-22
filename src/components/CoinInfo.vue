@@ -6,19 +6,19 @@
         <div class="bnb">BNB</div>
         <div class="flex flex-row  ">
           <div class="number">0x5068…Cc2f2b3</div>
-          <img src="/imgs/copy.png" alt="" class="h-3" />
+          <img src="/imgs/copy.png" alt="" class="h-3 ml-2" />
         </div>
       </div>
     </div>
     <div>
       <div class="bnb">1000</div>
-      <div class="number">$400</div>
+      <div class="number">=$400</div>
     </div>
   </div>
 </template>
 <style scoped>
 .Coininfo{
-    margin-bottom: 33px;
+    margin-bottom: 26px;
 }
 .bnb_coin {
   width: 40px;
@@ -27,11 +27,11 @@
 }
 .bnb{
     line-height: 27px;
-    font-size: 27px;
+    font-size: 26px;
     color:#2d2d2d;
     text-align: left;
     margin-bottom: 7px;
-
+    font-family: 'PingFang';
 }
 .number{
     line-height: 13px;

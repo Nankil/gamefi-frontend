@@ -129,5 +129,6 @@ export default {
 
 .utc-time {
   margin-top: 33px;
+  font-family: 'PingFang';
 }
 </style>>
