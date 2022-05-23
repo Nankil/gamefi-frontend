@@ -27,6 +27,11 @@
         "display_name": "賬戶信息"
       },
       {
+        "path": "/account/recommend",
+        "name": "Recommend",
+        "display_name": "推薦好友"
+      },
+      {
         "path": "/account/tasks",
         "name": "Tasks",
         "display_name": "任務"

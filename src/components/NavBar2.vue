@@ -47,11 +47,11 @@ export default {
 </script>
 
 <template>
-  <div class="w-full flex flex-wrap ">
+  <div class=" flex flex-wrap"  style="padding-top:45px;padding-bottom:58px;">
     <div
-      v-for="route in routes"
+      v-for="(route,x) in routes"
       :key="route"
-      class="w-1/6 p-2"
+      class=""
       @click="$router.push(route.path)"
     >
       <button
@@ -60,12 +60,20 @@ export default {
       >
         {{ route.display_name }}
       </button>
-      <button v-else class="bg-orange-200 w-full">
+      <button v-else class="register" :style="{'margin-right':x===6? '0px' : '42px' }">
         {{ route.display_name }}
       </button>
     </div>
   </div>
 </template>
-<style>
-
+<style scoped>
+.register{
+  background-image: url("/imgs/nav2_button.svg");
+  height: 75px;
+  width:211px;
+  font-family: PingFang-Bold;
+  font-size: 32px;
+  line-height: 32px;
+  color: #6b6b6b;
+}
 </style>

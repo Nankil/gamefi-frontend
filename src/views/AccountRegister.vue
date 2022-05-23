@@ -1,16 +1,14 @@
 <script>
-import {existsPromotion} from '../api/backend.mjs';
+import { existsPromotion } from "../api/backend.mjs";
 export default {
-  setup() {
-
-  },
+  setup() {},
   data() {
     return {
-      promote_code: '',
-      username: '',
-      region: '',
-      phone: '',
-      email: '',
+      promote_code: "",
+      username: "",
+      region: "",
+      phone: "",
+      email: "",
     };
   },
 
@@ -20,7 +18,7 @@ export default {
     },
     invitor() {
       if (this.promote_code.length != 10) {
-        return 'too short';
+        return "too short";
       } else {
         let ret;
         return ret;
@@ -31,14 +29,14 @@ export default {
   methods: {
     onChangePromote() {
       if (this.promote_code.length != 10) {
-        this.invitor = 'too short';
+        this.invitor = "too short";
       } else {
-        this.invitor = 'checking...';
+        this.invitor = "checking...";
         existsPromotion(this.promote_code).then((res) => {
           if (res.exists) {
-            this.invitor = 'exists';
+            this.invitor = "exists";
           } else {
-            this.invitor = 'not exists';
+            this.invitor = "not exists";
           }
         });
       }
@@ -46,63 +44,137 @@ export default {
   },
 };
 </script>
+<style>
+.header {
+  background-image: url("/imgs/register_header.svg");
+  width: 1734px;
+  height: 284px;
+  z-index: 100;
+}
+.registertip {
+  font-size: 71px;
+  font-family: PingFanf-Bold;
+  color: #252525;
+  padding-top: 137px;
+  padding-left: 315px;
+  line-break: 71px;
+}
+.middle {
+  background-image: url("/imgs/register_middle.svg");
+  background-color: red;
+  height: 225px;
+  width: 1730px;
+  padding-left: 137px;
+  padding-right: 159px;
 
+  padding-bottom: 60px;
+  margin-top: 55px;
+}
+.referrer {
+  padding-top: 61px;
+  font-family: PingFanf-Bold;
+  width: 417px;
+  font-size: 35px;
+  line-height: 35px;
+  color: #343434;
+}
+#promote_code {
+  margin-top: 45px;
+  width: 380px;
+  height: 70px;
+}
+.invitor {
+  margin-left: 35px;
+  margin-top: 70px;
+  font-family: PingFanf-Bold;
+  font-size: 22px;
+  line-height: 22px;
+  color: #ff0000;
+}
+.referrernickname {
+  margin-top: 68px;
+  font-family: PingFanf-Bold;
+  width: 417px;
+  font-size: 35px;
+  line-height: 35px;
+  color: #343434;
+  text-align: right;
+}
+.reward {
+  font-family: PingFanf-Bold;
+  font-size: 22px;
+  line-height: 22px;
+  color: #ff0000;
+  margin-top: 30px;
+}
+.bottom {
+  background-image: url("/imgs/register_bottom.svg");
+  background-color: green;
+  height: 707px;
+  width: 1730px;
+}
+.formfont{
+  font-family: PingFanf-Bold;
+  font-size: 35px;
+  line-height: 35px;
+  color: #343434;
+}
+
+</style>
 <template>
-  <div class="w-full">
-    <div class="h-25 border-2 p-12 text-center text-teal-300">
-      <div class="text-4xl">To access functionalities, please register</div>
-      <div><a href="">Tutorial</a></div>
+  <div style="margin-left: 93px">
+    <div class="header">
+      <div class="registertip">To access functionalities, please register</div>
     </div>
 
-    <div class="h-30 border-2 p-12 mt-10">
+    <div class="middle">
       <div class="flex flex-row flex-wrap">
-        <div class="inline-block
-        text-center align-middle m-2">Promtor(Optional)</div>
-        <input type="text" v-model="promote_code">
-        <div class="text-teal-300
-        inline-block text-center align-middle m-2">
-        {{ invitor }}</div>
+        <div class="inline-block referrer">Promtor(Optional)</div>
+        <input type="text" id="promote_code" v-model="promote_code" />
+        <div class="inline-block invitor">
+          {{ invitor }}
+        </div>
+        <div class="referrernickname">就是那个光嘿乌拉拉</div>
       </div>
-    </div>
-    <div class="w-full mt-10">
-      <div class="text-purple-300 font-bold text-2xl">Basic info</div>
-      <div class="mt-2 border-2 p-3 text-left align-middle">
-        <div class="flex flex-row w-full m-2">
-          <div class="inline-block align-middle
-          p-2 lg:w-1/12 sm:w-1/3">Wallet</div>
-          <div class="w-1/3 border-2 border-black">{{wallet_addr}}</div>
-          <button class="ml-2">Bind</button>
-        </div>
-        <div class="flex flex-row w-full m-2">
-          <div class="inline-block align-middle
-          p-2 lg:w-1/12 sm:w-1/3">Name</div>
-          <input type="text" v-model="username"
-          class="h-10 bg-gray-600 text-white w-1/3">
-        </div>
-        <div class="flex flex-row w-full m-2">
-          <div class="inline-block align-middle
-          p-2 lg:w-1/12 sm:w-1/3">Region</div>
-          <input type="text" v-model="region"
-          class="h-10 bg-gray-600 text-white w-1/3">
-        </div>
-        <div class="flex flex-row w-full m-2">
-          <div class="inline-block align-middle
-          p-2 lg:w-1/12 sm:w-1/3">Phone</div>
-          <input type="text" v-model="phone"
-          class="h-10 bg-gray-600 text-white w-1/3">
-        </div>
-        <div class="flex flex-row w-full m-2">
-          <div class="inline-block align-middle
-          p-2 lg:w-1/12 sm:w-1/3">Email</div>
-          <input type="text" v-model="email"
-          class="h-10 bg-gray-600 text-white w-1/3">
-        </div>
-
-        <button class="bg-orange-200 m-2 p-3">Register</button>
-
-      </div>
+      <div class="reward" style="text-align: right">注册成功奖励20积分</div>
     </div>
 
+    <div class="bottom">
+      <div class="flex flex-row " style="padding-top:145px;">
+        <div>
+          <div>
+            <span class="formfont" style="margin-left:68px;margin-right:34px">钱包地址</span>
+            <input class="rightinput" style="width:636px;height:71px; margin-bottom:31px;" type="text" />
+          </div>
+          <div>
+            <span class="formfont" style="margin-left:117px;margin-right:34px">*钱包</span>
+            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;" type="text" />
+          </div>
+          <div>
+            <span class="formfont" style="margin-left:117px;margin-right:34px">*钱包</span>
+            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;"  type="text" />
+          </div>
+        </div>
+        <div style="position:absolute;right:188px">
+          <div>
+            <span class="formfont">钱包地址</span>
+            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" />
+          </div>
+          <div>
+            <span class="formfont">钱包地址</span>
+            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" />
+          </div>
+          <div style="text-align:right">
+
+            <input style="width:287px;height:71px; margin-bottom:31px;margin-left:10px"  type="text" />
+            <button style="width:141px;height:71px">发送</button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-left:242px"><input type="checkbox" name="" id="">
+         我已决定是否</div>
+      <button style="width:241px;" class="">立即注册</button>
+    </div>
   </div>
 </template>
 
