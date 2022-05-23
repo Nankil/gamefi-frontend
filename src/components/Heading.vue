@@ -1,4 +1,5 @@
 <script>
+import {accountRegistered} from '../api/backend.mjs';
 import {mapActions, mapState} from 'vuex';
 export default {
   data() {
@@ -12,7 +13,10 @@ export default {
       const res = await this.connectWallet();
       console.log(res);
       if (res === 'success') {
-        this.$router.push('/account/register');
+        const regRes = await accountRegistered(this.userInfo.walletAddr);
+        if (regRes.status === false) {
+          this.$router.push('/account/register');
+        }
       }
     },
   },

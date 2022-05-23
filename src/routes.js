@@ -10,6 +10,10 @@ export const routes = [
     meta: {title: 'Account Profile'},
     children: [
       {
+        path: 'registered',
+        component: () => import('./views/AccountRegistered.vue'),
+      },
+      {
         path: 'register',
         component: () => import('./views/AccountRegister.vue'),
       },

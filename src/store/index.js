@@ -113,8 +113,11 @@ export default createStore({
     },
     async register({commit, state}, {walletAddr, username, phone, email, invitation_code}) {
       const res = await apiRegister(walletAddr, username, phone, email, invitation_code);
-      if (res.success === true) {
+      if (res.status === true) {
         commit('pushInfoLog', 'register success');
+        return true;
+      } else {
+        return false;
       }
     },
     pushErrorLog({commit}, error) {

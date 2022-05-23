@@ -1,0 +1,3 @@
+<template>
+  Congrats Registered
+</template>

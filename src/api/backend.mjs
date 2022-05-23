@@ -18,7 +18,7 @@ export async function existsPromotion(code) {
     if (resObj.exists) {
       return {
         status: true,
-        code: resObj.name,
+        invitor: resObj.name,
       };
     } else {
       return {
@@ -124,6 +124,34 @@ export async function accountRegistered(pubkey) {
       return {
         status: true,
         username: resObj.name,
+      };
+    } else {
+      return {
+        status: false,
+      };
+    }
+  } catch (e) {
+    return {
+      status: false,
+      message: 'Error connecting to server',
+    };
+  }
+}
+
+/**
+ *
+ * @param {String} username
+ * @return {Object}
+ */
+export async function userexists(username) {
+  try {
+    const res = await fetch(baseUrl + '/userexists?' + new URLSearchParams({
+      username: username,
+    }));
+    const resObj = await res.json();
+    if (resObj.exists) {
+      return {
+        status: true,
       };
     } else {
       return {

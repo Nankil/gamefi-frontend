@@ -1,14 +1,21 @@
 <script>
-import { existsPromotion } from "../api/backend.mjs";
+import {existsPromotion, userexists} from '../api/backend.mjs';
+import {mapActions} from 'vuex';
 export default {
   setup() {},
   data() {
     return {
-      promote_code: "",
-      username: "",
-      region: "",
-      phone: "",
-      email: "",
+      agreement: false,
+      promote_code: '',
+      username: '',
+      region: '',
+      phone: '',
+      email: '',
+      invitor: '',
+      verify_code: '',
+      user_exists: '',
+      email_correct: '',
+      phone_correct: 'not',
     };
   },
 
@@ -16,31 +23,64 @@ export default {
     wallet_addr() {
       return this.$store.state.userInfo.walletAddr;
     },
-    invitor() {
-      if (this.promote_code.length != 10) {
-        return "too short";
-      } else {
-        let ret;
-        return ret;
-      }
-    },
   },
 
   methods: {
-    onChangePromote() {
-      if (this.promote_code.length != 10) {
-        this.invitor = "too short";
+    ...mapActions(['register']),
+    onPhoneChange() {
+      if (/^\d{11}$/.test(this.phone)) {
+        this.phone_correct = 'correct';
       } else {
-        this.invitor = "checking...";
-        existsPromotion(this.promote_code).then((res) => {
-          if (res.exists) {
-            this.invitor = "exists";
-          } else {
-            this.invitor = "not exists";
-          }
-        });
+        this.phone_correct = 'wrong format';
       }
     },
+    onEmailChange() {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+        this.email_correct = 'correct';
+      } else {
+        this.email_correct = 'wrong format';
+      }
+    },
+  },
+  async registerWrapper() {
+    const res = await this.register({
+      walletAddr: this.wallet_addr,
+      username: this.username,
+      phone: this.phone,
+      email: this.email,
+      invitation_code: this.promote_code,
+    });
+
+    console.log(res);
+
+    if (!res) {
+      this.$store.dispatch('pushErrorLog', 'register failed');
+    } else {
+      this.$router.push('/account/registered');
+    }
+  },
+  onPromoteCodeChange() {
+    if (this.promote_code.length !== 10) {
+      this.invitor = 'too short';
+    } else {
+      this.invitor = 'checking...';
+      existsPromotion(this.promote_code).then((res) => {
+        if (res.status) {
+          this.invitor = res.invitor;
+        } else {
+          this.invitor = 'not exists';
+        }
+      });
+    }
+  },
+  onUsernameChange() {
+    userexists(this.username).then((res) => {
+      if (res.status) {
+        this.user_exists = 'exists';
+      } else {
+        this.user_exists = 'not exists';
+      }
+    });
   },
 };
 </script>
@@ -130,7 +170,7 @@ export default {
     <div class="middle">
       <div class="flex flex-row flex-wrap">
         <div class="inline-block referrer">Promtor(Optional)</div>
-        <input type="text" id="promote_code" v-model="promote_code" />
+        <input type="text" id="promote_code" v-model="promote_code" @input="onPromoteCodeChange" />
         <div class="inline-block invitor">
           {{ invitor }}
         </div>
@@ -143,37 +183,41 @@ export default {
       <div class="flex flex-row " style="padding-top:145px;">
         <div>
           <div>
-            <span class="formfont" style="margin-left:68px;margin-right:34px">钱包地址</span>
-            <input class="rightinput" style="width:636px;height:71px; margin-bottom:31px;" type="text" />
+            <span class="formfont" style="margin-left:68px;margin-right:34px">*钱包地址</span>
+            <div>{{ wallet_addr }}</div>
           </div>
           <div>
-            <span class="formfont" style="margin-left:117px;margin-right:34px">*钱包</span>
-            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;" type="text" />
+            <span class="formfont" style="margin-left:117px;margin-right:34px">*Name</span>
+            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;" type="text" v-model="username"  @input="onUsernameChange" />
+            <div>{{ user_exists }}</div>
           </div>
           <div>
-            <span class="formfont" style="margin-left:117px;margin-right:34px">*钱包</span>
-            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;"  type="text" />
+            <span class="formfont" style="margin-left:117px;margin-right:34px">*Email</span>
+            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;"  type="text" v-model="email" @input="onEmailChange" />
+            <div>{{ email_correct }}</div>
           </div>
         </div>
         <div style="position:absolute;right:188px">
           <div>
-            <span class="formfont">钱包地址</span>
-            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" />
+            <span class="formfont">*Region</span>
+            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" v-model="region" />
           </div>
           <div>
-            <span class="formfont">钱包地址</span>
-            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" />
+            <span class="formfont">*Phone</span>
+            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" v-model="phone" @input="onPhoneChange" />
+            <div>{{ phone_correct }}</div>
           </div>
           <div style="text-align:right">
 
-            <input style="width:287px;height:71px; margin-bottom:31px;margin-left:10px"  type="text" />
+            <input style="width:287px;height:71px; margin-bottom:31px;margin-left:10px"  type="text" v-model="verify_code"  />
             <button style="width:141px;height:71px">发送</button>
           </div>
         </div>
       </div>
-      <div style="margin-left:242px"><input type="checkbox" name="" id="">
-         我已决定是否</div>
-      <button style="width:241px;" class="">立即注册</button>
+      <div style="margin-left:242px">
+      <input type="checkbox" name="" id="" v-model="agreement">
+       我已决定是否</div>
+      <button style="width:241px;" class="" @click="registerWrapper">立即注册</button>
     </div>
   </div>
 </template>
