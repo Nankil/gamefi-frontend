@@ -1,6 +1,7 @@
 import {UnicodeNormalizationForm} from 'ethers/lib/utils';
 import {saturate} from 'tailwindcss/defaultTheme';
 import {createStore} from 'vuex';
+import {register as apiRegister} from '../api/backend.mjs';
 
 /**
  *
@@ -23,6 +24,8 @@ export default createStore({
       phone: '',
       email: '',
       username: '',
+      registered: false,
+      token: '',
     },
     errorLog: [],
     infoLog: [],
@@ -100,10 +103,18 @@ export default createStore({
       commit('pushInfoLog', 'wallet connected');
       await delay(5000);
       commit('shiftInfoLog');
+
+      return 'success';
     },
     async transferTo({commit, state}) {
       if (state.ethereum === undefined) {
         state.errorLog.push('web3 is undefined');
+      }
+    },
+    async register({commit, state}, {walletAddr, username, phone, email, invitation_code}) {
+      const res = await apiRegister(walletAddr, username, phone, email, invitation_code);
+      if (res.success === true) {
+        commit('pushInfoLog', 'register success');
       }
     },
     pushErrorLog({commit}, error) {

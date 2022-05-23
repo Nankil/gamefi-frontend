@@ -8,6 +8,13 @@ export default {
   },
   methods: {
     ...mapActions(['connectWallet']),
+    async connectWalletWrapper() {
+      const res = await this.connectWallet();
+      console.log(res);
+      if (res === 'success') {
+        this.$router.push('/account/register');
+      }
+    },
   },
   computed: {
     ...mapState(['userInfo']),
@@ -30,7 +37,7 @@ export default {
                 <div id="wallet" class=" flex flex-row h-8
                 border rounded-full border-teal-400
                 hover:cursor-pointer justify-center items-center"
-                @click="connectWallet"
+                @click="connectWalletWrapper"
                 v-if="userInfo.walletAddr === ''">
                   <img src="/imgs/fox_icon.png" alt="fox" class="h-6 mr-1">
                   {{$t('header.cw')}}</div>

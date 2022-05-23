@@ -1,18 +1,48 @@
 <script>
+import {existsPromotion} from '../api/backend.mjs';
 export default {
   setup() {
 
   },
   data() {
     return {
-      invitor: 'someone',
       promote_code: '',
-      wallet_addr: '',
       username: '',
       region: '',
       phone: '',
       email: '',
     };
+  },
+
+  computed: {
+    wallet_addr() {
+      return this.$store.state.userInfo.walletAddr;
+    },
+    invitor() {
+      if (this.promote_code.length != 10) {
+        return 'too short';
+      } else {
+        let ret;
+        return ret;
+      }
+    },
+  },
+
+  methods: {
+    onChangePromote() {
+      if (this.promote_code.length != 10) {
+        this.invitor = 'too short';
+      } else {
+        this.invitor = 'checking...';
+        existsPromotion(this.promote_code).then((res) => {
+          if (res.exists) {
+            this.invitor = 'exists';
+          } else {
+            this.invitor = 'not exists';
+          }
+        });
+      }
+    },
   },
 };
 </script>
@@ -65,12 +95,6 @@ export default {
           <div class="inline-block align-middle
           p-2 lg:w-1/12 sm:w-1/3">Email</div>
           <input type="text" v-model="email"
-          class="h-10 bg-gray-600 text-white w-1/3">
-        </div>
-        <div class="flex flex-row w-full m-2">
-          <div class="inline-block align-middle
-          p-2 lg:w-1/12 sm:w-1/3">Name</div>
-          <input type="text" v-model="username"
           class="h-10 bg-gray-600 text-white w-1/3">
         </div>
 
