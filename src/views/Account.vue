@@ -53,17 +53,18 @@ export default {
 
 <template>
   <div class="nav-container">
-    <div style="margin-left: 95px; margin-right: 0px">
-      <NavBar2 :routes="routes" />
+    <div style="margin:0 auto;" >
+      <NavBar2 :routes="routes"  />
     </div>
 
-    <br />
     <router-view></router-view>
   </div>
 </template>
-<style>
+<style scoped>
 .nav-container {
   background-image: url("/imgs/nav_top.png");
   background-size: 100% 100%;
+  width: 1734px;
+  margin: 0 auto;
 }
 </style>

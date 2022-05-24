@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class=" flex flex-wrap"  style="padding-top:45px;padding-bottom:58px;">
+  <div class=" flex flex-wrap"  style="padding-top:45px;padding-bottom:58px;width: 1734px;">
     <div
       v-for="(route,x) in routes"
       :key="route"

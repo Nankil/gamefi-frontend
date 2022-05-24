@@ -1,21 +1,21 @@
 <script>
-import {existsPromotion, userexists} from '../api/backend.mjs';
-import {mapActions} from 'vuex';
+import { existsPromotion, userexists } from "../api/backend.mjs";
+import { mapActions } from "vuex";
 export default {
   setup() {},
   data() {
     return {
       agreement: false,
-      promote_code: '',
-      username: '',
-      region: '',
-      phone: '',
-      email: '',
-      invitor: '',
-      verify_code: '',
-      user_exists: '',
-      email_correct: '',
-      phone_correct: 'not',
+      promote_code: "",
+      username: "",
+      region: "",
+      phone: "",
+      email: "",
+      invitor: "",
+      verify_code: "",
+      user_exists: "",
+      email_correct: "",
+      phone_correct: "not",
     };
   },
 
@@ -26,19 +26,19 @@ export default {
   },
 
   methods: {
-    ...mapActions(['register']),
+    ...mapActions(["register"]),
     onPhoneChange() {
       if (/^\d{11}$/.test(this.phone)) {
-        this.phone_correct = 'correct';
+        this.phone_correct = "correct";
       } else {
-        this.phone_correct = 'wrong format';
+        this.phone_correct = "wrong format";
       }
     },
     onEmailChange() {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-        this.email_correct = 'correct';
+        this.email_correct = "correct";
       } else {
-        this.email_correct = 'wrong format';
+        this.email_correct = "wrong format";
       }
     },
   },
@@ -54,21 +54,21 @@ export default {
     console.log(res);
 
     if (!res) {
-      this.$store.dispatch('pushErrorLog', 'register failed');
+      this.$store.dispatch("pushErrorLog", "register failed");
     } else {
-      this.$router.push('/account/registered');
+      this.$router.push("/account/registered");
     }
   },
   onPromoteCodeChange() {
     if (this.promote_code.length !== 10) {
-      this.invitor = 'too short';
+      this.invitor = "too short";
     } else {
-      this.invitor = 'checking...';
+      this.invitor = "checking...";
       existsPromotion(this.promote_code).then((res) => {
         if (res.status) {
           this.invitor = res.invitor;
         } else {
-          this.invitor = 'not exists';
+          this.invitor = "not exists";
         }
       });
     }
@@ -76,17 +76,17 @@ export default {
   onUsernameChange() {
     userexists(this.username).then((res) => {
       if (res.status) {
-        this.user_exists = 'exists';
+        this.user_exists = "exists";
       } else {
-        this.user_exists = 'not exists';
+        this.user_exists = "not exists";
       }
     });
   },
 };
 </script>
-<style>
+<style scoped>
 .header {
-  background-image: url("/imgs/register_header.svg");
+  background-image: url("/imgs/register_header.png");
   width: 1734px;
   height: 284px;
   z-index: 100;
@@ -100,10 +100,9 @@ export default {
   line-break: 71px;
 }
 .middle {
-  background-image: url("/imgs/register_middle.svg");
-  background-color: red;
+  background-image: url("/imgs/register_middle.png");
   height: 225px;
-  width: 1730px;
+  width: 1740px;
   padding-left: 137px;
   padding-right: 159px;
 
@@ -148,21 +147,57 @@ export default {
   margin-top: 30px;
 }
 .bottom {
-  background-image: url("/imgs/register_bottom.svg");
-  background-color: green;
+  background-image: url("/imgs/register_bottom.png");
   height: 707px;
-  width: 1730px;
+  width: 1740px;
 }
-.formfont{
+.formfont {
   font-family: PingFanf-Bold;
   font-size: 35px;
   line-height: 35px;
   color: #343434;
 }
-
+.protocol {
+  margin-left: 242px;
+  font-family: PingFanf-Bold;
+  font-size: 25px;
+  line-height: 25px;
+  width: 1300px;
+  color: #525252;
+  word-break: break-all;
+}
+.protocol a {
+  font-family: PingFanf-Bold;
+  font-size: 25px;
+  line-height: 25px;
+  color: #55caec;
+}
+.sendbutton {
+  background-image: linear-gradient(to right, skyblue, purple);
+  font-size: 34px;
+  text-align: center;
+  font-family: PingFanf-Bold;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.registernow {
+  display: block;
+  width: 241px;
+  height: 77px;
+  background-image: url(/imgs/立即注册2.svg);
+  margin: 0 auto;
+  margin-top: 54px;
+}
+.inforformtip {
+  font-family: PingFang-Bold;
+  font-size: 19px;
+  line-height: 19px;
+  color: #ff0000;
+  margin-left: 10px;
+}
 </style>
 <template>
-  <div style="margin-left: 93px">
+  <div>
     <div class="header">
       <div class="registertip">To access functionalities, please register</div>
     </div>
@@ -170,7 +205,12 @@ export default {
     <div class="middle">
       <div class="flex flex-row flex-wrap">
         <div class="inline-block referrer">Promtor(Optional)</div>
-        <input type="text" id="promote_code" v-model="promote_code" @input="onPromoteCodeChange" />
+        <input
+          type="text"
+          id="promote_code"
+          v-model="promote_code"
+          @input="onPromoteCodeChange"
+        />
         <div class="inline-block invitor">
           {{ invitor }}
         </div>
@@ -180,44 +220,129 @@ export default {
     </div>
 
     <div class="bottom">
-      <div class="flex flex-row " style="padding-top:145px;">
-        <div>
-          <div>
-            <span class="formfont" style="margin-left:68px;margin-right:34px">*钱包地址</span>
-            <div>{{ wallet_addr }}</div>
+      <div class="flex flex-row" style="padding-top: 145px; position: relative">
+        <div style="margin-right: 34px; margin-left: 34px">
+          <div
+            class="formfont"
+            style="
+              height: 71px;
+              text-align: right;
+              margin-bottom: 31px;
+              line-height: 71px;
+            "
+          >
+            *钱包地址
           </div>
-          <div>
-            <span class="formfont" style="margin-left:117px;margin-right:34px">*Name</span>
-            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;" type="text" v-model="username"  @input="onUsernameChange" />
-            <div>{{ user_exists }}</div>
+          <div
+            class="formfont"
+            style="
+              height: 71px;
+              text-align: right;
+              margin-bottom: 31px;
+              line-height: 71px;
+            "
+          >
+            *Name
           </div>
-          <div>
-            <span class="formfont" style="margin-left:117px;margin-right:34px">*Email</span>
-            <input class="rightinput" style="width:450px;height:71px; margin-bottom:31px;"  type="text" v-model="email" @input="onEmailChange" />
-            <div>{{ email_correct }}</div>
+          <div
+            class="formfont"
+            style="
+              height: 71px;
+              text-align: right;
+              margin-bottom: 31px;
+              line-height: 71px;
+            "
+          >
+            *Email
           </div>
         </div>
-        <div style="position:absolute;right:188px">
-          <div>
-            <span class="formfont">*Region</span>
-            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" v-model="region" />
+        <div>
+          <div style="width: 450px; height: 71px; margin-bottom: 31px">
+            {{ wallet_addr }}
           </div>
-          <div>
-            <span class="formfont">*Phone</span>
-            <input style="width:450px;height:71px; margin-bottom:31px;"  type="text" v-model="phone" @input="onPhoneChange" />
-            <div>{{ phone_correct }}</div>
-          </div>
-          <div style="text-align:right">
 
-            <input style="width:287px;height:71px; margin-bottom:31px;margin-left:10px"  type="text" v-model="verify_code"  />
-            <button style="width:141px;height:71px">发送</button>
+          <div>
+            <input
+              class="rightinput"
+              style="width: 450px; height: 71px; margin-bottom: 31px"
+              type="text"
+              v-model="username"
+              @input="onUsernameChange"
+            />
+            <span class="inforformtip">{{ user_exists }}1</span>
+          </div>
+          <div>
+            <input
+              class="rightinput"
+              style="width: 450px; height: 71px; margin-bottom: 31px"
+              type="text"
+              v-model="email"
+              @input="onEmailChange"
+            />
+            <span class="inforformtip">{{ email_correct }}1</span>
+          </div>
+        </div>
+        <div style="margin-right: 34px; margin-left: 160px">
+          <div
+            class="formfont"
+            style="
+              height: 71px;
+              text-align: right;
+              margin-bottom: 31px;
+              line-height: 71px;
+            "
+          >
+            *Region
+          </div>
+          <div
+            class="formfont"
+            style="
+              height: 71px;
+              text-align: right;
+              margin-bottom: 31px;
+              line-height: 71px;
+            "
+          >
+            *Home
+          </div>
+        </div>
+        <div>
+          <div>
+            <select
+              style="width: 450px; height: 71px; margin-bottom: 31px"
+              v-model="region"
+              name=""
+              id=""
+            ></select>
+            <span class="inforformtip">*请选择地址</span>
+          </div>
+          <div>
+            <select style="width: 100px; height: 71px; margin-bottom: 31px"  name="" id=""></select>
+            <input
+              style="width: 350px; height: 71px; margin-bottom: 31px"
+              type="text"
+              v-model="phone"
+              @input="onPhoneChange"
+            />
+            <span class="inforformtip">{{ phone_correct }}</span>
+          </div>
+          <div>
+            <input
+              style="width: 297px; height: 71px; margin-bottom: 31px"
+              type="text"
+              v-model="verify_code"
+            />
+            <button class="sendbutton" style="width: 141px; height: 71px">
+              发送
+            </button>
           </div>
         </div>
       </div>
-      <div style="margin-left:242px">
-      <input type="checkbox" name="" id="" v-model="agreement">
-       我已决定是否</div>
-      <button style="width:241px;" class="" @click="registerWrapper">立即注册</button>
+      <div class="protocol">
+        <input type="checkbox" name="" id="" v-model="agreement" />
+        我已决定是否<a href="">隐私条款</a> <a href="">免责声明</a>
+      </div>
+      <button class="registernow" @click="registerWrapper"></button>
     </div>
   </div>
 </template>
