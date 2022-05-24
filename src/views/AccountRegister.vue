@@ -1,21 +1,21 @@
 <script>
-import { existsPromotion, userexists } from "../api/backend.mjs";
-import { mapActions } from "vuex";
+import {existsPromotion, userexists} from '../api/backend.mjs';
+import {mapActions} from 'vuex';
 export default {
   setup() {},
   data() {
     return {
       agreement: false,
-      promote_code: "",
-      username: "",
-      region: "",
-      phone: "",
-      email: "",
-      invitor: "",
-      verify_code: "",
-      user_exists: "",
-      email_correct: "",
-      phone_correct: "not",
+      promote_code: '',
+      username: '',
+      region: '',
+      phone: '',
+      email: '',
+      invitor: '',
+      verify_code: '',
+      user_exists: '',
+      email_correct: '',
+      phone_correct: '',
     };
   },
 
@@ -26,62 +26,64 @@ export default {
   },
 
   methods: {
-    ...mapActions(["register"]),
+    ...mapActions(['register']),
     onPhoneChange() {
       if (/^\d{11}$/.test(this.phone)) {
-        this.phone_correct = "correct";
+        this.phone_correct = 'correct';
       } else {
-        this.phone_correct = "wrong format";
+        this.phone_correct = 'wrong format';
       }
     },
     onEmailChange() {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-        this.email_correct = "correct";
+        this.email_correct = 'correct';
       } else {
-        this.email_correct = "wrong format";
+        this.email_correct = 'wrong format';
+      }
+    },
+    onPromoteCodeChange() {
+      console.log('invoking promote');
+      if (this.promote_code.length !== 10) {
+        this.invitor = 'too short';
+      } else {
+        this.invitor = 'checking...';
+        existsPromotion(this.promote_code).then((res) => {
+          if (res.status) {
+            this.invitor = res.invitor;
+          } else {
+            this.invitor = 'not exists';
+          }
+        });
+      }
+    },
+    onUsernameChange() {
+      userexists(this.username).then((res) => {
+        if (res.status) {
+          this.user_exists = 'exists';
+        } else {
+          this.user_exists = 'not exists';
+        }
+      });
+    },
+    async registerWrapper() {
+      const res = await this.register({
+        walletAddr: this.wallet_addr,
+        username: this.username,
+        phone: this.phone,
+        email: this.email,
+        invitation_code: this.promote_code,
+      });
+
+      console.log(res);
+
+      if (!res) {
+        this.$store.dispatch('pushErrorLog', 'register failed');
+      } else {
+        this.$router.push('/account/registered');
       }
     },
   },
-  async registerWrapper() {
-    const res = await this.register({
-      walletAddr: this.wallet_addr,
-      username: this.username,
-      phone: this.phone,
-      email: this.email,
-      invitation_code: this.promote_code,
-    });
 
-    console.log(res);
-
-    if (!res) {
-      this.$store.dispatch("pushErrorLog", "register failed");
-    } else {
-      this.$router.push("/account/registered");
-    }
-  },
-  onPromoteCodeChange() {
-    if (this.promote_code.length !== 10) {
-      this.invitor = "too short";
-    } else {
-      this.invitor = "checking...";
-      existsPromotion(this.promote_code).then((res) => {
-        if (res.status) {
-          this.invitor = res.invitor;
-        } else {
-          this.invitor = "not exists";
-        }
-      });
-    }
-  },
-  onUsernameChange() {
-    userexists(this.username).then((res) => {
-      if (res.status) {
-        this.user_exists = "exists";
-      } else {
-        this.user_exists = "not exists";
-      }
-    });
-  },
 };
 </script>
 <style scoped>
@@ -269,7 +271,7 @@ export default {
               v-model="username"
               @input="onUsernameChange"
             />
-            <span class="inforformtip">{{ user_exists }}1</span>
+            <span class="inforformtip">{{ user_exists }}</span>
           </div>
           <div>
             <input
@@ -279,7 +281,7 @@ export default {
               v-model="email"
               @input="onEmailChange"
             />
-            <span class="inforformtip">{{ email_correct }}1</span>
+            <span class="inforformtip">{{ email_correct }}</span>
           </div>
         </div>
         <div style="margin-right: 34px; margin-left: 160px">
