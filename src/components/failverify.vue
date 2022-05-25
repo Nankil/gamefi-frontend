@@ -13,7 +13,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .bg {
   background-image: url("/imgs/未验证成功2.svg");
   width: 709px;

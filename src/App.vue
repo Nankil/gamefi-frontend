@@ -10,6 +10,8 @@ import verifyphonenumberVue from "./components/verifyphonenumber.vue";
 import registersuccess from "./components/registersuccess.vue";
 import failverify from "./components/failverify.vue";
 import registersuccess2 from "./components/registersuccess2.vue";
+import latestnewsVue from "./views/latestnews.vue";
+import lastestnewsdetailVue from "./views/lastestnewsdetail.vue";
 </script>
 
 
@@ -122,7 +124,7 @@ export default {
 </script>
 
 <template >
-  <registersuccess2 />
+  <lastestnewsdetailVue></lastestnewsdetailVue>
   <div>
     <div
       class="text-white w-1/5 absolute bottom-10 right-4"
