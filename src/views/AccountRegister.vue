@@ -1,21 +1,69 @@
 <script>
-import {existsPromotion, userexists} from '../api/backend.mjs';
+import {
+  existsPromotion,
+  userexists,
+  sendSmsVerification,
+  emailVerified,
+  verifySms}
+  from '../api/backend.mjs';
 import {mapActions} from 'vuex';
+
+import FailVerify from '@/components/FailVerify.vue';
+import RegSucess from '@/components/RegSucess.vue';
+import VerifyEmail from '@/components/VerifyEmail.vue';
+import VerifyPhone from '@/components/VerifyPhone.vue';
+import RegSuccess2 from '@/components/RegSuccess2.vue';
+
 export default {
+  components: {
+    FailVerify,
+    RegSucess,
+    VerifyEmail,
+    VerifyPhone,
+    RegSuccess2,
+  },
   setup() {},
   data() {
+    const countries = [
+      {
+        name: '中国',
+        code: '86',
+      },
+      {
+        name: '美国',
+        code: '1',
+      },
+      {
+        name: 'taiwan',
+        code: '886',
+      },
+      {
+        name: 'hongkong',
+        code: '852',
+      },
+    ];
+
     return {
       agreement: false,
       promote_code: '',
       username: '',
       region: '',
       phone: '',
+      phone_prefix: '',
       email: '',
       invitor: '',
       verify_code: '',
       user_exists: '',
       email_correct: '',
       phone_correct: '',
+      blur: '0px',
+      invitorUsed: false,
+      success: false,
+      notify: false,
+      smsSendingTime: null,
+      registered: false,
+      emailVerified: false,
+      countries,
     };
   },
 
@@ -23,12 +71,65 @@ export default {
     wallet_addr() {
       return this.$store.state.userInfo.walletAddr;
     },
+    smsEligible() {
+      if (this.smsSendingTime === null) return true;
+      const now = new Date();
+
+      // diff in minutes
+      const diff = (now.getTime() - this.smsSendingTime.getTime()) / 1000 / 60;
+
+      if (diff > 30) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    timeLeft() {
+      if (this.smsEligible === true) return 0;
+
+      return 30 -
+        (new Date().getTime() - this.smsSendingTime.getTime()) / 1000 / 60;
+    },
+    countryList() {
+      const res = [];
+      for (let i = 0; i < this.countries.length; i++) {
+        res.push(this.countries[i].name);
+      }
+
+      return res;
+    },
+
+    phoneCodeList() {
+      const res = [];
+      for (let i = 0; i < this.countries.length; i++) {
+        res.push(this.countries[i].code);
+      }
+
+      return res;
+    },
+    phonenumber() {
+      return this.phone_prefix + this.phone;
+    },
   },
 
   methods: {
     ...mapActions(['register']),
+    async sendSms() {
+      const res = await sendSmsVerification(this.phonenumber);
+      if (res.status === 'success') {
+        this.smsSendingTime = new Date();
+      } else {
+        this.$store.dispatch('pushErrorLog', 'sms send failed');
+      }
+    },
+    flipNotify() {
+      this.notify = !this.notify;
+    },
     onPhoneChange() {
-      if (/^\d{11}$/.test(this.phone)) {
+      console.log(this.phone_prefix);
+      const regEx = /^\d{10,14}$/;
+
+      if (regEx.test(this.phone)) {
         this.phone_correct = 'correct';
       } else {
         this.phone_correct = 'wrong format';
@@ -42,6 +143,7 @@ export default {
       }
     },
     onPromoteCodeChange() {
+      this.invitorUsed = false;
       console.log('invoking promote');
       if (this.promote_code.length !== 10) {
         this.invitor = 'too short';
@@ -50,6 +152,7 @@ export default {
         existsPromotion(this.promote_code).then((res) => {
           if (res.status) {
             this.invitor = res.invitor;
+            this.invitorUsed = true;
           } else {
             this.invitor = 'not exists';
           }
@@ -66,6 +169,13 @@ export default {
       });
     },
     async registerWrapper() {
+      const smsRes = await verifySms(this.phonenumber, this.verify_code);
+      if (smsRes.status !== true) {
+        this.$store.dispatch('pushErrorLog', 'verify sms failed');
+
+        return;
+      }
+
       const res = await this.register({
         walletAddr: this.wallet_addr,
         username: this.username,
@@ -74,19 +184,38 @@ export default {
         invitation_code: this.promote_code,
       });
 
-      console.log(res);
-
       if (!res) {
         this.$store.dispatch('pushErrorLog', 'register failed');
-      } else {
-        this.$router.push('/account/registered');
+        this.notify = true;
+        this.registered = false;
+
+        return;
       }
+
+      this.notify = true;
+      const resEmail = await emailVerified(this.username);
+      if (resEmail.status) {
+        this.emailVerified = true;
+      }
+
+      this.registered = true;
     },
   },
 
 };
 </script>
 <style scoped>
+.main {
+  filter: blur(v-bind(blur));
+}
+.notifier-wrapper {
+  filter: blur(5px);
+}
+.notifier {
+  top: 40%;
+  left: 35%;
+  z-index: 1;
+}
 .header {
   background-image: url("/imgs/register_header.png");
   width: 1734px;
@@ -199,153 +328,184 @@ export default {
 }
 </style>
 <template>
-  <div>
-    <div class="header">
-      <div class="registertip">To access functionalities, please register</div>
-    </div>
-
-    <div class="middle">
-      <div class="flex flex-row flex-wrap">
-        <div class="inline-block referrer">Promtor(Optional)</div>
-        <input
-          type="text"
-          id="promote_code"
-          v-model="promote_code"
-          @input="onPromoteCodeChange"
-        />
-        <div class="inline-block invitor">
-          {{ invitor }}
-        </div>
-        <div class="referrernickname">就是那个光嘿乌拉拉</div>
+<div>
+  <div class="absolute w-screen h-screen" v-if="notify" @click="flipNotify">
+    <div class="absolute notifier">
+      <div class="absolute" v-if="!emailVerified">
+        <FailVerify />
       </div>
-      <div class="reward" style="text-align: right">注册成功奖励20积分</div>
-    </div>
-
-    <div class="bottom">
-      <div class="flex flex-row" style="padding-top: 145px; position: relative">
-        <div style="margin-right: 34px; margin-left: 34px">
-          <div
-            class="formfont"
-            style="
-              height: 71px;
-              text-align: right;
-              margin-bottom: 31px;
-              line-height: 71px;
-            "
-          >
-            *钱包地址
-          </div>
-          <div
-            class="formfont"
-            style="
-              height: 71px;
-              text-align: right;
-              margin-bottom: 31px;
-              line-height: 71px;
-            "
-          >
-            *Name
-          </div>
-          <div
-            class="formfont"
-            style="
-              height: 71px;
-              text-align: right;
-              margin-bottom: 31px;
-              line-height: 71px;
-            "
-          >
-            *Email
-          </div>
-        </div>
-        <div>
-          <div style="width: 450px; height: 71px; margin-bottom: 31px">
-            {{ wallet_addr }}
-          </div>
-
-          <div>
-            <input
-              class="rightinput"
-              style="width: 450px; height: 71px; margin-bottom: 31px"
-              type="text"
-              v-model="username"
-              @input="onUsernameChange"
-            />
-            <span class="inforformtip">{{ user_exists }}</span>
-          </div>
-          <div>
-            <input
-              class="rightinput"
-              style="width: 450px; height: 71px; margin-bottom: 31px"
-              type="text"
-              v-model="email"
-              @input="onEmailChange"
-            />
-            <span class="inforformtip">{{ email_correct }}</span>
-          </div>
-        </div>
-        <div style="margin-right: 34px; margin-left: 160px">
-          <div
-            class="formfont"
-            style="
-              height: 71px;
-              text-align: right;
-              margin-bottom: 31px;
-              line-height: 71px;
-            "
-          >
-            *Region
-          </div>
-          <div
-            class="formfont"
-            style="
-              height: 71px;
-              text-align: right;
-              margin-bottom: 31px;
-              line-height: 71px;
-            "
-          >
-            *Home
-          </div>
-        </div>
-        <div>
-          <div>
-            <select
-              style="width: 450px; height: 71px; margin-bottom: 31px"
-              v-model="region"
-              name=""
-              id=""
-            ></select>
-            <span class="inforformtip">*请选择地址</span>
-          </div>
-          <div>
-            <select style="width: 100px; height: 71px; margin-bottom: 31px"  name="" id=""></select>
-            <input
-              style="width: 350px; height: 71px; margin-bottom: 31px"
-              type="text"
-              v-model="phone"
-              @input="onPhoneChange"
-            />
-            <span class="inforformtip">{{ phone_correct }}</span>
-          </div>
-          <div>
-            <input
-              style="width: 297px; height: 71px; margin-bottom: 31px"
-              type="text"
-              v-model="verify_code"
-            />
-            <button class="sendbutton" style="width: 141px; height: 71px">
-              发送
-            </button>
-          </div>
-        </div>
+      <div class="absolute">
+        <RegSucess v-if="invitorUsed && registered" />
       </div>
-      <div class="protocol">
-        <input type="checkbox" name="" id="" v-model="agreement" />
-        我已决定是否<a href="">隐私条款</a> <a href="">免责声明</a>
+      <div class="absolute" v-if="registered && !invitorUsed">
+        <RegSuccess2 />
       </div>
-      <button class="registernow" @click="registerWrapper"></button>
+      <div class="absolute" v-if="emailVerified">
+        <VerifyEmail />
+      </div>
+      <div class="absolute" v-if="!smsEligible">
+        <VerifyPhone />
+      </div>
     </div>
   </div>
+
+  <div class="main">
+      <div class="header">
+        <div class="registertip">To access functionalities, please register</div>
+      </div>
+
+      <div class="middle">
+        <div class="flex flex-row flex-wrap">
+          <div class="inline-block referrer">Promtor(Optional)</div>
+          <input
+            type="text"
+            id="promote_code"
+            v-model="promote_code"
+            @input="onPromoteCodeChange"
+          />
+          <div class="inline-block invitor">
+            {{ invitor }}
+          </div>
+          <div class="referrernickname">就是那个光嘿乌拉拉</div>
+        </div>
+        <div class="reward" style="text-align: right">注册成功奖励20积分</div>
+      </div>
+
+      <div class="bottom">
+        <div class="flex flex-row" style="padding-top: 145px; position: relative">
+          <div style="margin-right: 34px; margin-left: 34px">
+            <div
+              class="formfont"
+              style="
+                height: 71px;
+                text-align: right;
+                margin-bottom: 31px;
+                line-height: 71px;
+              "
+            >
+              *钱包地址
+            </div>
+            <div
+              class="formfont"
+              style="
+                height: 71px;
+                text-align: right;
+                margin-bottom: 31px;
+                line-height: 71px;
+              "
+            >
+              *Name
+            </div>
+            <div
+              class="formfont"
+              style="
+                height: 71px;
+                text-align: right;
+                margin-bottom: 31px;
+                line-height: 71px;
+              "
+            >
+              *Email
+            </div>
+          </div>
+          <div>
+            <div style="width: 450px; height: 71px; margin-bottom: 31px">
+              {{ wallet_addr }}
+            </div>
+
+            <div>
+              <input
+                class="rightinput"
+                style="width: 450px; height: 71px; margin-bottom: 31px"
+                type="text"
+                v-model="username"
+                @input="onUsernameChange"
+              />
+              <span class="inforformtip">{{ user_exists }}</span>
+            </div>
+            <div>
+              <input
+                class="rightinput"
+                style="width: 450px; height: 71px; margin-bottom: 31px"
+                type="text"
+                v-model="email"
+                @input="onEmailChange"
+              />
+              <span class="inforformtip">{{ email_correct }}</span>
+            </div>
+          </div>
+          <div style="margin-right: 34px; margin-left: 160px">
+            <div
+              class="formfont"
+              style="
+                height: 71px;
+                text-align: right;
+                margin-bottom: 31px;
+                line-height: 71px;
+              "
+            >
+              *Region
+            </div>
+            <div
+              class="formfont"
+              style="
+                height: 71px;
+                text-align: right;
+                margin-bottom: 31px;
+                line-height: 71px;
+              "
+            >
+              *Home
+            </div>
+          </div>
+          <div>
+            <div>
+              <select
+                style="width: 450px; height: 71px; margin-bottom: 31px"
+                v-model="region"
+                name=""
+                id=""
+              >
+              <option v-for="country in countryList"
+              :key="country">{{ country }}</option>
+              </select>
+              <span class="inforformtip" v-if="region === ''">*请选择地址</span>
+            </div>
+            <div>
+              <select style="width: 100px; height: 71px; margin-bottom: 31px"
+              v-model="phone_prefix">
+              <option v-for="code in phoneCodeList"
+              :key="code">+{{ code }}</option>
+              </select>
+              <input
+                style="width: 350px; height: 71px; margin-bottom: 31px"
+                type="text"
+                v-model="phone"
+                @input="onPhoneChange"
+              />
+              <span class="inforformtip">{{ phone_correct }}</span>
+            </div>
+            <div>
+              <input
+                style="width: 297px; height: 71px; margin-bottom: 31px"
+                type="text"
+                v-model="verify_code"
+              />
+              <button class="sendbutton" style="width: 141px; height: 71px"
+              @click="sendSms">
+                发送
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="protocol">
+          <input type="checkbox" name="" id="" v-model="agreement" />
+          我已决定是否<a href="">隐私条款</a> <a href="">免责声明</a>
+        </div>
+        <button class="registernow" @click="registerWrapper"></button>
+      </div>
+    </div>
+</div>
+
 </template>
 

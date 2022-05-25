@@ -165,3 +165,101 @@ export async function userexists(username) {
     };
   }
 }
+
+/**
+ *
+ * @param {String} username
+ * @return {Object}
+ */
+export async function emailVerified(username) {
+  try {
+    const res = await fetch(baseUrl + '/emailverified?' + new URLSearchParams({
+      username: username,
+    }));
+
+    const resObj = await res.json();
+
+    if (resObj.verified) {
+      return {
+        status: true,
+      };
+    } else {
+      return {
+        status: false,
+      };
+    }
+  } catch (e) {
+    return {
+      status: false,
+      message: 'Error connecting to server',
+    };
+  }
+}
+
+/**
+ *
+ * @param {String} phone
+ * @return {Object}
+ */
+export async function sendSmsVerification(phone) {
+  try {
+    const res = await fetch(baseUrl + '/sendverificationcode', {
+      method: 'POST',
+      body: new URLSearchParams({
+        phone: phone,
+      }),
+    });
+
+    const resObj = await res.json();
+    if (resObj.status === 'success') {
+      return {
+        status: true,
+      };
+    } else {
+      return {
+        status: false,
+        message: resObj.message,
+      };
+    }
+  } catch (e) {
+    return {
+      status: false,
+      message: 'Error connecting to server',
+    };
+  }
+}
+
+/**
+ *
+ * @param {String} phone
+ * @param {String} code
+ * @return {Object}
+ */
+export async function verifySms(phone, code) {
+  try {
+    const res = await fetch(baseUrl + '/checkverificationcode', {
+      method: 'POST',
+      body: new URLSearchParams({
+        phone: phone,
+        code: code,
+      }),
+    });
+
+    const resObj = await res.json();
+    if (resObj.status === 'success') {
+      return {
+        status: true,
+      };
+    } else {
+      return {
+        status: false,
+        message: resObj.message,
+      };
+    }
+  } catch (e) {
+    return {
+      status: false,
+      message: 'Error connecting to server',
+    };
+  }
+}

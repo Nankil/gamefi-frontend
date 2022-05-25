@@ -47,6 +47,9 @@ export default createStore({
     },
     pushErrorLog(state, error) {
       state.errorLog.push(error);
+      setTimeout(() => {
+        state.errorLog.shift();
+      }, 5000);
     },
     shiftInfoLog(state) {
       state.infoLog.shift();
