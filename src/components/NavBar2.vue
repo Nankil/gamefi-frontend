@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["routes"],
+  props: ['routes'],
   data() {
     return {
       // routes: [
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class=" flex flex-wrap"  style="padding-top:45px;padding-bottom:58px;width: 1734px;">
+  <div class=" flex"  style="padding-top:48px;padding-bottom:60px;">
     <div
       v-for="(route,x) in routes"
       :key="route"
@@ -56,11 +56,12 @@ export default {
     >
       <button
         v-if="currentRoutePath == route.path"
-        class="bg-orange-400 w-full"
+        class="w-full selected"
+        :style="{'margin-right':x===6? '0px' : '82px' }"
       >
         {{ route.display_name }}
       </button>
-      <button v-else class="register" :style="{'margin-right':x===6? '0px' : '42px' }">
+      <button v-else class="register" :style="{'margin-right':x===5? '0px' : '82px' }">
         {{ route.display_name }}
       </button>
     </div>
@@ -69,6 +70,7 @@ export default {
 <style scoped>
 .register{
   background-image: url("/imgs/nav2_button.svg");
+  background-repeat: no-repeat;
   height: 75px;
   width:211px;
   font-family: PingFang-Bold;
@@ -76,4 +78,16 @@ export default {
   line-height: 32px;
   color: #6b6b6b;
 }
+
+.selected {
+  background-image: url("/imgs/nav2_button_selected.svg");
+  background-repeat: no-repeat;
+  height: 75px;
+  width:211px;
+  font-family: PingFang-Bold;
+  font-size: 32px;
+  line-height: 32px;
+  color: #6b6b6b;
+}
+
 </style>

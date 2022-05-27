@@ -84,7 +84,7 @@ export default {
     },
     isBarActive() {
       console.log(this.$route.path.slice(0, 8));
-
+      console.log(this.$route.path.slice(0, 8) === '/account');
       return this.$route.path.slice(0, 8) === '/account' ? false : true;
     },
   },

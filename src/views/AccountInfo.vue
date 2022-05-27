@@ -17,41 +17,49 @@ export default {
 </script>
 
 <template>
-  <div class="border-2 p-5">
-    <div class="flex flex-row p-2">
-      <div class="lg:w-1/6 inline-block align-middle m-2">{{$t('Account.Info.promote_code')}}</div>
-      <div class="border-2 p-2 lg:w-1/3">{{ promote_code }}</div>
-      <button class="m-2 text-teal-200">[Copy]</button>
+  <div class="w-full basic-info">
+    <div class="register-time">
+      <div id="line1">Registered At</div>
+      <div id="line2">1020-1010</div>
     </div>
-    <div class="flex flex-row p-2">
-      <div class="lg:w-1/6 inline-block align-middle m-2">{{$t('Account.Info.wallet_addr')}}</div>
-      <div class="border-2 p-2 lg:w-1/3">{{ wallet_addr }}</div>
-    </div>
-    <div class="flex flex-row p-2">
-      <div class="lg:w-1/6 inline-block align-middle m-2">{{$t('Account.Info.id')}}</div>
-      <div class="border-2 p-2 lg:w-1/3">{{ id }}</div>
-      <div class="lg:w-1/3 inline-block
-      justify-center p-2">{{ registered_at }}</div>
-    </div>
-    <div class="flex flex-row p-2">
-      <div class="lg:w-1/6 inline-block align-middle m-2">{{$t('Account.Info.privilege')}}</div>
-      <div class="border-2 p-2 lg:w-1/3">{{ privilege }}</div>
-      <button class="p-2">check</button>
-    </div>
-    <div class="flex flex-row p-2">
-      <div class="lg:w-1/6 inline-block align-middle m-2">{{$t('Account.Info.username')}}</div>
-      <div class="border-2 p-2 lg:w-1/3">{{ username }}</div>
-      <button class="ml-2 p-2 bg-orange-100">Alter</button>
-    </div>
-    <div class="flex flex-row p-2">
-      <div class="lg:w-1/6 inline-block align-middle m-2">{{$t('Account.Info.phone')}}</div>
-      <div class="border-2 p-2 lg:w-1/3">{{ phone }}</div>
-      <button class="ml-2 p-2 bg-orange-100">Alter</button>
-    </div>
-    <div class="flex flex-row p-2">
-      <div class="lg:w-1/6 inline-block align-middle m-2">{{$t('Account.Info.email')}}</div>
-      <div class="border-2 p-2 lg:w-1/3">{{ email }}</div>
-      <button class="ml-2 p-2 bg-orange-100">Alter</button>
-    </div>
+      <div class="user-form flex flex-row">
+        <div class="col bg-slate-300" id="1" style="margin-left:97px">
+          <div class="key-pair flex flex-row">
+            <div class="key">Promotion</div>
+            <div class="value">somevalue</div>
+          </div>
+        </div>
+        <div class="col bg-slate-900">
+          hello
+        </div>
+      </div>
   </div>
 </template>
+
+
+<style scoped>
+.basic-info {
+  background: url('/imgs/account_basic_info.svg');
+  background-size: 100% auto;
+  padding-top: 26px;
+
+}
+.register-time {
+  margin-left: 224px;
+  font-size: 19px;
+  color: #c35fc9;
+  font-family: PingFang-bold;
+}
+
+#line2 {
+  margin-top: -10px;
+}
+
+.user-form {
+  margin-top: 50px;
+}
+
+.col {
+  width: 822px;
+}
+</style>
