@@ -64,31 +64,15 @@ export default {
       registered: false,
       emailVerified: false,
       countries,
+      smsVerified: false,
+      regButtonPressed: false,
+      smsEligible: true,
     };
   },
 
   computed: {
     wallet_addr() {
       return this.$store.state.userInfo.walletAddr;
-    },
-    smsEligible() {
-      if (this.smsSendingTime === null) return true;
-      const now = new Date();
-
-      // diff in minutes
-      const diff = (now.getTime() - this.smsSendingTime.getTime()) / 1000 / 60;
-
-      if (diff > 30) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    timeLeft() {
-      if (this.smsEligible === true) return 0;
-
-      return 30 -
-        (new Date().getTime() - this.smsSendingTime.getTime()) / 1000 / 60;
     },
     countryList() {
       const res = [];
@@ -115,15 +99,32 @@ export default {
   methods: {
     ...mapActions(['register']),
     async sendSms() {
+      console.log('sending to ', this.phonenumber);
       const res = await sendSmsVerification(this.phonenumber);
       if (res.status === 'success') {
         this.smsSendingTime = new Date();
       } else {
         this.$store.dispatch('pushErrorLog', 'sms send failed');
+        this.notify = true;
       }
+      this.smsEligible = false;
+    },
+    closeSmsNotify() {
+      this.smsEligible = true;
+      this.notify = false;
     },
     flipNotify() {
       this.notify = !this.notify;
+    },
+    async verifyEmail() {
+      const res = await emailVerified(this.email);
+      console.log(res);
+      if (res.status) {
+        this.emailVerified = true;
+      } else {
+        this.$store.dispatch('pushErrorLog', 'email verify failed');
+        this.notify = true;
+      }
     },
     onPhoneChange() {
       console.log(this.phone_prefix);
@@ -169,12 +170,16 @@ export default {
       });
     },
     async registerWrapper() {
+      this.regButtonPressed = true;
       const smsRes = await verifySms(this.phonenumber, this.verify_code);
+      console.log(smsRes);
       if (smsRes.status !== true) {
         this.$store.dispatch('pushErrorLog', 'verify sms failed');
 
         return;
       }
+      this.smsVerified = true;
+      console.log('sms correct');
 
       const res = await this.register({
         walletAddr: this.wallet_addr,
@@ -188,17 +193,20 @@ export default {
         this.$store.dispatch('pushErrorLog', 'register failed');
         this.notify = true;
         this.registered = false;
+        console.log('register failed');
 
         return;
       }
+      this.registered = true;
+      console.log('registered');
 
       this.notify = true;
       const resEmail = await emailVerified(this.username);
       if (resEmail.status) {
         this.emailVerified = true;
+      } else {
+        this.$store.dispatch('pushErrorLog', 'email verify failed');
       }
-
-      this.registered = true;
     },
   },
 
@@ -213,7 +221,7 @@ export default {
 }
 .notifier {
   top: 40%;
-  left: 35%;
+  left: 21%;
   z-index: 1;
 }
 .header {
@@ -329,22 +337,24 @@ export default {
 </style>
 <template>
 <div>
-  <div class="absolute w-screen h-screen" v-if="notify" @click="flipNotify">
+  <div class="absolute w-screen h-screen" v-if="notify">
     <div class="absolute notifier">
-      <div class="absolute" v-if="!emailVerified">
-        <FailVerify />
+      <div class="absolute" v-if="!smsEligible && !smsVerified"
+      @click="closeSmsNotify">
+        <VerifyPhone />
       </div>
-      <div class="absolute">
-        <RegSucess v-if="invitorUsed && registered" />
-      </div>
-      <div class="absolute" v-if="registered && !invitorUsed">
-        <RegSuccess2 />
-      </div>
-      <div class="absolute" v-if="emailVerified">
+      <div class="absolute" v-else-if="!emailVerified && registered"
+      @click="verifyEmail">
         <VerifyEmail />
       </div>
-      <div class="absolute" v-if="!smsEligible">
-        <VerifyPhone />
+      <div class="absolute" v-else-if="invitorUsed && registered && emailVerified">
+        <RegSuccess2 />
+      </div>
+      <div class="absolute" v-else-if="registered && emailVerified">
+        <RegSucess />
+      </div>
+      <div class="absolute" v-else-if="!registered">
+        <FailVerify />
       </div>
     </div>
   </div>

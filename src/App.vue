@@ -1,17 +1,11 @@
 <script setup>
-import Heading from "./components/Heading.vue";
-import { RouterView } from "vue-router";
-import NavBar from "./components/NavBar.vue";
-import Route from "./components/Route.vue";
-import Log from "./components/Log.vue";
-import NavInvest from "./components/NavInvest.vue";
-import verifyemail from "./components/verifyemail.vue";
-import verifyphonenumberVue from "./components/verifyphonenumber.vue";
-import registersuccess from "./components/registersuccess.vue";
-import failverify from "./components/failverify.vue";
-import registersuccess2 from "./components/registersuccess2.vue";
-import latestnewsVue from "./views/latestnews.vue";
-import lastestnewsdetailVue from "./views/lastestnewsdetail.vue";
+import Heading from './components/Heading.vue';
+import {RouterView} from 'vue-router';
+import NavBar from './components/NavBar.vue';
+import Route from './components/Route.vue';
+import Log from './components/Log.vue';
+import NavInvest from './components/NavInvest.vue';
+import lastestnewsdetailVue from './views/lastestnewsdetail.vue';
 </script>
 
 
@@ -124,10 +118,6 @@ export default {
 </script>
 
 <template >
-<<<<<<< HEAD
-=======
-  <lastestnewsdetailVue></lastestnewsdetailVue>
->>>>>>> d1e16693408dfeeba4b500b4dc10b2b3abb077e2
   <div>
     <div
       class="text-white w-1/5 absolute bottom-10 right-4"

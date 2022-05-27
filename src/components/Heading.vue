@@ -13,7 +13,9 @@ export default {
       const res = await this.connectWallet();
       console.log(res);
       if (res === 'success') {
+        console.log('confirming');
         const regRes = await accountRegistered(this.userInfo.walletAddr);
+        console.log(regRes);
         if (regRes.status === false) {
           this.$router.push('/account/register');
         }

@@ -1,6 +1,6 @@
 // import fetch from 'node-fetch';
 
-const baseUrl = 'http://localhost:8081';
+const baseUrl = 'http://103.117.102.225:8081';
 
 /**
  *
@@ -211,6 +211,7 @@ export async function sendSmsVerification(phone) {
     });
 
     const resObj = await res.json();
+    console.log(resObj);
     if (resObj.status === 'success') {
       return {
         status: true,
