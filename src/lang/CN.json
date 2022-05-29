@@ -14,9 +14,11 @@
     "Info":{
       "promote_code": "推廣碼",
       "wallet_addr": "錢包地址",
-      "id": "ID",
+      "id": "会员编号",
+      "region": "地区",
       "privilege": "權限",
       "username": "用戶名",
+      "nickname": "暱稱",
       "phone": "手機號",
       "email": "郵箱"
     },
@@ -24,17 +26,17 @@
       {
         "path": "/account/info",
         "name": "Info",
-        "display_name": "賬戶信息"
+        "display_name": "我的资料"
       },
       {
         "path": "/account/recommend",
         "name": "Recommend",
-        "display_name": "推薦好友"
+        "display_name": "推薦管理"
       },
       {
         "path": "/account/tasks",
         "name": "Tasks",
-        "display_name": "任務"
+        "display_name": "我的任務"
       },
       {
         "path": "/account/credit",
@@ -44,17 +46,17 @@
       {
         "path": "/account/assets",
         "name": "Assets",
-        "display_name": "資產"
+        "display_name": "我的積分"
       },
       {
         "path": "/account/nft",
         "name": "NFT",
-        "display_name": "NFT"
+        "display_name": "我的NFT"
       },
       {
         "path": "/account/investment",
         "name": "Investment",
-        "display_name": "投資"
+        "display_name": "投資與權限"
       }
     ]
   },
