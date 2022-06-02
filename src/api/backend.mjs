@@ -1,5 +1,7 @@
 // import fetch from 'node-fetch';
 
+import {rewriteDefault} from 'vue/compiler-sfc';
+
 const baseUrl = 'http://103.117.102.225:8081';
 
 /**
@@ -264,3 +266,96 @@ export async function verifySms(phone, code) {
     };
   }
 }
+
+/**
+ *
+ * @param {String} phone
+ * @param {String} token
+ */
+export async function updatePhone(phone, token) {
+  const bearer = 'Bearer ' + token;
+  try {
+    const res = await fetch(baseUrl + '/app/updatephone', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Authorization': bearer,
+        'Content-Type': 'application/json',
+      },
+      body: new URLSearchParams({
+        phone: phone,
+      }),
+    });
+    const resObj = await res.json();
+    return resObj;
+  } catch (e) {
+    console.log(e);
+    return {
+      status: false,
+      message: 'Error connecting to server',
+    };
+  }
+}
+
+/**
+ *
+ * @param {String} username
+ * @param {String} token
+ * @return {Object}
+ */
+export async function updateUsername(username, token) {
+  const bearer = 'Bearer ' + token;
+  try {
+    const res = await fetch(baseUrl + '/app/updateusername', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Authorization': bearer,
+        'Content-Type': 'application/json',
+      },
+      body: new URLSearchParams({
+        username: username,
+      }),
+    });
+    const resObj = await res.json();
+    return resObj;
+  } catch (e) {
+    console.log(e);
+    return {
+      status: false,
+      message: 'Error connecting to server',
+    };
+  }
+}
+
+/**
+ *
+ * @param {String} email
+ * @param {String} token
+ * @return {Object}
+ */
+export async function updateEmail(email, token) {
+  const bearer = 'Bearer ' + token;
+  try {
+    const res = await fetch(baseUrl + '/app/updateemail', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Authorization': bearer,
+        'Content-Type': 'application/json',
+      },
+      body: new URLSearchParams({
+        email: email,
+      }),
+    });
+    const resObj = await res.json();
+    return resObj;
+  } catch (e) {
+    console.log(e);
+    return {
+      status: false,
+      message: 'Error connecting to server',
+    };
+  }
+}
+

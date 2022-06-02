@@ -18,7 +18,8 @@ export default {
 </script>
 
 <template>
-  <div class="w-full basic-info">
+<div>
+<div class="w-full basic-info">
     <div class="register-time">
       <div id="line1">首次注册时间</div>
       <div id="line2">2022-08-08</div>
@@ -67,12 +68,11 @@ export default {
         </div>
       </div>
   </div>
-  
-  <div class="vip">
+<div class="vip">
     <div class="flex" style="height:160px">
       <button style=" display: flex;  width: 700px;
   height: 130px;">
-        <span 
+        <span
           style="font-size: 32px; font-weight: bold; color: #53cbed; position: absolute; top: 1010px; left: 88px;">
           當前權限階級
         </span>
@@ -85,10 +85,10 @@ export default {
           </span>
         </div>
         <img class="level-icon" src="/imgs/一般.svg" alt="">
-      </button> 
+      </button>
       <button style="display: flex;  width:  700px;
   height: 230px;">
-        <span 
+        <span
           style="font-size: 32px; font-weight: bold; color: #53cbed; position: absolute; top: 1010px; left: 785px;">
           下一權限階級
         </span>
@@ -101,33 +101,33 @@ export default {
           </span>
         </div>
         <img class="level-icon" src="/imgs/黄金.svg" alt="">
-      </button> 
+      </button>
       <div class="check">
         <img src="/imgs/查看所有.svg" alt="">
       </div>
     </div>
-    <div class="rule" 
+    <div class="rule"
     style="height: 127px; width: 1558px; position: relative; top: 0px;" >
       <span style="font-size:26px;font-weight: bold">【會員階級提升規則】</span>
     </div>
     <div class="vip-table" v-if="false">
       <table>
         <tr style="background-color: #d2eef6;">
-          <th style=" height:80px; width:261px; 
+          <th style=" height:80px; width:261px;
             font-family: PingFang-SC-Heavy;
             font-size: 34px;
             font-weight: normal;
             font-stretch: normal;
             letter-spacing: 0px;
             color: #525252;">會員階級</th>
-          <th style=" height:80px; width:602px; 
+          <th style=" height:80px; width:602px;
             font-family: PingFang-SC-Heavy;
             font-size: 34px;
             font-weight: normal;
             font-stretch: normal;
             letter-spacing: 0px;
 	          color: #525252;">升级条件/任务</th>
-          <th style=" height:80px; width:704px; 
+          <th style=" height:80px; width:704px;
             font-family: PingFang-SC-Heavy;
             font-size: 34px;
             font-weight: normal;
@@ -140,14 +140,14 @@ export default {
             <img src="/imgs/当前阶级.svg" alt="">
             <div style="display:block; align-items: center; position:absolute; left: 150px;top:1600px;">
               <img  class="level-icon" src="/imgs/一般.svg" alt="">
-              <p style="position:relative; left:15px; 
+              <p style="position:relative; left:15px;
               font-family: PingFang-SC-Heavy;
               font-size: 26px;
               font-weight: normal;
               font-stretch: normal;
               letter-spacing: 0px;
               color: #525252;">一般会员</p>
-              <p style="position:relative; left:15px; 
+              <p style="position:relative; left:15px;
               font-family: PingFang-SC-Heavy;
               font-size: 26px;
               font-weight: normal;
@@ -164,21 +164,21 @@ export default {
     <div class="vip-table" v-if="true">
       <table>
         <tr style="background-color: #d2eef6;">
-          <th style=" height:80px; width:261px; 
+          <th style=" height:80px; width:261px;
             font-family: PingFang-SC-Heavy;
             font-size: 34px;
             font-weight: normal;
             font-stretch: normal;
             letter-spacing: 0px;
             color: #525252;">會員階級</th>
-          <th style=" height:80px; width:602px; 
+          <th style=" height:80px; width:602px;
             font-family: PingFang-SC-Heavy;
             font-size: 34px;
             font-weight: normal;
             font-stretch: normal;
             letter-spacing: 0px;
 	          color: #525252;">升级条件/任务</th>
-          <th style=" height:80px; width:704px; 
+          <th style=" height:80px; width:704px;
             font-family: PingFang-SC-Heavy;
             font-size: 34px;
             font-weight: normal;
@@ -191,14 +191,14 @@ export default {
             <img src="/imgs/当前阶级.svg" alt="">
             <div style="display:block; align-items: center; position:absolute; left: 150px;top:1600px;">
               <img  class="level-icon" src="/imgs/黄金.svg" alt="">
-              <p style="position:relative; left:15px; 
+              <p style="position:relative; left:15px;
               font-family: PingFang-SC-Heavy;
               font-size: 26px;
               font-weight: normal;
               font-stretch: normal;
               letter-spacing: 0px;
               color: #525252;">一般会员</p>
-              <p style="position:relative; left:15px; 
+              <p style="position:relative; left:15px;
               font-family: PingFang-SC-Heavy;
               font-size: 26px;
               font-weight: normal;
@@ -213,6 +213,9 @@ export default {
       </table>
     </div>
   </div>
+</div>
+
+
 </template>
 
 
@@ -280,7 +283,7 @@ export default {
 }
 
 #button {
-  
+
 }
 
 .level-now, .level-next{

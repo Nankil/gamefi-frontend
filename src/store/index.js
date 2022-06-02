@@ -57,6 +57,9 @@ export default createStore({
     shiftErrorLog(state) {
       state.errorLog.shift();
     },
+    setToken(state, token) {
+      state.userInfo.token = token;
+    },
   },
   actions: {
     updateWalletAddr({commit}, walletAddr) {
@@ -125,6 +128,9 @@ export default createStore({
     },
     pushErrorLog({commit}, error) {
       commit('pushErrorLog', error);
+    },
+    setToken({commit}, token) {
+      commit('setToken', token);
     },
   },
   modules: {

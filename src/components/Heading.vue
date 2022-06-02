@@ -1,5 +1,5 @@
 <script>
-import {accountRegistered} from '../api/backend.mjs';
+import {accountRegistered, login} from '../api/backend.mjs';
 import {mapActions, mapState} from 'vuex';
 export default {
   data() {
@@ -13,11 +13,18 @@ export default {
       const res = await this.connectWallet();
       console.log(res);
       if (res === 'success') {
-        console.log('confirming');
         const regRes = await accountRegistered(this.userInfo.walletAddr);
-        console.log(regRes);
         if (regRes.status === false) {
           this.$router.push('/account/register');
+        } else {
+          const loginRes = await login(this.userInfo.walletAddr);
+          if (loginRes.status === false) {
+            this.$store.dispatch('pushErrorLog',
+                `login failed with ${loginRes.message}`);
+          } else {
+            this.$store.dispatch('setToken', loginRes.token);
+            console.log(loginRes);
+          }
         }
       }
     },

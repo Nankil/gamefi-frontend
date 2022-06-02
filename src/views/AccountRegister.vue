@@ -117,7 +117,7 @@ export default {
       this.notify = !this.notify;
     },
     async verifyEmail() {
-      const res = await emailVerified(this.email);
+      const res = await emailVerified(this.username);
       console.log(res);
       if (res.status) {
         this.emailVerified = true;
