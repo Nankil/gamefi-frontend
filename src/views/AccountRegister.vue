@@ -376,7 +376,7 @@ export default {
           <div class="inline-block invitor">
             {{ invitor }}
           </div>
-          <div class="referrernickname">就是那个光嘿乌拉拉</div>
+          <div class="referrernickname">自动显示推荐人会员号 / 推荐人昵称</div>
         </div>
         <div class="reward" style="text-align: right">注册成功奖励20积分</div>
       </div>
