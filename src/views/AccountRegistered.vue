@@ -1,3 +1,3 @@
 <template>
-  Congrats Registered
+    <div>Congrats Registered</div>
 </template>
