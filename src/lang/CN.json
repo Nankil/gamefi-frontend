@@ -1,140 +1,140 @@
 {
-  "header":{
-    "cw":"连接钱包"
-  },
-  "Home": {
-    "message": "最新消息",
-    "communitybank": "社區金庫",
-    "usercount": "用戶數量統計",
-    "tokeneconomy": "代幣經濟",
-    "PDR": "項目發展路線",
-    "partners": "合作方"
-  },
-  "Account": {
-    "Info":{
-      "promote_code": "推廣碼",
-      "wallet_addr": "錢包地址",
-      "id": "会员编号",
-      "region": "地区",
-      "privilege": "權限",
-      "username": "用戶名",
-      "nickname": "暱稱",
-      "phone": "手機號",
-      "email": "郵箱"
+    "header": {
+        "cw": "连接钱包"
     },
+    "Home": {
+        "message": "最新消息",
+        "communitybank": "社區金庫",
+        "usercount": "用戶數量統計",
+        "tokeneconomy": "代幣經濟",
+        "PDR": "項目發展路線",
+        "partners": "合作方"
+    },
+    "Account": {
+        "Info": {
+            "promote_code": "我的推薦碼",
+            "wallet_addr": "錢包地址",
+            "id": "會員編號",
+            "region": "地區",
+            "privilege": "權限",
+            "username": "用戶名",
+            "nickname": "暱稱",
+            "phone": "手機號",
+            "email": "郵箱"
+        },
+        "routes": [
+            {
+                "path": "/account/info",
+                "name": "Info",
+                "display_name": "我的资料"
+            },
+            {
+                "path": "/account/recommend",
+                "name": "Recommend",
+                "display_name": "推薦管理"
+            },
+            {
+                "path": "/account/tasks",
+                "name": "Tasks",
+                "display_name": "我的任務"
+            },
+            {
+                "path": "/account/credit",
+                "name": "Credit",
+                "display_name": "信用"
+            },
+            {
+                "path": "/account/assets",
+                "name": "Assets",
+                "display_name": "我的積分"
+            },
+            {
+                "path": "/account/nft",
+                "name": "NFT",
+                "display_name": "我的NFT"
+            },
+            {
+                "path": "/account/investment",
+                "name": "Investment",
+                "display_name": "投資與權限"
+            }
+        ]
+    },
+    "Turorial": {
+        "Wallet": {
+            "Create": "創建錢包",
+            "Transfer": "轉賬",
+            "Buy": "購買",
+            "Content": "錢包內容"
+        },
+        "Updatetime": "更新時間",
+        "Author": "作者",
+        "Gamename": "游戲名稱",
+        "Filename": "檔案名稱",
+        "offcial": "官網",
+        "user": "用戶"
+    },
+    "Media": {
+        "photo": "相片",
+        "video": "影片"
+    },
+    "ICO": {
+        "ru": "注册用户数量",
+        "Parties": "合作方",
+        "Holders": "持有者",
+        "Market Size": "市場规模"
+    },
+    "RoadMap": "項目發展路線圖",
     "routes": [
-      {
-        "path": "/account/info",
-        "name": "Info",
-        "display_name": "我的资料"
-      },
-      {
-        "path": "/account/recommend",
-        "name": "Recommend",
-        "display_name": "推薦管理"
-      },
-      {
-        "path": "/account/tasks",
-        "name": "Tasks",
-        "display_name": "我的任務"
-      },
-      {
-        "path": "/account/credit",
-        "name": "Credit",
-        "display_name": "信用"
-      },
-      {
-        "path": "/account/assets",
-        "name": "Assets",
-        "display_name": "我的積分"
-      },
-      {
-        "path": "/account/nft",
-        "name": "NFT",
-        "display_name": "我的NFT"
-      },
-      {
-        "path": "/account/investment",
-        "name": "Investment",
-        "display_name": "投資與權限"
-      }
+        {
+            "path": "/",
+            "name": "Home",
+            "display_name": "首頁"
+        },
+        {
+            "path": "/events",
+            "name": "Events",
+            "display_name": "活動"
+        },
+        {
+            "path": "/community",
+            "name": "Community",
+            "display_name": "社區"
+        },
+        {
+            "path": "/lock",
+            "name": "Lock",
+            "display_name": "鎖仓"
+        },
+        {
+            "path": "/account",
+            "name": "Account",
+            "display_name": "賬戶"
+        },
+        {
+            "path": "/tutorial",
+            "name": "Turorial",
+            "display_name": "教學"
+        },
+        {
+            "path": "/media",
+            "name": "Media",
+            "display_name": "媒體"
+        },
+        {
+            "path": "/roadmap",
+            "name": "RoadMap",
+            "display_name": "項目發展路線圖"
+        },
+        {
+            "path": "/gamephase",
+            "name": "GamePhase",
+            "display_name": "遊戲階段"
+        },
+        {
+            "path": "/contactus",
+            "name": "ContactUs",
+            "display_name": "聯繫我們"
+        }
     ]
-  },
-  "Turorial": {
-    "Wallet": {
-      "Create": "創建錢包",
-      "Transfer": "轉賬",
-      "Buy": "購買",
-      "Content": "錢包內容"
-    },
-    "Updatetime": "更新時間",
-    "Author": "作者",
-    "Gamename": "游戲名稱",
-    "Filename": "檔案名稱",
-    "offcial": "官網",
-    "user": "用戶"
-  },
-  "Media": {
-    "photo": "相片",
-    "video": "影片"
-  },
-  "ICO": {
-    "ru": "注册用户数量",
-    "Parties": "合作方",
-    "Holders": "持有者",
-    "Market Size": "市場规模"
-  },
-  "RoadMap": "項目發展路線圖",
-  "routes": [
-    {
-      "path": "/",
-      "name": "Home",
-      "display_name": "首頁"
-    },
-    {
-      "path": "/events",
-      "name": "Events",
-      "display_name": "活動"
-    },
-    {
-      "path": "/community",
-      "name": "Community",
-     "display_name": "社區"
-    },
-    {
-      "path": "/lock",
-      "name": "Lock",
-      "display_name": "鎖仓"
-    },
-    {
-      "path": "/account",
-      "name": "Account",
-      "display_name": "賬戶"
-    },
-    {
-      "path": "/tutorial",
-      "name": "Turorial",
-      "display_name": "教學"
-    },
-    {
-      "path": "/media",
-      "name": "Media",
-      "display_name": "媒體"
-    },
-    {
-      "path": "/roadmap",
-      "name": "RoadMap",
-      "display_name": "項目發展路線圖"
-    },
-    {
-      "path": "/gamephase",
-      "name": "GamePhase",
-      "display_name": "遊戲階段"
-    },
-    {
-      "path": "/contactus",
-      "name": "ContactUs",
-      "display_name": "聯繫我們"
-    }
-  ]
 }

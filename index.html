@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NFT</title>
-    <link
-      rel="preload"
-      href="/font/Inter-roman.var.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
+    <link rel="preload" href="/font/Inter-roman.var.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
     <!-- <link rel="preload" href="/font/Inter-italic.var.woff2" as="font" type="font/woff2" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="/font/inter.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-  </body>
-  <style>
-    html, body {
-      overflow-x: hidden;
+</body>
+<style>
+    html,
+    body {
+        width: 100%;
+        /* overflow-x: hidden; */
     }
 
 
     #app {
-      width: 100%;
+        width: 100%;
     }
+
     body {
-      font-family: PingFang;
-      text-overflow: hidden;
-      background-image: url('/imgs/background_white.png');
-      background-size: cover;
-      background-repeat: no-repeat;
+        font-family: PingFang;
+        text-overflow: hidden;
+        background: url('/imgs/background_white.png') no-repeat;
+        background-size: cover;
     }
-  </style>
+</style>
+
 </html>

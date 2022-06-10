@@ -19,7 +19,7 @@ export const routes = [
             },
             {
                 path: 'info',    //我的资料
-                component: () => import('./views/AccountInfo.vue'),
+                component: () => import('./views/Account/Info/index.vue'),
             },
             {
                 path: 'recommend',    //推荐管理

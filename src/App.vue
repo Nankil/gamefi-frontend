@@ -126,7 +126,7 @@ export default {
         <div class="w-full">
             <Heading />
         </div>
-        <div class="flex flex-row w-full h-full">
+        <div class="flex flex-row w-full h-full content">
             <div v-show="isBarActive" class="navbar">
                 <NavBar :routes="routes" />
                 <div class="w-full mt-10 invest-wrapper">
@@ -146,7 +146,7 @@ export default {
         </div>
     </div>
 </template>
-<style scoped>
+<style lang="less" scoped>
 .main {
     height: fit-content;
 }

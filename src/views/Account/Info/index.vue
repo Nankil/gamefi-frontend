@@ -1,27 +1,9 @@
-<script>
-export default {
-    data() {
-        return {
-            promote_code: 'code',
-            wallet_addr: 'wallet',
-            id: 'id',
-            privilege: 'privilege',
-            username: 'username',
-            region: 'region',
-            phone: 'phone',
-            email: 'email',
-            registered_at: 'registered_at',
-        };
-    },
-};
-
-</script>
-
 <template>
+    <!-- 我的资料 -->
     <div class="heart">
         <div class="w-full basic-info">
             <div class="register-time">
-                <div id="line1">首次注册时间</div>
+                <div id="line1">首次註冊時間</div>
                 <div id="line2">2022-08-08</div>
             </div>
             <div class="user-form flex flex-row">
@@ -37,7 +19,7 @@ export default {
                             <div style="display:flex">
                                 <div class="value-item"></div>
                                 <img
-                                    style="position:relative; bottom:-15px ; left:15px"
+                                    style="position:relative; bottom:-20px ; left:22px"
                                     src="/imgs/复制.svg"
                                     alt="复制"
                                 />
@@ -54,30 +36,25 @@ export default {
                         <div class="key-item">{{$t('Account.Info.nickname')}}</div>
                         <div class="key-item">{{$t('Account.Info.email')}}</div>
                     </div>
-                    <div class="value">
+                    <div class="value content">
                         <div style="display:flex">
                             <div class="value-item"></div>
                             <img
-                                style="position:relative; bottom:-15px ; left:15px"
+                                style="position:relative; bottom:-20px ; left:22px"
                                 src="/imgs/复制.svg"
                                 alt="复制"
                             />
                         </div>
                         <div class="value-item"></div>
                         <div class="value-item"></div>
-                        <img
-                            style=" position: absolute; right: 397px; "
-                            src="/imgs/修改.svg"
-                            alt="修改"
-                        />
+                        <img src="/imgs/修改.svg" alt="修改" />
                     </div>
                 </div>
             </div>
         </div>
         <div class="vip">
             <div class="flex" style="height:160px">
-                <button style=" display: flex;  width: 700px;
-  height: 130px;">
+                <button style=" display: flex;  width: 700px; height: 130px;">
                     <span
                         style="font-size: 32px; font-weight: bold; color: #53cbed; position: absolute; top: 1010px; left: 88px;"
                     >當前權限階級</span>
@@ -87,8 +64,7 @@ export default {
                     </div>
                     <img class="level-icon" src="/imgs/一般.svg" alt />
                 </button>
-                <button style="display: flex;  width:  700px;
-  height: 230px;">
+                <button style="display: flex;  width:  700px; height: 230px;">
                     <span
                         style="font-size: 32px; font-weight: bold; color: #53cbed; position: absolute; top: 1010px; left: 785px;"
                     >下一權限階級</span>
@@ -236,7 +212,28 @@ export default {
 </template>
 
 
-<style scoped>
+
+<script>
+export default {
+    data() {
+        return {
+            promote_code: 'code',
+            wallet_addr: 'wallet',
+            id: 'id',
+            privilege: 'privilege',
+            username: 'username',
+            region: 'region',
+            phone: 'phone',
+            email: 'email',
+            registered_at: 'registered_at',
+        };
+    },
+};
+
+</script>
+
+
+<style lang="less" scoped>
 #html {
     margin: 0;
 }
@@ -252,7 +249,7 @@ export default {
     overflow: hidden;
 }
 .register-time {
-    margin: 22px 0 0 211px;
+    margin: 28px 0 0 245px;
     font-size: 19px;
     color: #c35fc9;
     font-family: PingFang-bold;
@@ -260,11 +257,6 @@ export default {
 
 #line2 {
     margin-top: -10px;
-}
-
-.vip {
-    margin-top: 200px;
-    height: 1117px;
 }
 
 .col {
@@ -279,16 +271,24 @@ export default {
 .value {
     margin-left: 30px;
 }
+.content {
+    position: relative;
+    img {
+        position: absolute;
+        bottom: 3px;
+        right: 186px;
+    }
+}
 .value-item {
     width: 459px;
-    height: 65px;
-    margin-top: 35px;
+    height: 71px;
+    margin-top: 40px;
     background-color: #ffffff;
 }
 .key-item {
     height: 65px;
     line-height: 65px;
-    margin-top: 35px;
+    margin-top: 46px;
     text-align: right;
     font-family: PingFang-SC-Bold;
     font-size: 25px;
@@ -308,15 +308,22 @@ export default {
     height: 87px;
     align-items: center;
 }
-.vip-level {
-    text-align: center;
-    font-family: PingFang-SC-Bold;
-    font-size: 52px;
-    font-weight: normal;
-    font-stretch: normal;
-    letter-spacing: 0px;
-    color: #ffffff;
+.vip {
+    margin-top: 200px;
+    height: 1117px;
+    // background:url("/imgs/")
+
+    .vip-level {
+        text-align: center;
+        font-family: PingFang-SC-Bold;
+        font-size: 52px;
+        font-weight: normal;
+        font-stretch: normal;
+        letter-spacing: 0px;
+        color: #ffffff;
+    }
 }
+
 .lunci {
     text-align: center;
     font-family: PingFang-SC-Bold;
