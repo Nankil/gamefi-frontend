@@ -1,5 +1,6 @@
 <template>
-    <router-view></router-view>
+    <!-- 普通 -->
+    <div>4</div>
 </template>
 
 <script>

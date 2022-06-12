@@ -6,7 +6,7 @@
                 v-for="route in routes"
                 :key="route"
                 @click="go(route)"
-                class="flex flex-col items-center text-center single-router"
+                class="content flex flex-col items-center text-center single-router"
             >
                 <div
                     v-if="matchOfCurrentPath==route.name"
@@ -47,7 +47,7 @@ export default {
     methods: {
         go(route) {    //跳转页面
             if (route.display_name === "賬戶") {
-                this.$router.push("/account/info")
+                this.$router.push("/account/info/basic")
                 return
             }
             this.$router.push(route.path)
@@ -82,5 +82,8 @@ export default {
 
 .router-wrapper {
     margin-top: 17px;
+}
+.content {
+    cursor: pointer;
 }
 </style>

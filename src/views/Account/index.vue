@@ -1,3 +1,24 @@
+<template>
+    <!-- 我的账户 -->
+    <div class="wrapper w-full">
+        <div class="background"></div>
+        <div class="account-container">
+            <div class="content-container">
+                <div>
+                    <Route />
+                </div>
+
+                <div style="margin:0 auto;">
+                    <NavBar2 :routes="routes" />
+                </div>
+
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+</template>
+
+
 <script >
 import NavBar2 from '@/components/NavBar2.vue';
 import Route from '@/components/Route.vue';
@@ -6,7 +27,7 @@ export default {
         return {
             routes: [
                 {
-                    path: '/account/info',
+                    path: '/account/info/basic',
                     name: 'Info',
                     display_name: this.$t('Account.routes[0].display_name'),
                 },
@@ -48,27 +69,11 @@ export default {
 };
 </script>
 
-<template>
-    <div class="wrapper w-full">
-        <div class="background"></div>
-        <div class="account-container">
-            <div class="content-container">
-                <div>
-                    <Route />
-                </div>
-                <div style="margin:0 auto;">
-                    <NavBar2 :routes="routes" />
-                </div>
 
-                <router-view></router-view>
-            </div>
-        </div>
-    </div>
-</template>
 <style scoped>
 .background {
     width: 100%;
-    height: 2000px;
+    height: 2500px;
     position: absolute;
     background: white;
     opacity: 50%;
@@ -78,7 +83,7 @@ export default {
     padding-top: 79px;
 }
 .wrapper {
-    margin-top: 231px;
+    margin-top: 260px;
     position: absolute;
     background-size: 100% 100%;
     top: -10%;

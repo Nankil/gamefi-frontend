@@ -1,5 +1,6 @@
 <template>
-    <router-view></router-view>
+    <!-- 种子轮 -->
+    <div>1</div>
 </template>
 
 <script>

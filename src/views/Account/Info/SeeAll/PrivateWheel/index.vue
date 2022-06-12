@@ -1,5 +1,6 @@
 <template>
-    <router-view></router-view>
+    <!-- 私募轮 -->
+    <div>2</div>
 </template>
 
 <script>

@@ -1,5 +1,6 @@
 <template>
-    <router-view></router-view>
+    <!-- 预售轮 -->
+    <div>3</div>
 </template>
 
 <script>

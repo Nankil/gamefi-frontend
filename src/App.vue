@@ -138,9 +138,6 @@ export default {
                 :class="[isBarActive ? 'content' : 'w-full']"
                 style="margin: 0 auto; height: fit-content"
             >
-                <!-- <div>
-          <Route />
-                </div>-->
                 <router-view></router-view>
             </div>
         </div>
@@ -151,6 +148,7 @@ export default {
     height: fit-content;
 }
 .navbar {
+    height: 3189px;
     background-image: url("/imgs/nav_left_bg.png");
     background-size: cover;
     background-repeat: no-repeat;

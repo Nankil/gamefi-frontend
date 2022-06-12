@@ -1,34 +1,46 @@
-import {createApp} from 'vue';
+import { createApp } from 'vue';
 import './tailwind.css';
 import App from './App.vue';
-import {routes} from './routes.js';
-import {createRouter, createWebHistory} from 'vue-router';
-import {createI18n} from 'vue-i18n';
+import { routes } from './routes.js';
+import { createRouter, createWebHistory } from 'vue-router';
+import { createI18n } from 'vue-i18n';
 import CN from './lang/CN.json';
 import EN from './lang/EN.json';
 import 'flowbite';
 import store from './store';
 
-// import * as Web3 from '../node_modules/web3/dist/web3.min.js';
-
+// import * as Web3 from '../node_modules/web3/dist/web3.min.js';\
 
 const app = createApp(App);
 const i18n = createI18n(
     {
-      locale: 'CN',
-      messages: {
-        'CN': CN,
-        'EN': EN,
-      },
+        locale: 'CN',
+        messages: {
+            'CN': CN,
+            'EN': EN,
+        },
     },
 );
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes,
+    history: createWebHistory(),
+    routes,
 });
 
 app.use(i18n);
 app.use(router);
 app.use(store);
 app.mount('#app');
+
+//全局方法
+import { copyText } from "@/mixin"
+//复制到剪切板
+app.mixin(copyText)
+
+// 全局挂载Tab选项卡组件
+import Tab from "@/components/Tab.vue"
+app.component('Tab', Tab)
+
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+app.use(ElementPlus)

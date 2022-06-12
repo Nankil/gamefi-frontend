@@ -9,6 +9,7 @@
   "dependencies": {
     "browserify-zlib": "^0.2.0",
     "chart.js": "^3.7.1",
+    "element-plus": "^2.2.5",
     "ethers": "^5.6.5",
     "events": "^3.3.0",
     "flowbite": "^1.4.5",
