@@ -18,25 +18,25 @@
 
 <style scoped>
 .invest-container {
-  background-image: url('/imgs/invest_container.png');
+  background-image: url('@/assets/imgs/invest_container.png');
   width: 246px;
   height: 319px;
   background-size: 100% 100%;
   position: absolute;
 }
 .invest-tab1 {
-  background-image: url('/imgs/invest_tab1.png');
+  background-image: url('@/assets/imgs/invest_tab1.png');
   background-size: 100% 100%;
   margin-top: 34px;
 }
 
 .invest-tab2 {
-  background-image: url('/imgs/invest_tab2.png');
+  background-image: url('@/assets/imgs/invest_tab2.png');
   background-size: 100% 100%;
 }
 
 .invest-tab3 {
-  background-image: url('/imgs/invest_tab3.png');
+  background-image: url('@/assets/imgs/invest_tab3.png');
   background-size: 100% 100%;
 }
 .tab {
@@ -46,7 +46,7 @@
   margin-left: 24px;
 }
 .invest-open {
-  background-image: url('/imgs/invest_open.png');
+  background-image: url('@/assets/imgs/invest_open.png');
   background-size: 100% 100%;
   width: 246px;
   height: 63px;

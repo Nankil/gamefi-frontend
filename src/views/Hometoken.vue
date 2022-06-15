@@ -43,7 +43,7 @@
         <div class="flex flex-row" style="margin-bottom: 42px">
           <div class="id middle-message">0x5068…Cc2f2b3</div>
           <img
-            src="/imgs/copy.png"
+            src="@/assets/imgs/copy.png"
             width="36px"
             height="36px"
             alt="copy"
@@ -102,7 +102,7 @@
         <div class="flex flex-row" style="margin-bottom: 42px;">
           <div class="id1 middle-message">0x5068…Cc2f2b3</div>
           <img
-            src="/imgs/copy2.png"
+            src="@/assets/imgs/copy2.png"
             width="36px"
             height="36px"
             alt="copy"
@@ -124,7 +124,7 @@
 
 <style scoped>
 .container3 {
-  background-image: url("/imgs/token2.png");
+  background-image: url("@/assets/imgs/token2.png");
   background-size: cover;
   height: 888px;
   width: 644px;
@@ -209,7 +209,7 @@
 }
 
 .container4 {
-  background-image: url("/imgs/token1.png");
+  background-image: url("@/assets/imgs/token1.png");
   background-size: cover;
   height: 888px;
   width: 644px;
@@ -233,7 +233,7 @@
 }
 
 .btn-red {
-  background-image: url("/imgs/red_button.svg");
+  background-image: url("@/assets/imgs/red_button.svg");
   background-size: contain;
   background-repeat: no-repeat;
   width: 134px;
@@ -245,7 +245,7 @@
 }
 
 .btn-green {
-  background-image: url("/imgs/green_button.svg");
+  background-image: url("@/assets/imgs/green_button.svg");
   background-size: contain;
   background-repeat: no-repeat;
   width: 134px;

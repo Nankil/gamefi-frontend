@@ -1,0 +1,43 @@
+<svg id="组_53" data-name="组 53" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1747.753" height="589.748" viewBox="0 0 1747.753 589.748">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0.5;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke-width: 7.742px;
+        stroke: url(#linear-gradient);
+      }
+
+      .cls-3 {
+        fill: red;
+        stroke-width: 1px;
+        stroke: url(#linear-gradient-2);
+        filter: url(#filter);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="89.563" y1="745.189" x2="1829.56" y2="745.189" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#53cbed"/>
+      <stop offset="1" stop-color="#c14fc4"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="143.469" y1="499.5" x2="292.469" y2="499.5" xlink:href="#linear-gradient"/>
+    <filter id="filter" x="142.719" y="481.094" width="150.343" height="36.906" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="143.469" y="481.625" width="149" height="35.75" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTQ5IiBoZWlnaHQ9IjM1Ljc1IiB2aWV3Qm94PSIwIDAgMTQ5IDM1Ljc1Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjE0OSIgeTE9IjEyLjY2NSIgeDI9IjAiIHkyPSIyMy4wODUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYzE0ZmM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzUzY2JlZCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iMTQ5IiBoZWlnaHQ9IjM1Ljc1Ii8+Cjwvc3ZnPgo="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="矩形_24_拷贝_3" data-name="矩形 24 拷贝 3" class="cls-1" d="M89.553,454.193l365.415,0.282,30.193,65.036,1344.769-.282V1010.36l-242.43.52-40.25,24.65-321.41.64-36.22-24.29-1100.072.52,0.005-275.047V454.193Z" transform="translate(-85.688 -450.312)"/>
+  <path id="矩形_24_拷贝_6" data-name="矩形 24 拷贝 6" class="cls-2" d="M89.553,454.193H455.079l29.341,65.036H1829.56V1010.36l-242.38.52-40.25,24.65-321.34.64-36.21-24.29-1099.832.52,0.005-275.047V454.193Z" transform="translate(-85.688 -450.312)"/>
+  <g transform="translate(-85.688 -450.312)" style="fill: red; filter: url(#filter)">
+    <path id="基本资料" class="cls-3" d="M144.483,487.446h6.431v11.959h-7v3.133h7.268a19.53,19.53,0,0,1-7.725,4.585l1.865,3.056a29.2,29.2,0,0,0,6.013-3.82v3.056h7.5v3.019H145.815V515.8h29.263v-3.362H162.33v-3.019h7.421v-3.133a25.812,25.812,0,0,0,6.545,3.936l1.484-3.133a19.9,19.9,0,0,1-7.839-4.547h7.268v-3.133h-7V487.446h6.431v-3.057h-6.431v-2.636h-3.5v2.636H154.415v-2.636h-3.5v2.636h-6.431v3.057Zm7,18.76a19.055,19.055,0,0,0,3.234-3.668h11.645a16.409,16.409,0,0,0,3.311,3.668H162.33v-2.675h-3.5v2.675h-7.344Zm2.93-8.864h12.291v2.063H154.415v-2.063Zm0-4.891h12.291v2.063H154.415v-2.063Zm0-5h12.291v2.178H154.415v-2.178Zm27.817,4.547h11.721a35.821,35.821,0,0,1-13.129,15.627l2.093,3.4a40.784,40.784,0,0,0,13.852-19.027h0.038v14.06h-7.535v3.477h7.535v7.527h3.653V509.53H208.3v-3.477H200.46v-14.06H200.5a45.771,45.771,0,0,0,13.357,18.53l2.474-3.133q-9.21-6.762-13.015-15.4H215v-3.477H200.46v-6.61h-3.653v6.61H182.232v3.477Zm38.321-6.954a29.518,29.518,0,0,1,6.165,2.9l1.94-2.942a34.658,34.658,0,0,0-6.317-2.675Zm13.433-3.4a12.859,12.859,0,0,1-4.871,6.572l2.131,2.827a19.286,19.286,0,0,0,3.577-3.629h4.148a9.187,9.187,0,0,1-2.588,4.317q-2.321,2.026-7.763,3.171l1.332,3.248q6.544-1.605,9.209-4.279,0.647-.726,1.18-1.452,3.615,4.279,11.645,5.922l1.293-3.171q-8.411-1.529-11.454-5.617a15.055,15.055,0,0,0,.571-2.139h5.556a18.252,18.252,0,0,1-1.446,3.515l3.463,1.031a41.489,41.489,0,0,0,1.674-5.54v-2.178H236.726a17.29,17.29,0,0,0,.8-2.139Zm-9.818,17.079v11.806h3.615v-8.444h17.7v8.062h3.653V498.717H224.168Zm10.96,4.394q-0.457,5.578-2.969,7.871-2.815,2.331-11.8,2.789l1.408,3.286q10.655-.917,13.509-3.936,2.662-2.369,3.463-9.7Zm-7.954-13.487a38.4,38.4,0,0,1-7.344,5.12l2.4,2.789a35.428,35.428,0,0,0,7.078-5.426Zm10.465,23a74.022,74.022,0,0,1,13.319,4.738l1.979-3.019a86.217,86.217,0,0,0-13.471-4.47Zm20.131-26.707a60.527,60.527,0,0,1,2.245,7.718l2.778-.765a74.737,74.737,0,0,0-2.017-7.909Zm12.634-1.376A35.207,35.207,0,0,1,269,492.489l2.663,0.879a30.52,30.52,0,0,0,1.751-8.444ZM257.656,498.45h6.2a29.628,29.628,0,0,1-6.811,9.131l1.484,3.783a38.365,38.365,0,0,0,5.632-8.635v14.213h3.615v-14.4q1.75,2.56,3.349,5.158l2.169-3.209q-2.892-3.018-5.518-5.273V498.45h5.366v-3.515h-5.366V481.944h-3.615v12.991h-6.507v3.515Zm26.98,5.349L273.6,505.48l0.5,3.591,10.541-1.6v9.475h3.539v-10.01l4.3-.65-0.609-3.591-3.691.573V481.982h-3.539V503.8Zm-9.361-16.964a40.609,40.609,0,0,1,6.088,5.654l2.436-2.483a52.981,52.981,0,0,0-6.127-5.5Zm-0.952,8.94a38.993,38.993,0,0,1,6.013,5.808l2.435-2.484a45.172,45.172,0,0,0-6.012-5.616Z" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use transform="translate(-85.688 -450.312)" xlink:href="#基本资料" style="stroke: url(#linear-gradient-2); filter: none; fill: none"/>
+</svg>

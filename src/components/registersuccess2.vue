@@ -1,7 +1,7 @@
 <template>
   <div class="bg">
     <div style="text-align: center;padding-top: 42px;">
-      <img style="display:inline-block" src="/imgs/logo.svg" width="278" height="297" alt="" />
+      <img style="display:inline-block" src="@/assets/imgs/logo.svg" width="278" height="297" alt="" />
     </div>
     <div class="first">恭喜注册成功</div>
     <div class="second">会员功能已为您开启</div>
@@ -17,7 +17,7 @@ export default {};
 
 <style scoped>
 .bg {
-  background-image: url("/imgs/注册成功有推荐码2.svg");
+  background-image: url("@/assets/imgs/注册成功有推荐码2.svg");
   width: 709px;
   height: 744px;
 }
@@ -38,7 +38,7 @@ export default {};
     padding-top: 24px;
 }
 .button{
-    background-image: url("/imgs/开始旅程.svg");
+    background-image: url("@/assets/imgs/开始旅程.svg");
     height: 59px;
     width: 182px;
     margin: 0 auto;

@@ -5,7 +5,7 @@
         网站首页
         <img
           style="display: inline; height: 26px"
-          src="/imgs/箭头4.svg"
+          src="@/assets/imgs/箭头4.svg"
           height="26"
           width="30"
           alt=""
@@ -13,14 +13,14 @@
         最新消息
         <img
           style="display: inline; height: 26px"
-          src="/imgs/箭头4.svg"
+          src="@/assets/imgs/箭头4.svg"
           height="26"
           width="30"
           alt=""
         />
         基因玩家达成共识
       </div>
-      <img src="/imgs/返回.svg" alt="" />
+      <img src="@/assets/imgs/返回.svg" alt="" />
     </div>
     <img class="picutre" src="" alt="" />
     <div class="title">基因玩家达成共识</div>

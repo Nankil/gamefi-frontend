@@ -18,7 +18,7 @@
 
 <style scoped>
 .fifth{
-    background-image: url("/imgs/确认.svg");
+    background-image: url("@/assets/imgs/确认.svg");
     height: 59px;
     width: 182px;
     margin: 0 auto;
@@ -39,7 +39,7 @@
   margin:0 2px;
 }
 .bg {
-  background-image: url("/imgs/验证手机4.svg");
+  background-image: url("@/assets/imgs/验证手机4.svg");
   width: 709px;
   height: 417px;
 }

@@ -3,44 +3,42 @@ import './tailwind.css';
 import App from './App.vue';
 import { routes } from './routes.js';
 import { createRouter, createWebHistory } from 'vue-router';
-import { createI18n } from 'vue-i18n';
-import CN from './lang/CN.json';
-import EN from './lang/EN.json';
 import 'flowbite';
 import store from './store';
 
-// import * as Web3 from '../node_modules/web3/dist/web3.min.js';\
+//引入一些公共样式
+import "@/assets/css/public.less";
+
 
 const app = createApp(App);
-const i18n = createI18n(
-    {
-        locale: 'CN',
-        messages: {
-            'CN': CN,
-            'EN': EN,
-        },
-    },
-);
+
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
 });
 
+//使用多种语言
+import i18n from './i18n/index.js';
 app.use(i18n);
+
 app.use(router);
 app.use(store);
 app.mount('#app');
+
 
 //全局方法
 import { copyText } from "@/mixin"
 //复制到剪切板
 app.mixin(copyText)
 
-// 全局挂载Tab选项卡组件
-import Tab from "@/components/Tab.vue"
-app.component('Tab', Tab)
+import ProgressBar from "@/components/Account/ProgressBar.vue"
+app.component('ProgressBar', ProgressBar)
 
+
+//引入element-plus组件库
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 app.use(ElementPlus)
+
+

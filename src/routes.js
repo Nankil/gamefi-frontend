@@ -17,12 +17,15 @@ export const routes = [
         redirect: '/account/info/basic',
         children: [
             {
-                path: 'registered',
-                component: () => import('./views/AccountRegistered.vue'),
+                path: 'register',
+                component: () => import('./views/Account/Register/index.vue'),
+                meta: {
+                    name: "注册"
+                }
             },
             {
-                path: 'register',
-                component: () => import('./views/AccountRegister.vue'),
+                path: 'registered',
+                component: () => import('./views/AccountRegistered.vue'),
             },
             {
                 path: 'info',

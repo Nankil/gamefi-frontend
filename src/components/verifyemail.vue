@@ -20,7 +20,7 @@ export default {};
 
 <style scoped>
 .resend{
-    background-image: url("/imgs/自动跳转按钮.svg");
+    background-image: url("@/assets/imgs/自动跳转按钮.svg");
     height: 58px;
     width: 367px;
     margin: 0 auto;
@@ -35,7 +35,7 @@ export default {};
     padding-top: 8px;
 }
 .bg {
-  background-image: url("/imgs/验证邮箱.svg");
+  background-image: url("@/assets/imgs/验证邮箱.svg");
   width: 709px;
   height: 424px;
 }

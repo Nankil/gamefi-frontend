@@ -1,0 +1,144 @@
+/* 复制到剪切板要用到的样式 */
+.copy1 {
+    transform: scale(0.8);
+}
+
+/* 复制到剪切板要用到的样式 */
+.copy2 {
+    transform: scale(1);
+}
+
+.member {
+    display: flex;
+    padding: 0 26px;
+    color: #525252;
+    background: rgba(255, 255, 255, 0.3);
+
+    li>div {
+        margin-bottom: 5px;
+    }
+}
+
+.width-img {
+    width: 43px !important;
+    left: -55px !important;
+}
+
+.width-left {
+    width: 261px;
+}
+
+.width-center {
+    width: 600px;
+    margin: 0 5px;
+}
+
+.width-right {
+    width: 735px;
+}
+
+.li-left {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+
+    div {
+        height: 100% !important;
+        background: url(@/assets/imgs/Account/当前阶级.svg) no-repeat;
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 120px;
+            margin-bottom: 23px;
+        }
+
+        p {
+            font-size: 26px;
+            color: #525252;
+            text-align: center;
+            line-height: 32px;
+            letter-spacing: 2px;
+        }
+
+        p:nth-of-type(1) {
+            font-family: PingFang-SC-Heavy;
+        }
+
+        p:nth-of-type(2) {
+            font-family: PingFang-SC-Medium;
+        }
+    }
+}
+
+.li-center {
+    margin: 0 5px;
+
+    >div {
+        padding: 21px 0 0 82px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.li-right {
+    div {
+        padding: 45px 0 0 85px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.member-h4 {
+    font-family: PingFang-SC-Medium, PingFang-SC-Bold;
+    font-size: 24px;
+    margin-left: -12px;
+    letter-spacing: 2px;
+
+    span {
+        transform: translateY(-1px);
+        margin-right: 4px;
+        display: inline-block;
+    }
+}
+
+
+.red {
+    //红色字体
+    color: #fd1313;
+}
+
+.spot {
+    position: relative;
+}
+
+.spot::after {
+    //点
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #525252;
+    left: -15px;
+    top: 10px;
+}
+
+
+.member-p {
+    font-family: PingFang-SC-Medium;
+    font-size: 19px;
+    line-height: 33px;
+    position: relative;
+    margin-bottom: 5px;
+
+    img {
+        position: absolute;
+        top: 7px;
+        left: -30px;
+        width: 20px;
+    }
+}
+
+.line-height-14 {
+    line-height: 14px;
+}

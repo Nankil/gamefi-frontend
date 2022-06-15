@@ -1,0 +1,185 @@
+{
+    "home": {
+        "heading": {
+            "account": "Account",
+            "languageCategory": [
+                {
+                    "type": "CN",
+                    "title": "traditional Chinese"
+                },
+                {
+                    "type": "ZH",
+                    "title": "Simplified Chinese"
+                },
+                {
+                    "type": "EN",
+                    "title": "English"
+                }
+            ]
+        },
+        "navber": [
+            {
+                "path": "/",
+                "title": "Home"
+            },
+            {
+                "path": "/events",
+                "title": "Activity"
+            },
+            {
+                "path": "/community",
+                "title": "Community"
+            },
+            {
+                "path": "/lock",
+                "title": "Market"
+            },
+            {
+                "path": "/box",
+                "title": "Blind box"
+            },
+            {
+                "path": "/tutorial",
+                "title": "Raiders/Teaching"
+            },
+            {
+                "path": "/media",
+                "title": "Videos/Pictures"
+            },
+            {
+                "path": "/contract",
+                "title": "contract address"
+            },
+            {
+                "path": "/gamephase",
+                "title": "Game Roadmap"
+            },
+            {
+                "path": "/roadmap",
+                "title": "Project Roadmap"
+            },
+            {
+                "path": "/contactus",
+                "title": "contact us"
+            }
+        ]
+    },
+    "account": {
+        "routes": [
+            {
+                "path": "/account/info",
+                "title": "Profile"
+            },
+            {
+                "path": "/account/recommend",
+                "title": "Referral"
+            },
+            {
+                "path": "/account/tasks",
+                "title": "Task"
+            },
+            {
+                "path": "/account/credit",
+                "title": "Credit"
+            },
+            {
+                "path": "/account/assets",
+                "title": "Scores"
+            },
+            {
+                "path": "/account/nft",
+                "title": "NFT"
+            },
+            {
+                "path": "/account/investment",
+                "title": "Investment"
+            }
+        ],
+        "Info": {
+            "time": "registration time",
+            "promote_code": "Referral Code",
+            "wallet_addr": "Wallet Address",
+            "id": "Membership Number",
+            "nickname": "Name",
+            "region": "Area",
+            "email": "Mail",
+            "phone": "Phone Number"
+        },
+        "promoteRule": {
+            "rule": "Membership promotion rules",
+            "first": "Only after completing all the 'upgrade conditions' and 'current tasks' of the rank can be promoted to the next rank. After completing the 'upgrade conditions' of the next rank, the system will automatically upgrade the membership.",
+            "two": "Since some functions have not yet been opened, users can upgrade first after completing the 'upgrade conditions' and 'current tasks' of the level. After the 'future supplementary tasks' function is opened, users can complete the 'supplementary tasks' and 'open the corresponding level permissions' and  'Receive the corresponding rank short reward'",
+            "class": "Membership",
+            "upgrade": "Upgrade Conditions/Tasks",
+            "permission": "Permissions/Short Rewards"
+        }
+    },
+    "header": {
+        "cw": "Connect Wallet"
+    },
+    "Home": {
+        "message": "spot news",
+        "communitybank": "community bank",
+        "usercount": "user count",
+        "tokeneconomy": "token economy",
+        "PDR": "Project Development Roadmap",
+        "partners": "partners"
+    },
+    "Turorial": {
+        "Wallet": {
+            "Create": "Create a new wallet",
+            "Transfer": "Transfer tokens",
+            "Buy": "Buy",
+            "Content": "Content"
+        },
+        "Updatetime": "Update time",
+        "Author": "Author",
+        "Gamename": "Game name",
+        "Filename": "File name",
+        "offcial": "Official",
+        "user": "User"
+    },
+    "Media": {
+        "photo": "photo",
+        "video": "video"
+    },
+    "ICO": {
+        "ru": "Registration",
+        "Parties": " Parties",
+        "Holders": " Holders",
+        "Market Size": " Market Size"
+    },
+    "RoadMap": "RoadMap",
+    "routes": [
+        {
+            "display_name": "Home"
+        },
+        {
+            "display_name": "Events"
+        },
+        {
+            "display_name": "Community"
+        },
+        {
+            "display_name": "Lock"
+        },
+        {
+            "display_name": "Account"
+        },
+        {
+            "display_name": "Turorial"
+        },
+        {
+            "display_name": "Media"
+        },
+        {
+            "display_name": "Road Map"
+        },
+        {
+            "display_name": "Game Phase"
+        },
+        {
+            "display_name": "Contact Us"
+        }
+    ]
+}

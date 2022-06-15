@@ -39,7 +39,7 @@ export default {};
   padding-top: 26px;
 }
 .bg1 {
-  background-image: url("/imgs/消息边框.svg");
+  background-image: url("@/assets/imgs/消息边框.svg");
   background-size: cover;
   width: 1302px;
   height: 299px;

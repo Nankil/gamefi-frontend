@@ -25,19 +25,19 @@
 </style>
 <template>
     <div class="dark:text-white flex flex-col Home">
-        <img src="/imgs/new_message.png" width="894" height="88" alt class="message-bar" />
+        <img src="@/assets/imgs/new_message.png" width="894" height="88" alt class="message-bar" />
         <Homeswiper />
-        <img class="self-end icon-more" src="/imgs/more.png" alt />
+        <img class="self-end icon-more" src="@/assets/imgs/more.png" alt />
     </div>
-    <img src="/imgs/spliter1.png" alt="splitter" class="spliter" />
+    <img src="@/assets/imgs/spliter1.png" alt="splitter" class="spliter" />
 
     <div class="dark:text-white flex flex-col Home new-message">
         <HomeNewMessage />
     </div>
-    <img src="/imgs/spliter2.png" alt="splitter" class="spliter" />
+    <img src="@/assets/imgs/spliter2.png" alt="splitter" class="spliter" />
 
     <div class="dark:text-white flex flex-col Home">
-        <img src="/imgs/economic_bar.png " class="economic-bar" alt />
+        <img src="@/assets/imgs/economic_bar.png " class="economic-bar" alt />
 
         <Hometoken />
 

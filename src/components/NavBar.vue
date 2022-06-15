@@ -3,16 +3,18 @@
     <div class="nav-container">
         <div class="w-full router-wrapper">
             <div
-                v-for="route in routes"
-                :key="route"
-                @click="go(route)"
-                class="content flex flex-col items-center text-center single-router"
+                v-for="item in $tm('home.navber')"
+                :key="item"
+                @click="$router.push(item.path)"
+                class="flex flex-col items-center text-center"
             >
+                <!-- 背景亮 -->
                 <div
-                    v-if="matchOfCurrentPath==route.name"
+                    v-if="$route.path == item.path"
                     class="dark:text-white selected router-btn"
-                >{{ route.display_name }}</div>
-                <div v-else class="dark:text-white router-btn">{{ route.display_name }}</div>
+                >{{ item.title}}</div>
+                <!-- 背景不亮 -->
+                <div v-else class="dark:text-white router-btn">{{ item.title }}</div>
             </div>
         </div>
     </div>
@@ -20,70 +22,36 @@
 
 <script>
 export default {
-    props: ['routes'],
-    data() {
-        return {
-        };
-    },
-    computed: {
-        currentRoutePath() {
-            return this.$route.path;
-        },
-        matchOfCurrentPath() {
-            if (this.currentRoutePath === '/') {
-                return this.routes[0].name;
-            } else {
-                const match = this.routes.filter((route) => route.path != '/').find(
-                    (route) => this.currentRoutePath.startsWith(route.path),
-                );
-                if (match) {
-                    return match.name;
-                } else {
-                    return '';
-                }
-            }
-        },
-    },
-    methods: {
-        go(route) {    //跳转页面
-            if (route.display_name === "賬戶") {
-                this.$router.push("/account/info/basic")
-                return
-            }
-            this.$router.push(route.path)
-        }
-    }
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .nav-container {
-    background-image: url("/imgs/nav_left.png");
+    background-image: url("@/assets/imgs/nav_left.png");
     background-size: 100% 100%;
     width: 247px;
-    height: 1087px;
     padding-top: 37px;
-}
-.selected {
-    background-image: url("/imgs/nav_selected.png");
-    background-size: 185px 56px;
-}
 
-.router-btn {
-    height: 56px;
-    width: 185px;
-    font-size: 27px;
-    line-height: 56px;
-}
+    .router-wrapper {
+        height: 1054px;
+        margin-top: 17px;
+        display: flex;
+        flex-flow: column;
+        > div {
+            flex: 1;
+            cursor: pointer;
 
-.single-router {
-    margin-bottom: 27px;
-}
-
-.router-wrapper {
-    margin-top: 17px;
-}
-.content {
-    cursor: pointer;
+            .router-btn {
+                height: 56px;
+                width: 185px;
+                font-size: 27px;
+                line-height: 56px;
+            }
+            .selected {
+                background-image: url("@/assets/imgs/nav_selected.png");
+                background-size: 185px 56px;
+            }
+        }
+    }
 }
 </style>

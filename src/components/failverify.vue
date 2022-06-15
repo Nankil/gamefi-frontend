@@ -15,7 +15,7 @@ export default {};
 
 <style scoped>
 .bg {
-  background-image: url("/imgs/未验证成功2.svg");
+  background-image: url("@/assets/imgs/未验证成功2.svg");
   width: 709px;
   height: 417px;
 }
@@ -36,7 +36,7 @@ export default {};
   text-align: center;
 }
 .resend{
-    background-image: url("/imgs/重新发送.svg");
+    background-image: url("@/assets/imgs/重新发送.svg");
     height: 59px;
     width: 183px;
     margin: 0 auto;

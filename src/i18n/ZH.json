@@ -1,0 +1,117 @@
+{
+    "home": {
+        "heading": {
+            "account": "我的账户",
+            "languageCategory": [
+                {
+                    "type": "CN",
+                    "title": "繁体中文"
+                },
+                {
+                    "type": "ZH",
+                    "title": "简体中文"
+                },
+                {
+                    "type": "EN",
+                    "title": "英文"
+                }
+            ]
+        },
+        "navber": [
+            {
+                "path": "/",
+                "title": "网站首页"
+            },
+            {
+                "path": "/events",
+                "title": "活动专区"
+            },
+            {
+                "path": "/community",
+                "title": "加入社区"
+            },
+            {
+                "path": "/lock",
+                "title": "市场"
+            },
+            {
+                "path": "/box",
+                "title": "盲盒"
+            },
+            {
+                "path": "/tutorial",
+                "title": "攻略/教学"
+            },
+            {
+                "path": "/media",
+                "title": "影片/图片"
+            },
+            {
+                "path": "/contract",
+                "title": "合约地址"
+            },
+            {
+                "path": "/gamephase",
+                "title": "游戏路线图"
+            },
+            {
+                "path": "/roadmap",
+                "title": "项目路线图"
+            },
+            {
+                "path": "/contactus",
+                "title": "联系我们"
+            }
+        ]
+    },
+    "account": {
+        "routes": [
+            {
+                "path": "/account/info",
+                "title": "我的资料"
+            },
+            {
+                "path": "/account/recommend",
+                "title": "推荐管理"
+            },
+            {
+                "path": "/account/tasks",
+                "title": "我的任务"
+            },
+            {
+                "path": "/account/credit",
+                "title": "信用"
+            },
+            {
+                "path": "/account/assets",
+                "title": "我的积分"
+            },
+            {
+                "path": "/account/nft",
+                "title": "我的NFT"
+            },
+            {
+                "path": "/account/investment",
+                "title": "投资与权限"
+            }
+        ],
+        "Info": {
+            "time": "首次注册时间",
+            "promote_code": "我的推荐码",
+            "wallet_addr": "钱包地址",
+            "id": "会员编号",
+            "nickname": "昵称",
+            "region": "地区",
+            "email": "邮箱",
+            "phone": "手机号"
+        },
+        "promoteRule": {
+            "rule": "会员阶级提升规则",
+            "first": "完成该阶级全部『升级条件』及『当前任务』才可提升至下一阶级，完成下一阶级『升级条件』，系统自动升级会员资格",
+            "two": "因部分功能尚未开放，用户完成该阶级『升级条件』及『当前任务』可先升级，待『未来补充任务』功能开放后，用户可补完成『补充任务』并『开放相应阶级权限』及『领取相应阶级空头奖励』",
+            "class": "会员阶级",
+            "upgrade": "升级条件/任务",
+            "permission": "权限/空头奖励"
+        }
+    }
+}

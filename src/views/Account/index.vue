@@ -9,7 +9,7 @@
                 </div>
 
                 <div style="margin:0 auto;">
-                    <NavBar2 :routes="routes" />
+                    <NavBar2 />
                 </div>
 
                 <router-view></router-view>
@@ -20,52 +20,16 @@
 
 
 <script >
-import NavBar2 from '@/components/NavBar2.vue';
+import NavBar2 from '@/components/Account/NavBar2.vue';
 import Route from '@/components/Route.vue';
 export default {
-    data() {
-        return {
-            routes: [
-                {
-                    path: '/account/info/basic',
-                    name: 'Info',
-                    display_name: this.$t('Account.routes[0].display_name'),
-                },
-                {
-                    path: '/account/recommend',
-                    name: 'Recommend',
-                    display_name: this.$t('Account.routes[1].display_name'),
-                },
-                {
-                    path: '/account/tasks',
-                    name: 'Tasks',
-                    display_name: this.$t('Account.routes[2].display_name'),
-                },
-                {
-                    path: '/account/assets',
-                    name: 'Assets',
-                    display_name: this.$t('Account.routes[4].display_name'),
-                },
-                {
-                    path: '/account/nft',
-                    name: 'NFT',
-                    display_name: this.$t('Account.routes[5].display_name'),
-                },
-                {
-                    path: '/account/investment',
-                    name: 'Investment',
-                    display_name: this.$t('Account.routes[6].display_name'),
-                },
-            ],
-        };
-    },
     components: {
         NavBar2,
         Route,
     },
     mounted() {
         console.log(this);
-    },
+    }
 };
 </script>
 

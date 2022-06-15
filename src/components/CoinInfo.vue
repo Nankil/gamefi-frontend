@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-row Coininfo justify-between">
     <div class="flex flex-row ">
-      <img src="/imgs/bnb_coin.png" alt="" class="bnb_coin" />
+      <img src="@/assets/imgs/bnb_coin.png" alt="" class="bnb_coin" />
       <div class="flex flex-col ">
         <div class="bnb">BNB</div>
         <div class="flex flex-row  ">
           <div class="number">0x5068…Cc2f2b3</div>
-          <img src="/imgs/copy.png" alt="" class="h-3 ml-2" />
+          <img src="@/assets/imgs/copy.png" alt="" class="h-3 ml-2" />
         </div>
       </div>
     </div>

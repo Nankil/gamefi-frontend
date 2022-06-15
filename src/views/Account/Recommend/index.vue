@@ -8,7 +8,7 @@
                 <img
                     @click="copyText($refs.img,recommendationCode)"
                     ref="img"
-                    src="/imgs/Account/复制.svg"
+                    src="@/assets/imgs/Account/复制.svg"
                     alt="复制"
                 />
             </div>
@@ -42,7 +42,7 @@
                     <i>20</i>
                 </li>
                 <li>
-                    <img src="/imgs/Account/积分兑换go.svg" alt="积分兑换go" />
+                    <img src="@/assets/imgs/Account/积分兑换go.svg" alt="积分兑换go" />
                 </li>
             </ul>
             <!-- 选项卡 -->
@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import Tab from '@/components/Account/Tab.vue'
 export default {
     data() {
         return {
@@ -871,7 +872,8 @@ export default {
             }
 
         }
-    }
+    },
+    components: { Tab }
 }
 </script>
 
@@ -891,7 +893,7 @@ export default {
 
         .left {
             position: relative;
-            background: url(/imgs/Account/我的推荐码.svg) no-repeat;
+            background: url(@/assets/imgs/Account/我的推荐码.svg) no-repeat;
             p {
                 width: 603px;
                 height: 70px;
@@ -917,7 +919,7 @@ export default {
             color: #4b4b4b;
             box-sizing: border-box;
             padding: 100px 0 0 54px;
-            background: url(/imgs/Account/我的推荐人.svg) no-repeat;
+            background: url(@/assets/imgs/Account/我的推荐人.svg) no-repeat;
             span {
                 display: inline-block;
                 width: 120px;
@@ -927,7 +929,7 @@ export default {
 
     //邀请人清单
     .bottom {
-        background: url(/imgs/Account/邀请人清单.svg);
+        background: url(@/assets/imgs/Account/邀请人清单.svg);
         height: 900px;
         box-sizing: border-box;
         padding: 112px 55px 50px 55px;

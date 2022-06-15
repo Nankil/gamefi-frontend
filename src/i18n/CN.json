@@ -1,0 +1,153 @@
+{
+    "home": {
+        "heading": {
+            "account": "我的賬戶",
+            "languageCategory": [
+                {
+                    "type": "CN",
+                    "title": "繁體中文"
+                },
+                {
+                    "type": "ZH",
+                    "title": "簡體中文"
+                },
+                {
+                    "type": "EN",
+                    "title": "英文"
+                }
+            ]
+        },
+        "navber": [
+            {
+                "path": "/",
+                "title": "網站首頁"
+            },
+            {
+                "path": "/events",
+                "title": "活動專區"
+            },
+            {
+                "path": "/community",
+                "title": "加入社區"
+            },
+            {
+                "path": "/lock",
+                "title": "市場"
+            },
+            {
+                "path": "/box",
+                "title": "盲盒"
+            },
+            {
+                "path": "/tutorial",
+                "title": "攻略/教學"
+            },
+            {
+                "path": "/media",
+                "title": "影片/圖片"
+            },
+            {
+                "path": "/contract",
+                "title": "合約地址"
+            },
+            {
+                "path": "/gamephase",
+                "title": "遊戲路線圖"
+            },
+            {
+                "path": "/roadmap",
+                "title": "項目路線圖"
+            },
+            {
+                "path": "/contactus",
+                "title": "聯繫我們"
+            }
+        ]
+    },
+    "account": {
+        "routes": [
+            {
+                "path": "/account/info",
+                "title": "我的资料"
+            },
+            {
+                "path": "/account/recommend",
+                "title": "推薦管理"
+            },
+            {
+                "path": "/account/tasks",
+                "title": "我的任務"
+            },
+            {
+                "path": "/account/credit",
+                "title": "信用"
+            },
+            {
+                "path": "/account/assets",
+                "title": "我的積分"
+            },
+            {
+                "path": "/account/nft",
+                "title": "我的NFT"
+            },
+            {
+                "path": "/account/investment",
+                "title": "投資與權限"
+            }
+        ],
+        "Info": {
+            "time": "首次註冊時間",
+            "promote_code": "我的推薦碼",
+            "wallet_addr": "錢包地址",
+            "id": "會員編號",
+            "nickname": "暱稱",
+            "region": "地區",
+            "email": "郵箱",
+            "phone": "手機號"
+        },
+        "promoteRule": {
+            "rule": "會員階級提升規則",
+            "first": "完成該階級全部『升級條件』及『當前任務』才可提升至下一階級，完成下一階級『升級條件』，系統自動升級會員資格",
+            "two": "因部分功能尚未開放，用戶完成該階級『升級條件』及『當前任務』可先升級，待『未來補充任務』功能開放後，用戶可補完成『補充任務』並『開放相應階級權限』及『領取相應階級空頭獎勵』",
+            "class": "會員階級",
+            "upgrade": "升級條件/任務",
+            "permission": "權限/空頭獎勵"
+        }
+    },
+    "header": {
+        "cw": "连接钱包"
+    },
+    "Home": {
+        "message": "最新消息",
+        "communitybank": "社區金庫",
+        "usercount": "用戶數量統計",
+        "tokeneconomy": "代幣經濟",
+        "PDR": "項目發展路線",
+        "partners": "合作方"
+    },
+    "Turorial": {
+        "Wallet": {
+            "Create": "創建錢包",
+            "Transfer": "轉賬",
+            "Buy": "購買",
+            "Content": "錢包內容"
+        },
+        "Updatetime": "更新時間",
+        "Author": "作者",
+        "Gamename": "游戲名稱",
+        "Filename": "檔案名稱",
+        "offcial": "官網",
+        "user": "用戶"
+    },
+    "Media": {
+        "photo": "相片",
+        "video": "影片"
+    },
+    "ICO": {
+        "ru": "注册用户数量",
+        "Parties": "合作方",
+        "Holders": "持有者",
+        "Market Size": "市場规模"
+    },
+    "RoadMap": "項目發展路線圖"
+}

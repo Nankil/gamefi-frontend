@@ -16,7 +16,7 @@
                 <span>20</span>
             </li>
             <li>
-                <img src="/imgs/Account/积分兑换go.svg" alt="积分兑换" />
+                <img src="@/assets/imgs/Account/积分兑换go.svg" alt="积分兑换" />
             </li>
         </ul>
 
@@ -33,6 +33,8 @@
 </template>
 
 <script>
+import Tab from '@/components/Account/Tab.vue'
+
 export default {
     data() {
         return {
@@ -978,14 +980,15 @@ export default {
                 ]
             }
         }
-    }
+    },
+    components: { Tab }
 }
 </script>
 
 <style lang="less" scoped>
 .content {
     height: 1100px;
-    background: url(/imgs/Account/我的积分明细.svg) no-repeat;
+    background: url(@/assets/imgs/Account/我的积分明细.svg) no-repeat;
     box-sizing: border-box;
     padding: 112px 55px 0;
 
@@ -1007,17 +1010,17 @@ export default {
         }
         li:nth-of-type(1) span {
             color: #25bf58;
-            background: url(/imgs/Account/绿色框.svg) no-repeat;
+            background: url(@/assets/imgs/Account/绿色框.svg) no-repeat;
             background-size: 100% 100%;
         }
         li:nth-of-type(2) span {
             color: #e61818;
-            background: url(/imgs/Account/红色框.svg) no-repeat;
+            background: url(@/assets/imgs/Account/红色框.svg) no-repeat;
             background-size: 100% 100%;
         }
         li:nth-of-type(3) span {
             color: #d9ae1a;
-            background: url(/imgs/Account/黄色框.svg) no-repeat;
+            background: url(@/assets/imgs/Account/黄色框.svg) no-repeat;
             background-size: 100% 100%;
         }
 

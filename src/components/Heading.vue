@@ -1,17 +1,88 @@
+<template>
+    <!-- 我的账户、选语言 -->
+    <div class="flex flex-row justify-between w-full h-full heading-container">
+        <div class="main self-center" @click="$router.push('/')">
+            <img src="@/assets/imgs/main.png" alt class="object-cover max-2" />
+        </div>
+
+        <div class="flex flex-col right-bar">
+            <div class="flex flex-row items-center row-funcs">
+                <!-- 我的账户 -->
+                <div
+                    id="wallet"
+                    class="flex flex-row h-8 border rounded-full border-teal-400 hover:cursor-pointer justify-center items-center"
+                    @click="connectWalletWrapper"
+                    v-if="userInfo.walletAddr === ''"
+                >
+                    <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
+                    链接钱包
+                </div>
+                <div
+                    id="wallet"
+                    class="flex fle-row h-8 justify-center text-center border rounded-full border-teal-400 hover:cursor-pointer items-center"
+                    v-else
+                >
+                    <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
+                    {{ truncatedAddr }}
+                </div>
+
+                <!-- 选择语言!!! -->
+                <div
+                    id="lang"
+                    class="flex flex-row h-8 justify-center border rounded-full border-purple-400 hover:cursor-pointer items-center"
+                >
+                    <img src="@/assets/imgs/internet_icon.png" alt="fox" class="h-6 mr-1" />
+
+                    <select @change="changeLanguage($event)">
+                        <option
+                            v-for="item of info.languageCategory"
+                            :key="item.type"
+                            :value="item.type"
+                        >{{item.title}}</option>
+                    </select>
+                </div>
+                <img
+                    id="night-switch"
+                    src="@/assets/imgs/sun.png"
+                    alt="sun"
+                    class="h-10 hover:cursor-pointer"
+                />
+            </div>
+            <div class="w-full flex flex-row-reverse">
+                <div class="flex flex-row-reverse utc-time">
+                    <div id="utc-8" class="flex flex-row items-center">
+                        <div id="time-whole" class="flex flex-col">
+                            <div class="self-end time">22:32</div>
+                            <div class="text-sm">2022:5:2</div>
+                        </div>
+                        <img class="h-10" src="@/assets/imgs/utc+8.png" alt />
+                    </div>
+                    <div id="utc" class="flex flex-row items-center">
+                        <div id="time-whole" class="flex flex-col">
+                            <div class="self-end time">22:32</div>
+                            <div class="text-sm">2022:5:2</div>
+                        </div>
+                        <img class="h-10" src="@/assets/imgs/utc.png" alt />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
 <script>
 import { accountRegistered, login } from '../api/backend.mjs';
 import { mapActions, mapState } from 'vuex';
 export default {
-    data() {
-        return {
-            lang: 'cn',
-        };
-    },
     methods: {
         ...mapActions(['connectWallet']),
         async connectWalletWrapper() {
+            // this.$router.push("/account/info")
             const res = await this.connectWallet();
-            console.log(res);
+            console.log(res)
+
             if (res === 'success') {
                 const regRes = await accountRegistered(this.userInfo.walletAddr);
                 if (regRes.status === false) {
@@ -28,6 +99,9 @@ export default {
                 }
             }
         },
+        changeLanguage($event) {    //切换语言
+            this.$i18n.locale = $event.target.value;
+        }
     },
     computed: {
         ...mapState(['userInfo']),
@@ -35,74 +109,16 @@ export default {
             return this.userInfo.walletAddr.slice(0, 4) +
                 '...' + this.userInfo.walletAddr.slice(38, -1);
         },
-    },
+        info() {    //获取文字
+            return this.$tm("home.heading")
+        }
+    }
 };
 </script>
-<template>
-    <div class="flex flex-row justify-between w-full h-full heading-container">
-        <div class="main self-center" @click="$router.push('/')">
-            <img src="/imgs/main.png" alt class="object-cover max-2" />
-        </div>
-
-        <div class="flex flex-col right-bar">
-            <div class="flex flex-row items-center row-funcs">
-                <div
-                    id="wallet"
-                    class="flex flex-row h-8 border rounded-full border-teal-400 hover:cursor-pointer justify-center items-center"
-                    @click="connectWalletWrapper"
-                    v-if="userInfo.walletAddr === ''"
-                >
-                    <img src="/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
-                    {{$t('header.cw')}}
-                </div>
-                <div
-                    id="wallet"
-                    class="flex fle-row h-8 justify-center text-center border rounded-full border-teal-400 hover:cursor-pointer items-center"
-                    v-else
-                >
-                    <img src="/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
-                    {{ truncatedAddr }}
-                </div>
-                <div
-                    id="lang"
-                    class="flex flex-row h-8 justify-center border rounded-full border-purple-400 hover:cursor-pointer items-center"
-                    @click="$router.push('/')"
-                >
-                    <img src="/imgs/internet_icon.png" alt="fox" class="h-6 mr-1" />
-                    CN *
-                </div>
-                <img
-                    id="night-switch"
-                    src="/imgs/sun.png"
-                    alt="sun"
-                    class="h-10 hover:cursor-pointer"
-                />
-            </div>
-            <div class="w-full flex flex-row-reverse">
-                <div class="flex flex-row-reverse utc-time">
-                    <div id="utc-8" class="flex flex-row items-center">
-                        <div id="time-whole" class="flex flex-col">
-                            <div class="self-end time">22:32</div>
-                            <div class="text-sm">2022:5:2</div>
-                        </div>
-                        <img class="h-10" src="/imgs/utc+8.png" alt />
-                    </div>
-                    <div id="utc" class="flex flex-row items-center">
-                        <div id="time-whole" class="flex flex-col">
-                            <div class="self-end time">22:32</div>
-                            <div class="text-sm">2022:5:2</div>
-                        </div>
-                        <img class="h-10" src="/imgs/utc.png" alt />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
 
 <style scoped>
 .heading-container {
-    background-image: url("/imgs/nav_top.png");
+    background-image: url("@/assets/imgs/nav_top.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 219px;

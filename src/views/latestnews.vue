@@ -4,7 +4,7 @@
       网站首页
       <img
         style="display: inline; height: 26px"
-        src="/imgs/箭头4.svg"
+        src="@/assets/imgs/箭头4.svg"
         height="26"
         width="30"
         alt=""
@@ -14,11 +14,11 @@
     <LatestnewslistVue></LatestnewslistVue>
     <div style="margin-left: 377px;">
       <div class="flex" style="width: fit-content; padding-top: 50px">
-        <img src="/imgs/上一页.svg" alt="" />
+        <img src="@/assets/imgs/上一页.svg" alt="" />
 
         <div v-for="x in 9" :key="x" class="number">{{ x }}</div>
 
-        <img src="/imgs/下一页2.svg" alt="" style="margin-left: 47px" />
+        <img src="@/assets/imgs/下一页2.svg" alt="" style="margin-left: 47px" />
       </div>
     </div>
   </div>

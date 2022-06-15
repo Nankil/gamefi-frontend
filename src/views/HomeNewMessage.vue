@@ -78,7 +78,7 @@ export default {
   width: 90px;
 }
 .container3 {
-  background-image: url("/imgs/comm_vouch.png");
+  background-image: url("@/assets/imgs/comm_vouch.png");
   background-size: cover;
   height: 757px;
   width: 644px;
@@ -110,7 +110,7 @@ export default {
   padding-right: 68px;
 }
 .container4 {
-  background-image: url("/imgs/user_stat.png");
+  background-image: url("@/assets/imgs/user_stat.png");
   background-size: cover;
   height: 757px;
   width: 644px;
@@ -121,13 +121,13 @@ export default {
 }
 
 .btn-red {
-  background-image: url("/imgs/red_button.svg");
+  background-image: url("@/assets/imgs/red_button.svg");
   background-size: 100% 100%;
   padding: 3%;
 }
 
 .btn-green {
-  background-image: url("/imgs/green_button.svg");
+  background-image: url("@/assets/imgs/green_button.svg");
   background-size: 100% 100%;
   padding: 3%;
 }
