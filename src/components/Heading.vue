@@ -20,10 +20,11 @@
                 <div
                     id="wallet"
                     class="flex fle-row h-8 justify-center text-center border rounded-full border-teal-400 hover:cursor-pointer items-center"
+                    @click="$router.push('/account/info')"
                     v-else
                 >
                     <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
-                    {{ truncatedAddr }}
+                    我的账户
                 </div>
 
                 <!-- 选择语言!!! -->

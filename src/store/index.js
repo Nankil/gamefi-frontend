@@ -73,65 +73,66 @@ export default createStore({
         },
         async connectWallet({ commit, state }) {    //链接钱包
 
-            if (typeof window.ethereum !== 'undefined') {
-                let addr = await ethereum.request({ method: 'eth_requestAccounts' });//授权连接钱包
-                console.log('用户钱包地址:', addr[0]);
-            } else {
-                console.log('未安装钱包插件！');
-            }
+            // if (typeof window.ethereum !== 'undefined') {
+            //     let addr = await ethereum.request({ method: 'eth_requestAccounts' });//授权连接钱包
+            //     console.log('用户钱包地址:', addr[0]);
+            // } else {
+            //     console.log('未安装钱包插件！');
+            // }
 
             // console.log(window.ethereum)
-            // if (state.ethereum === undefined) {
-            //     state.errorLog.push('web3 is undefined');
-            //     console.log('web3 is undefined');
-            // }
+            if (state.ethereum === undefined) {
+                state.errorLog.push('web3 is undefined');
+                console.log('web3 is undefined');
+            }
 
-            // try {
-            //     console.log(1)
-            //     await ethereum.request({
-            //         method: 'wallet_switchEthereumChain',
-            //         params: [{ chainId: '0x61' }],
-            //     });
-            //     console.log(2)
+            try {
+                console.log(1)
+                await ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: '0x61' }],
+                });
+                console.log(2)
 
-            // } catch (switchError) {
-            //     // This error code indicates that
-            //     // the chain has not been added to MetaMask.
-            //     console.log(3)
-            //     if (switchError.code === 4902) {
-            //         console.log(888)
-            //         try {
-            //             console.log(66666)
-            //             await ethereum.request({
-            //                 method: 'wallet_addEthereumChain',
-            //                 params: [
-            //                     {
-            //                         chainId: '0x61',
-            //                         chainName: 'BSC Testnet',
-            //                         rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'] /* ... */,
-            //                     },
-            //                 ],
-            //             });
-            //             console.log(77777)
-            //         } catch (addError) {
-            //             // handle "add" error
-            //             state.errorLog.append('failed to add network');
-            //             console.log(999)
-            //         }
-            //     }
-            //     // handle other "switch" errors
-            // }
+            } catch (switchError) {
+                // This error code indicates that
+                // the chain has not been added to MetaMask.
+                console.log(3)
+                if (switchError.code === 4902) {
+                    console.log(888)
+                    try {
+                        console.log(66666)
+                        await ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [
+                                {
+                                    chainId: '0x61',
+                                    chainName: 'BSC Testnet',
+                                    rpcUrls: ['https://data-seed-prebsc-1-s1.binance.org:8545'] /* ... */,
+                                },
+                            ],
+                        });
+                        console.log(77777)
+                    } catch (addError) {
+                        // handle "add" error
+                        state.errorLog.append('failed to add network');
+                        console.log(999)
+                    }
+                }
+                // handle other "switch" errors
+            }
 
-            // console.log(5)
-            // const accounts =
-            //     await ethereum.request({ method: 'eth_requestAccounts' });
-            // console.log(6)
-            // commit('updateWalletAddr', accounts[0]);
-            // commit('pushInfoLog', 'wallet connected');
-            // await delay(5000);
-            // commit('shiftInfoLog');
+            console.log(5)
+            const accounts =
+                await ethereum.request({ method: 'eth_requestAccounts' });
+            console.log(6)
+            commit('updateWalletAddr', accounts[0]);
+            commit('pushInfoLog', 'wallet connected');
+            setTimeout(() => {
+                commit('shiftInfoLog');
+            }, 5000);
 
-            // return 'success';
+            return 'success';
         },
         async transferTo({ commit, state }) {
             if (state.ethereum === undefined) {
