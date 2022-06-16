@@ -1,3 +1,137 @@
+<template>
+    <div>
+        <div class="absolute w-screen h-screen" v-if="notify">
+            <div class="absolute notifier">
+                <div class="absolute" v-if="!smsEligible && !smsVerified" @click="closeSmsNotify">
+                    <VerifyPhone />
+                </div>
+                <div class="absolute" v-else-if="!emailVerified && registered" @click="verifyEmail">
+                    <VerifyEmail />
+                </div>
+                <div class="absolute" v-else-if="invitorUsed && registered && emailVerified">
+                    <RegSuccess2 />
+                </div>
+                <div class="absolute" v-else-if="registered && emailVerified">
+                    <RegSucess />
+                </div>
+                <div class="absolute" v-else-if="!registered">
+                    <FailVerify />
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="header">
+                <div class="registertip">請先完成[會員注册]以開放平臺功能</div>
+            </div>
+
+            <div class="middle">
+                <div class="flex flex-row flex-wrap">
+                    <div class="inline-block referrer">推薦人（選填）</div>
+                    <input
+                        type="text"
+                        id="promote_code"
+                        v-model="promote_code"
+                        @input="onPromoteCodeChange"
+                        placeholder="請輸入你的推薦人碼"
+                    />
+                    <div class="inline-block invitor">{{ invitor }}</div>
+                    <div class="referrernickname">【推荐人昵称】啦啦啦啦</div>
+                </div>
+                <div class="reward">
+                    <span>○</span>
+                    <p>注册成功推薦人與你可獲得『20積分』，積分可用於『NFT盲盒』頁面兌換『S1-白名單圖鑑碎片卡包』</p>
+                    <span>○</span>
+                </div>
+            </div>
+
+            <div class="bottom">
+                <div class="flex flex-row" style="padding-top: 145px; position: relative">
+                    <div class="jfa" style="margin-right: 34px; margin-left: 64px">
+                        <div class="formfont">錢包地址</div>
+                        <div class="formfont required">昵稱</div>
+                        <div class="formfont required">郵箱</div>
+                    </div>
+                    <div>
+                        <div
+                            style="width: 450px; height: 71px; margin-bottom: 31px;width:636px;background:white;"
+                        >{{ wallet_addr }}</div>
+
+                        <div>
+                            <input
+                                class="rightinput"
+                                type="text"
+                                v-model="username"
+                                @input="onUsernameChange"
+                            />
+                            <span class="inforformtip">{{ user_exists }}</span>
+                        </div>
+                        <div>
+                            <input
+                                class="rightinput"
+                                type="text"
+                                v-model="email"
+                                @input="onEmailChange"
+                            />
+                            <span class="inforformtip">{{ email_correct }}</span>
+                        </div>
+                    </div>
+                    <div class="jfa" style="margin-right: 34px; margin-left: 82px">
+                        <div class="formfont required">地區</div>
+                        <div class="formfont required">手機號</div>
+                    </div>
+                    <div>
+                        <div>
+                            <select class="rightinput" v-model="region" name id>
+                                <option v-for="country in countryList" :key="country">{{ country }}</option>
+                            </select>
+                            <span class="inforformtip" v-if="region === ''">*请选择地址</span>
+                        </div>
+                        <div>
+                            <select class="rightinput" style="width: 135px" v-model="phone_prefix">
+                                <option v-for="code in phoneCodeList" :key="code">+{{ code }}</option>
+                            </select>
+                            <input
+                                class="rightinput"
+                                style="width:315px;"
+                                type="text"
+                                v-model="phone"
+                                @input="onPhoneChange"
+                            />
+                            <span class="inforformtip">{{ phone_correct }}</span>
+                        </div>
+                        <div>
+                            <input
+                                class="rightinput"
+                                style="width:295px"
+                                type="text"
+                                v-model="verify_code"
+                                placeholder="請填寫驗證碼"
+                            />
+                            <button
+                                class="sendbutton"
+                                style="width: 141px; height: 71px"
+                                @click="sendSms"
+                            >发送</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="protocol">
+                    <input type="checkbox" v-model="agreement" style="margin-top:-4px;" />
+                    我已經仔細閱讀並名瞭
+                    <a href>『隱私與聲明』</a>、
+                    <a href>『免責聲明及其他相關聲明』</a>
+                    等所載內容及其意義，茲同意該等條款規定，並願遵守網站現今、嗣後規範的各種規則。
+                </div>
+                <button class="registernow" @click="registerWrapper"></button>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+
+
 <script>
 import {
     existsPromotion,
@@ -161,8 +295,9 @@ export default {
                 });
             }
         },
-        onUsernameChange() {
+        onUsernameChange() {    //验证推荐人码是否存在
             userexists(this.username).then((res) => {
+                console.log(res)
                 if (res.status) {
                     this.user_exists = 'exists';
                 } else {
@@ -213,7 +348,7 @@ export default {
 
 };
 </script>
-<style scoped>
+<style lang="less" scoped>
 .main {
     filter: blur(v-bind(blur));
 }
@@ -284,11 +419,24 @@ export default {
     text-align: right;
 }
 .reward {
+    height: 22px;
     font-family: PingFang-SC-Bold;
     font-size: 22px;
     line-height: 22px;
     color: #ff0000;
     margin-top: 30px;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    span {
+        font-size: 34px;
+        margin: -3px 5px 0 0;
+    }
+
+    span:nth-of-type(2) {
+        margin-left: -7px;
+    }
 }
 .bottom {
     background-image: url("@/assets/imgs/register_bottom.png");
@@ -369,135 +517,3 @@ export default {
     align-items: flex-end;
 }
 </style>
-<template>
-    <div>
-        <div class="absolute w-screen h-screen" v-if="notify">
-            <div class="absolute notifier">
-                <div class="absolute" v-if="!smsEligible && !smsVerified" @click="closeSmsNotify">
-                    <VerifyPhone />
-                </div>
-                <div class="absolute" v-else-if="!emailVerified && registered" @click="verifyEmail">
-                    <VerifyEmail />
-                </div>
-                <div class="absolute" v-else-if="invitorUsed && registered && emailVerified">
-                    <RegSuccess2 />
-                </div>
-                <div class="absolute" v-else-if="registered && emailVerified">
-                    <RegSucess />
-                </div>
-                <div class="absolute" v-else-if="!registered">
-                    <FailVerify />
-                </div>
-            </div>
-        </div>
-
-        <div class="main">
-            <div class="header">
-                <div class="registertip">請先完成[會員注册]以開放平臺功能</div>
-            </div>
-
-            <div class="middle">
-                <div class="flex flex-row flex-wrap">
-                    <div class="inline-block referrer">推薦人（選填）</div>
-                    <input
-                        type="text"
-                        id="promote_code"
-                        v-model="promote_code"
-                        @input="onPromoteCodeChange"
-                        placeholder="請輸入你的推薦人碼"
-                    />
-                    <div class="inline-block invitor">{{ invitor }}</div>
-                    <div class="referrernickname">【推荐人昵称】啦啦啦啦</div>
-                </div>
-                <div class="reward" style="text-align: right">
-                    <span style="display:inline-block;margin-right:5px;font-size:20px">О</span>注册成功推薦人與你可獲得『20積分』，積分可用於『NFT盲盒』頁面兌換『S1-白名單圖鑑碎片卡包』
-                    <span
-                        style="display:inline-block;margin-right:5px;font-size:20px"
-                    >О</span>
-                </div>
-            </div>
-
-            <div class="bottom">
-                <div class="flex flex-row" style="padding-top: 145px; position: relative">
-                    <div class="jfa" style="margin-right: 34px; margin-left: 64px">
-                        <div class="formfont">錢包地址</div>
-                        <div class="formfont required">昵稱</div>
-                        <div class="formfont required">郵箱</div>
-                    </div>
-                    <div>
-                        <div
-                            style="width: 450px; height: 71px; margin-bottom: 31px;width:636px;background:white;"
-                        >{{ wallet_addr }}</div>
-
-                        <div>
-                            <input
-                                class="rightinput"
-                                type="text"
-                                v-model="username"
-                                @input="onUsernameChange"
-                            />
-                            <span class="inforformtip">{{ user_exists }}</span>
-                        </div>
-                        <div>
-                            <input
-                                class="rightinput"
-                                type="text"
-                                v-model="email"
-                                @input="onEmailChange"
-                            />
-                            <span class="inforformtip">{{ email_correct }}</span>
-                        </div>
-                    </div>
-                    <div class="jfa" style="margin-right: 34px; margin-left: 82px">
-                        <div class="formfont required">地區</div>
-                        <div class="formfont required">手機號</div>
-                    </div>
-                    <div>
-                        <div>
-                            <select class="rightinput" v-model="region" name id>
-                                <option v-for="country in countryList" :key="country">{{ country }}</option>
-                            </select>
-                            <span class="inforformtip" v-if="region === ''">*请选择地址</span>
-                        </div>
-                        <div>
-                            <select class="rightinput" style="width: 135px" v-model="phone_prefix">
-                                <option v-for="code in phoneCodeList" :key="code">+{{ code }}</option>
-                            </select>
-                            <input
-                                class="rightinput"
-                                style="width:315px;"
-                                type="text"
-                                v-model="phone"
-                                @input="onPhoneChange"
-                            />
-                            <span class="inforformtip">{{ phone_correct }}</span>
-                        </div>
-                        <div>
-                            <input
-                                class="rightinput"
-                                style="width:295px"
-                                type="text"
-                                v-model="verify_code"
-                                placeholder="請填寫驗證碼"
-                            />
-                            <button
-                                class="sendbutton"
-                                style="width: 141px; height: 71px"
-                                @click="sendSms"
-                            >发送</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="protocol">
-                    <input type="checkbox" v-model="agreement" style="margin-top:-4px;" />
-                    我已經仔細閱讀並名瞭
-                    <a href>隱私與聲明</a>
-                    <a href>免責聲明及其他相關聲明</a>
-                    等所載內容及其意義，茲同意該等條款規定，並願遵守網站現今、嗣後規範的各種規則。
-                </div>
-                <button class="registernow" @click="registerWrapper"></button>
-            </div>
-        </div>
-    </div>
-</template>
-

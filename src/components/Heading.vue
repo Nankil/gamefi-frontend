@@ -1,5 +1,5 @@
 <template>
-    <!-- 我的账户、选语言 -->
+    <!-- 链接钱包、我的账户、选语言 -->
     <div class="flex flex-row justify-between w-full h-full heading-container">
         <div class="main self-center" @click="$router.push('/')">
             <img src="@/assets/imgs/main.png" alt class="object-cover max-2" />
@@ -7,7 +7,6 @@
 
         <div class="flex flex-col right-bar">
             <div class="flex flex-row items-center row-funcs">
-                <!-- 我的账户 -->
                 <div
                     id="wallet"
                     class="flex flex-row h-8 border rounded-full border-teal-400 hover:cursor-pointer justify-center items-center"
@@ -17,13 +16,15 @@
                     <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
                     链接钱包
                 </div>
+
                 <div
                     id="wallet"
                     class="flex fle-row h-8 justify-center text-center border rounded-full border-teal-400 hover:cursor-pointer items-center"
+                    @click="jumpPage"
                     v-else
                 >
                     <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
-                    {{ truncatedAddr }}
+                    我的账户
                 </div>
 
                 <!-- 选择语言!!! -->
@@ -78,7 +79,7 @@ import { mapActions, mapState } from 'vuex';
 export default {
     methods: {
         ...mapActions(['connectWallet']),
-        async connectWalletWrapper() {
+        async connectWalletWrapper() {    //链接钱包
             // this.$router.push("/account/info")
             const res = await this.connectWallet();
             console.log(res)
@@ -101,14 +102,17 @@ export default {
         },
         changeLanguage($event) {    //切换语言
             this.$i18n.locale = $event.target.value;
+        },
+        jumpPage() {    //跳转页面
+            if (this.userInfo.registered) {    //已注册
+                this.$router.push('/account/info')
+            } else {
+                this.$router.push('/account/register')
+            }
         }
     },
     computed: {
         ...mapState(['userInfo']),
-        truncatedAddr() {
-            return this.userInfo.walletAddr.slice(0, 4) +
-                '...' + this.userInfo.walletAddr.slice(38, -1);
-        },
         info() {    //获取文字
             return this.$tm("home.heading")
         }

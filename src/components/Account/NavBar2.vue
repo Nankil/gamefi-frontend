@@ -1,18 +1,21 @@
 <template>
     <!-- 我的资料、推荐管理......的选项卡 -->
     <div class="father" style="padding-top:48px;padding-bottom:60px;">
-        <div
-            v-for="item in $tm('account.routes')"
-            :key="item"
-            @click="this.$router.push(item.path)"
-        >
+        <div v-for="item in $tm('account.routes')" :key="item" @click="jumpPage(item.path)">
+            <!-- 注册页面时 -->
+            <button
+                v-if="$route.path=='/account/register'"
+                class="unchecked register"
+                style="cursor:unset"
+            >{{ item.title }}</button>
+
             <!-- 选中 -->
             <button
-                v-if="$route.path == item.path || myProfilePath == item.path"
+                v-else-if="$route.path == item.path || myProfilePath == item.path"
                 class="w-full selected"
             >{{ item.title }}</button>
             <!-- 未选中 -->
-            <button v-else class="register">{{ item.title }}</button>
+            <button v-else class="unchecked">{{ item.title }}</button>
         </div>
     </div>
 </template>
@@ -27,6 +30,16 @@ export default {
                 return '/account/info'
             }
         }
+    },
+    methods: {
+        jumpPage(path) {    //跳转页面
+            if (this.$route.path == '/account/register') {
+                return
+            } else {
+                this.$router.push(path)
+            }
+
+        }
     }
 };
 </script>
@@ -37,7 +50,11 @@ export default {
     justify-content: space-between;
 }
 
-.register {
+.father button:focus {
+    outline: none;
+}
+
+.unchecked {
     background-image: url("@/assets/imgs/nav2_button.svg");
     background-repeat: no-repeat;
     height: 75px;
@@ -46,6 +63,10 @@ export default {
     font-size: 32px;
     line-height: 32px;
     color: #6b6b6b;
+}
+
+.register {
+    background: url("@/assets/imgs/Account/按钮_画板 1.svg") no-repeat !important;
 }
 
 .selected {
