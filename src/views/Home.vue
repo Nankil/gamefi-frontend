@@ -24,25 +24,33 @@
 }
 </style>
 <template>
-    <div class="dark:text-white flex flex-col Home">
-        <img src="@/assets/imgs/new_message.png" width="894" height="88" alt class="message-bar" />
-        <Homeswiper />
-        <img class="self-end icon-more" src="@/assets/imgs/more.png" alt />
-    </div>
-    <img src="@/assets/imgs/spliter1.png" alt="splitter" class="spliter" />
+    <div>
+        <div class="dark:text-white flex flex-col Home">
+            <img
+                src="@/assets/imgs/new_message.png"
+                width="894"
+                height="88"
+                alt
+                class="message-bar"
+            />
+            <Homeswiper />
+            <img class="self-end icon-more" src="@/assets/imgs/more.png" alt />
+        </div>
+        <img src="@/assets/imgs/spliter1.png" alt="splitter" class="spliter" />
 
-    <div class="dark:text-white flex flex-col Home new-message">
-        <HomeNewMessage />
-    </div>
-    <img src="@/assets/imgs/spliter2.png" alt="splitter" class="spliter" />
+        <div class="dark:text-white flex flex-col Home new-message">
+            <HomeNewMessage />
+        </div>
+        <img src="@/assets/imgs/spliter2.png" alt="splitter" class="spliter" />
 
-    <div class="dark:text-white flex flex-col Home">
-        <img src="@/assets/imgs/economic_bar.png " class="economic-bar" alt />
+        <div class="dark:text-white flex flex-col Home">
+            <img src="@/assets/imgs/economic_bar.png " class="economic-bar" alt />
 
-        <Hometoken />
+            <Hometoken />
 
-        <div class="h-20 px-40 my-10 text-4xl text-purple-500">{{ $t("Home.PDR") }}</div>
-        <div class="h-20 px-40 text-4xl text-purple-500">{{ $t("Home.partners") }}</div>
+            <div class="h-20 px-40 my-10 text-4xl text-purple-500">{{ $t("Home.PDR") }}</div>
+            <div class="h-20 px-40 text-4xl text-purple-500">{{ $t("Home.partners") }}</div>
+        </div>
     </div>
 </template>
 

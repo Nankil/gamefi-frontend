@@ -20,11 +20,7 @@
                 <div
                     id="wallet"
                     class="flex fle-row h-8 justify-center text-center border rounded-full border-teal-400 hover:cursor-pointer items-center"
-<<<<<<< HEAD
                     @click="jumpPage"
-=======
-                    @click="$router.push('/account/info')"
->>>>>>> a788dbcc07581f81353ba36d100632605b586564
                     v-else
                 >
                     <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
