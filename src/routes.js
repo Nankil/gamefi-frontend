@@ -14,7 +14,7 @@ export const routes = [
             name: "我的账户",
             title: 'Account Profile'
         },
-        redirect: '/account/info/basic',
+        // redirect: '/account/info/basic',
         children: [
             {
                 path: 'register',

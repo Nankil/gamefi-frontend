@@ -1,0 +1,15 @@
+<svg id="组_45" data-name="组 45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="391" height="87" viewBox="0 0 391 87">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="175" y1="1230.5" x2="566" y2="1230.5" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#53cbed"/>
+      <stop offset="1" stop-color="#c14fc4"/>
+    </linearGradient>
+  </defs>
+  <path id="矩形_27" data-name="矩形 27" class="cls-1" d="M565.994,1187.01H175.012v86.98H565.994s-9.591-21.47-9.591-43.49C556.4,1209.04,565.994,1187.01,565.994,1187.01Z" transform="translate(-175 -1187)"/>
+</svg>

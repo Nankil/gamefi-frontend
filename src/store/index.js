@@ -78,7 +78,7 @@ export default createStore({
             //     console.log('用户钱包地址:', addr[0]);
             // } else {
             //     console.log('未安装钱包插件！');
-            // }
+            // }compare changes
 
             console.log(window.ethereum)
             if (state.ethereum === undefined) {

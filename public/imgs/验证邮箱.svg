@@ -1,0 +1,40 @@
+<svg id="组_50" data-name="组 50" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="710.66" height="426.156" viewBox="0 0 710.66 426.156">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #55caec;
+        filter: url(#filter);
+      }
+
+      .cls-3 {
+        font-size: 44.295px;
+        filter: url(#filter-2);
+        fill: #5a5a5a;
+        text-anchor: middle;
+        font-family: "PingFang SC";
+        font-weight: 700;
+      }
+    </style>
+    <filter id="filter" x="976" y="60" width="710.66" height="426.156" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="976" y="60" width="710.66" height="426.156" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNzEwLjY2IiBoZWlnaHQ9IjQyNi4xNTYiIHZpZXdCb3g9IjAgMCA3MTAuNjYgNDI2LjE1NiI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQpOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQiIHgxPSI3MTAuNjYiIHkxPSIxODguMjMxIiB4Mj0iMCIgeTI9IjIzNy45MjUiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYzE0ZmM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzUzY2JlZCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNzEwLjY2IiBoZWlnaHQ9IjQyNi4xNTYiLz4KPC9zdmc+Cg=="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="1013" y="79" width="204" height="33" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="1013" y="79" width="204" height="33" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjA0IiBoZWlnaHQ9IjMzIiB2aWV3Qm94PSIwIDAgMjA0IDMzIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjIwNCIgeTE9IjkuMzY3IiB4Mj0iMCIgeTI9IjIzLjYzMyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjMTRmYzQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNTNjYmVkIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSIyMDQiIGhlaWdodD0iMzMiLz4KPC9zdmc+Cg=="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="矩形_33_拷贝" data-name="矩形 33 拷贝" class="cls-1" d="M978,66h283.76L1274,110h408l1,328-121-2-33,48H1140l-42-47H979l-1-11V66h0Z" transform="translate(-976 -60)"/>
+  <path id="形状_5" data-name="形状 5" class="cls-2" d="M1530.82,486.16H1137.85l-36.48-45.44L976,440.357V63.881h3.877V60H1264.91l17.05,45.792h404.69v333.8H1565.16ZM1141.57,478.4h385.34l34.34-46.569h117.64V113.555H1276.57l-17.05-45.792H983.758V432.618l121.342,0.351Z" transform="translate(-976 -60)"/>
+  <text id="验证您的邮箱" class="cls-3" transform="translate(139.261 47.922) scale(0.774 0.774)">验证您的邮箱</text>
+</svg>
