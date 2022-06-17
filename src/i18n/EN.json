@@ -4,12 +4,12 @@
             "account": "Account",
             "languageCategory": [
                 {
-                    "type": "CN",
-                    "title": "traditional Chinese"
-                },
-                {
                     "type": "ZH",
                     "title": "Simplified Chinese"
+                },
+                {
+                    "type": "CN",
+                    "title": "traditional Chinese"
                 },
                 {
                     "type": "EN",

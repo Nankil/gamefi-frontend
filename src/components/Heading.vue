@@ -30,18 +30,37 @@
                 <!-- 选择语言!!! -->
                 <div
                     id="lang"
+                    @click="boo = !boo"
+                    @mouseleave="boo = false"
                     class="flex flex-row h-8 justify-center border rounded-full border-purple-400 hover:cursor-pointer items-center"
                 >
                     <img src="@/assets/imgs/internet_icon.png" alt="fox" class="h-6 mr-1" />
 
-                    <select @change="changeLanguage($event)">
+                    <div class="selectLanguage">
+                        <p>
+                            {{title}}
+                            <span>▼</span>
+                        </p>
+                        <ul v-show="boo">
+                            <li
+                                v-for="item of info.languageCategory"
+                                :key="item.type"
+                                @click="changeLanguage(item)"
+                            >{{item.title}}</li>
+                        </ul>
+                    </div>
+
+                    <!-- <select @change="changeLanguage($event)">
                         <option
                             v-for="item of info.languageCategory"
                             :key="item.type"
                             :value="item.type"
+                            :selected="item.type=='CN'"
+                            class="aaa"
                         >{{item.title}}</option>
-                    </select>
+                    </select>-->
                 </div>
+
                 <img
                     id="night-switch"
                     src="@/assets/imgs/sun.png"
@@ -77,6 +96,12 @@
 import { accountRegistered, login } from '../api/backend.mjs';
 import { mapActions, mapState } from 'vuex';
 export default {
+    data() {
+        return {
+            title: "繁體中文",   //默认语言显示
+            boo: false,    //控制多语音选项是否出现
+        }
+    },
     methods: {
         ...mapActions(['connectWallet']),
         async connectWalletWrapper() {    //链接钱包
@@ -100,8 +125,9 @@ export default {
                 }
             }
         },
-        changeLanguage($event) {    //切换语言
-            this.$i18n.locale = $event.target.value;
+        changeLanguage({ type, title }) {    //切换语言
+            this.title = title
+            this.$i18n.locale = type;
         },
         jumpPage() {    //跳转页面
             if (this.userInfo.registered) {    //已注册
@@ -120,7 +146,31 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang='less' scoped>
+.selectLanguage {
+    p {
+        color: #ba4de4;
+        position: relative;
+
+        span {
+            position: absolute;
+            font-size: 14px;
+            right: -15px;
+            top: 10px;
+        }
+    }
+    ul {
+        width: 157px;
+        background: white;
+        text-align: center;
+        font-size: 20px;
+        padding: 13px 0 11px 0;
+        position: absolute;
+        top: 57px;
+        left: 26px;
+    }
+}
+
 .heading-container {
     background-image: url("@/assets/imgs/nav_top.png");
     background-size: 100% 100%;
@@ -142,6 +192,7 @@ export default {
     width: 240px;
     height: 58px;
     font-size: 25px;
+    position: relative;
 }
 
 #lang {

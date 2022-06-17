@@ -4,12 +4,12 @@
             "account": "我的账户",
             "languageCategory": [
                 {
-                    "type": "CN",
-                    "title": "繁体中文"
-                },
-                {
                     "type": "ZH",
                     "title": "简体中文"
+                },
+                {
+                    "type": "CN",
+                    "title": "繁体中文"
                 },
                 {
                     "type": "EN",
