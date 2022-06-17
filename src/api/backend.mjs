@@ -2,7 +2,7 @@
 
 import { rewriteDefault } from 'vue/compiler-sfc';
 
-const baseUrl = 'http://103.117.102.225:8081';
+const baseUrl = 'http://geneplayer.io/api';
 
 /**
  *
