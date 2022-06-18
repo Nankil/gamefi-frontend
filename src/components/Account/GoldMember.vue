@@ -139,8 +139,10 @@ export default {
 
 <style lang="less" scoped>
 .gold {
-    height: 1046px;
-    border: 1px solid red;
+    height: 1035px;
+    box-sizing: content-box;
+    padding-bottom: 32px;
+    background: rgba(255, 255, 255, 0.3);
 
     .removeBg {
         background-image: none !important;
@@ -150,13 +152,13 @@ export default {
         height: 168px;
     }
     li > div:nth-of-type(2) {
-        height: 250px;
+        height: 257px;
     }
     li > div:nth-of-type(3) {
-        height: 199px;
+        height: 205px;
     }
     li > div:nth-of-type(4) {
-        height: 374px;
+        height: 390px;
     }
 }
 </style>

@@ -1,26 +1,15 @@
-<svg id="组_45" data-name="组 45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1749" height="1379" viewBox="0 0 1749 1379">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #fff;
-        opacity: 0.5;
-      }
-
-      .cls-1, .cls-2 {
-        fill-rule: evenodd;
-      }
-
-      .cls-2 {
-        fill: none;
-        stroke-width: 7.742px;
-        stroke: url(#linear-gradient);
-      }
-    </style>
-    <linearGradient id="linear-gradient" x1="89.875" y1="1779.5" x2="1831.12" y2="1779.5" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#53cbed"/>
-      <stop offset="1" stop-color="#c14fc4"/>
-    </linearGradient>
-  </defs>
-  <path id="矩形_24_拷贝_14" data-name="矩形 24 拷贝 14" class="cls-1" d="M89.884,1095.88l274.872-.08,32.6-.04,1120.745-1.62,312.01-.26v250.05l1.01,1121.19H89.884V1095.88Z" transform="translate(-86 -1090)"/>
-  <path id="矩形_24_拷贝_17" data-name="矩形 24 拷贝 17" class="cls-2" d="M89.884,1095.88l274.872-.08,32.6-.04,1120.745-1.62,312.01-.26v250.05l1.01,1121.19H89.884V1095.88Z" transform="translate(-86 -1090)"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="组_45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1749 1472.1" style="enable-background:new 0 0 1749 1472.1;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;fill:#FFFFFF;enable-background:new    ;}
+	.st1{fill:none;stroke:url(#矩形_24_拷贝_17_1_);stroke-width:7.742;}
+</style>
+<path id="矩形_24_拷贝_14" class="st0" d="M3.9,5.9l274.9-0.1l32.6,0l1120.7-1.6l312-0.3v250.1l1,1214.3H3.9V5.9z"/>
+<linearGradient id="矩形_24_拷贝_17_1_" gradientUnits="userSpaceOnUse" x1="89.875" y1="-448.181" x2="1831.1198" y2="-448.181" gradientTransform="matrix(1 0 0 -1 -86 287.8898)">
+	<stop  offset="0" style="stop-color:#53CBED"/>
+	<stop  offset="1" style="stop-color:#C14FC4"/>
+</linearGradient>
+<path id="矩形_24_拷贝_17" class="st1" d="M3.9,5.9l274.9-0.1l32.6,0l1120.7-1.6l312-0.3v250.1l1,1214.3H3.9V5.9z"/>
 </svg>

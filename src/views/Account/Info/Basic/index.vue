@@ -92,7 +92,7 @@
                     />
                 </div>
                 <!-- 【會員階級提升規則】 -->
-                <promoteRule />
+                <promoteRule :index="index" />
                 <!-- 一般会员 -->
                 <div v-if="index == 0">
                     <GeneralMembership />
@@ -224,7 +224,7 @@ export default {
 
     &.gold {
         //黄金会员边框
-        height: 1390px;
+        height: 1470px;
         background: url("@/assets/imgs/Account/黄金会员边框.svg") no-repeat;
     }
 
@@ -238,6 +238,8 @@ export default {
         .level {
             display: flex;
             justify-content: space-between;
+            padding-bottom: 30px;
+            background: rgba(255, 255, 255, 0.3);
 
             ul {
                 width: 1302px;

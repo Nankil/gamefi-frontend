@@ -2,7 +2,7 @@
     <!-- 會員階級提升規則 -->
     <div class="promoteRule">
         <!-- 會員階級提升規則 -->
-        <div class="rule">
+        <div class="rule" v-show="index==0">
             <h4>【{{promoteRule.rule}}】</h4>
             <div class="con">
                 <div class="left">
@@ -26,6 +26,7 @@
 
 <script>
 export default {
+    props: ['index'],    //index:黄金会员不显示“會員階級提升規則”
     computed: {    //获取文字
         promoteRule() {
             return this.$tm("account.promoteRule")
@@ -38,7 +39,7 @@ export default {
 .promoteRule {
     background: rgba(255, 255, 255, 0.3);
     .rule {
-        padding: 24px 8px 25px 53px;
+        padding: 0 8px 25px 53px;
         h4 {
             font-size: 27px;
             letter-spacing: 2px;

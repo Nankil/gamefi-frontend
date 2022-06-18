@@ -343,7 +343,7 @@ export default {
                 return
             }
 
-            const regEx = /^\d{10,14}$/;
+            const regEx = /^\d{9,14}$/;
 
             if (regEx.test(this.phone)) {
                 this.phone_correct = '*格式正确';
