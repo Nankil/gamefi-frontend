@@ -162,7 +162,7 @@
                     等所載內容及其意義，茲同意該等條款規定，並願遵守網站現今、嗣後規範的各種規則。
                 </div>
                 <!-- 立即注册 -->
-                <div class="registernow" @click="registerWrapper"></div>
+                <button class="registernow" @click="registerWrapper" :disabled="disabled"></button>
             </div>
         </div>
     </div>
@@ -231,6 +231,7 @@ export default {
             phone_correct: '',      //手机号提示文字
             send_verification_code: '發送驗證碼',    //发送验证码文字
             send_verification_code_boo: false,       //是否等待60s
+            disabled: false,        //“立即注册”按钮是否禁用
             blur: '0px',
             success: false,
             notify: false,
@@ -282,10 +283,10 @@ export default {
             if (this.promote_code.length !== 10) {
                 this.invitor = `${this.promote_code.length} / 10`;
             } else {
-                this.invitor = '*检查中...';
+                this.invitor = '*檢查中...';
                 existsPromotion(this.promote_code).then((res) => {
                     if (res.data.exists) {
-                        this.invitor = '存在';
+                        this.invitor = '*存在';
                         this.referral_Nickname = res.data.name
                     } else {
                         this.invitor = '*查無此推薦人';
@@ -376,6 +377,11 @@ export default {
             this.smsEligible = false;
         },
         async registerWrapper() {    //立即注册
+            this.disabled = true    //点击“立即注册后”，禁用按钮2s，防止用户连点
+            setTimeout(() => {
+                this.disabled = false
+            }, 2000)
+
             this.regButtonPressed = true;
             const smsRes = await verifySms(this.phonenumber, this.verify_code);
             console.log(smsRes);
@@ -564,7 +570,9 @@ export default {
     background-image: url(@/assets/imgs/立即注册2.svg);
     margin: 0 auto;
     margin-top: 45px;
-    cursor: pointer;
+}
+.registernow:focus {
+    outline: none;
 }
 .inforformtip {
     display: inline-block;

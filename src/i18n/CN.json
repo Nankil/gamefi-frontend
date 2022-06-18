@@ -113,6 +113,21 @@
             "class": "會員階級",
             "upgrade": "升級條件/任務",
             "permission": "權限/空頭獎勵"
+        },
+        "register": {
+            "title": "請先完成[會員注册]以開放平臺功能",
+            "referrer": "推薦人（選填）",
+            "enter_recommender_code": "請輸入你的推薦人碼",
+            "under_inspection": "*檢查中...",
+            "existence": "*存在",
+            "no_recommender": "*查無此推薦人",
+            "recommender_nickname": "【推荐人昵称】",
+            "obtain_20_points": "注册成功推薦人與你可獲得『20積分』，積分可用於『NFT盲盒』頁面兌換『S1-白名單圖鑑碎片卡包』",
+            "wallet_address": "錢包地址",
+            "nickname ": "昵稱",
+            "mailbox": "郵箱",
+            "fill_your_nickname": "請填寫您的昵稱",
+            "least_input_2_words": "*最少輸入2個字"
         }
     },
     "header": {
