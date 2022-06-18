@@ -104,7 +104,7 @@ export default {
       if (res.status === 'success') {
         this.smsSendingTime = new Date();
       } else {
-        this.$store.dispatch('pushErrorLog', 'sms send failed');
+        this.$store.dispatch('pushErrorLog', 'SMS发送失败');
         this.notify = true;
       }
       this.smsEligible = false;
@@ -122,7 +122,7 @@ export default {
       if (res.status) {
         this.emailVerified = true;
       } else {
-        this.$store.dispatch('pushErrorLog', 'email verify failed');
+        this.$store.dispatch('pushErrorLog', '邮件验证错误');
         this.notify = true;
       }
     },
@@ -131,31 +131,31 @@ export default {
       const regEx = /^\d{10,14}$/;
 
       if (regEx.test(this.phone)) {
-        this.phone_correct = 'correct';
+        this.phone_correct = '';
       } else {
-        this.phone_correct = 'wrong format';
+        this.phone_correct = '格式错误';
       }
     },
     onEmailChange() {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
-        this.email_correct = 'correct';
+        this.email_correct = '';
       } else {
-        this.email_correct = 'wrong format';
+        this.email_correct = '格式错误';
       }
     },
     onPromoteCodeChange() {
       this.invitorUsed = false;
       console.log('invoking promote');
       if (this.promote_code.length !== 10) {
-        this.invitor = 'too short';
+        this.invitor = '太短';
       } else {
-        this.invitor = 'checking...';
+        this.invitor = '检查中...';
         existsPromotion(this.promote_code).then((res) => {
           if (res.status) {
             this.invitor = res.invitor;
             this.invitorUsed = true;
           } else {
-            this.invitor = 'not exists';
+            this.invitor = '不存在';
           }
         });
       }
@@ -174,7 +174,7 @@ export default {
       const smsRes = await verifySms(this.phonenumber, this.verify_code);
       console.log(smsRes);
       if (smsRes.status !== true) {
-        this.$store.dispatch('pushErrorLog', 'verify sms failed');
+        this.$store.dispatch('pushErrorLog', 'SMS验证失败');
 
         return;
       }
@@ -190,7 +190,7 @@ export default {
       });
 
       if (!res) {
-        this.$store.dispatch('pushErrorLog', 'register failed');
+        this.$store.dispatch('pushErrorLog', '注册失败');
         this.notify = true;
         this.registered = false;
         console.log('register failed');
@@ -205,7 +205,7 @@ export default {
       if (resEmail.status) {
         this.emailVerified = true;
       } else {
-        this.$store.dispatch('pushErrorLog', 'email verify failed');
+        this.$store.dispatch('pushErrorLog', '邮件验证失败');
       }
     },
   },
@@ -347,13 +347,13 @@ export default {
       @click="verifyEmail">
         <VerifyEmail />
       </div>
-      <div class="absolute" v-else-if="invitorUsed && registered && emailVerified">
+      <div @click="$router.push('/')" class="absolute" v-else-if="invitorUsed && registered && emailVerified">
         <RegSuccess2 />
       </div>
-      <div class="absolute" v-else-if="registered && emailVerified">
+      <div @click="$router.push('/')" class="absolute" v-else-if="registered && emailVerified">
         <RegSucess />
       </div>
-      <div class="absolute" v-else-if="!registered">
+      <div @click="$router.push('/')" class="absolute" v-else-if="!registered">
         <FailVerify />
       </div>
     </div>
@@ -373,10 +373,7 @@ export default {
             v-model="promote_code"
             @input="onPromoteCodeChange"
           />
-          <div class="inline-block invitor">
-            {{ invitor }}
-          </div>
-          <div class="referrernickname">自动显示推荐人会员号 / 推荐人昵称</div>
+          <div class="referrernickname">{{ invitor }}</div>
         </div>
         <div class="reward" style="text-align: right">注册成功奖励20积分</div>
       </div>

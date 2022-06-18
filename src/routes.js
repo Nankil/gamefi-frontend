@@ -9,7 +9,7 @@ export const routes = [
     },
     {
         path: '/account',
-        component: import('./views/Account/index.vue'),
+        component: () => import('./views/Account/index.vue'),
         meta: {
             name: "我的账户",
             title: 'Account Profile'
