@@ -2,8 +2,8 @@
 
 import { rewriteDefault } from 'vue/compiler-sfc';
 
-const baseUrl = 'http://103.117.102.225:8081';
-// const baseUrl = 'http://geneplayer.io/api';
+// const baseUrl = 'http://103.117.102.225:8081';
+const baseUrl = 'http://geneplayer.io/api';
 
 
 /**
@@ -95,10 +95,11 @@ export async function login(pubkey) {
  */
 export async function accountRegistered(pubkey) {
     try {
-        const res = await fetch(baseUrl + '/walletexists?' + new URLSearchParams({
+        const res = await fetch('/api/walletexists?' + new URLSearchParams({
             wallet_address: pubkey,
         }));
         const resObj = await res.json();
+        console.log(resObj, 999)
         if (resObj.exists) {
             return {
                 status: true,

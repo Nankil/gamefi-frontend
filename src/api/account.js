@@ -12,10 +12,11 @@ export const userexists = (username) => request.get(`/userexists?username=${user
 export const sendSmsVerification = (phone) => request.post(`/sendverificationcode?phone=${phone}`)
 
 
-//
-// export const verifySms = (phone, code) => request.post(`/checkverificationcode?phone=${phone}?code=${code}`)
+//验证验证码
 export const verifySms = () => request.post(`/checkverificationcode?phone=+17542001818&&code=041685`)
 
 
+//链接钱包
+export const accountRegistered = (pubkey) => request.get(`/walletexists?wallet_address=${pubkey}`)
 
 

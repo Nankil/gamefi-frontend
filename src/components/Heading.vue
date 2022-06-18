@@ -83,7 +83,9 @@
 
 
 <script>
-import { accountRegistered, login } from '../api/backend.mjs';
+import { login, } from '../api/backend.mjs';
+import { accountRegistered } from '@/api/account.js';
+
 import { mapActions, mapState } from 'vuex';
 export default {
     data() {
@@ -100,9 +102,11 @@ export default {
             console.log(res)
 
             if (res === 'success') {
-                const regRes = await accountRegistered(this.userInfo.walletAddr);
+                let regRes = await accountRegistered(this.userInfo.walletAddr);
+                regRes = regRes.data
                 console.log(regRes)
-                if (regRes.status === false) {
+
+                if (regRes.exists === false) {
                     console.log(1)
                     this.$router.push('/account/register');
                 } else {

@@ -14,7 +14,7 @@ export default defineConfig({
         open: true,
         proxy: {
             '/api': {
-                target: 'http://geneplayer.io/api',   //
+                target: 'http://geneplayer.io/api',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             }
