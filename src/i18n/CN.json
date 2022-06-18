@@ -1,6 +1,7 @@
 {
     "home": {
         "heading": {
+            "linkWallet": "連結錢包",
             "account": "我的賬戶",
             "languageCategory": [
                 {

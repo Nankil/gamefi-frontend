@@ -14,7 +14,7 @@
                     v-if="userInfo.walletAddr === ''"
                 >
                     <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
-                    链接钱包
+                    {{info.linkWallet}}
                 </div>
 
                 <div
@@ -24,7 +24,7 @@
                     v-else
                 >
                     <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
-                    我的账户
+                    {{info.account}}
                 </div>
 
                 <!-- 选择语言!!! -->
@@ -43,22 +43,12 @@
                         </p>
                         <ul v-show="boo">
                             <li
-                                v-for="item of info.languageCategory"
+                                v-for="(item,index) of info.languageCategory"
                                 :key="item.type"
-                                @click="changeLanguage(item)"
+                                @click="changeLanguage({type:item.type,index})"
                             >{{item.title}}</li>
                         </ul>
                     </div>
-
-                    <!-- <select @change="changeLanguage($event)">
-                        <option
-                            v-for="item of info.languageCategory"
-                            :key="item.type"
-                            :value="item.type"
-                            :selected="item.type=='CN'"
-                            class="aaa"
-                        >{{item.title}}</option>
-                    </select>-->
                 </div>
 
                 <img
@@ -98,22 +88,26 @@ import { mapActions, mapState } from 'vuex';
 export default {
     data() {
         return {
-            title: "繁體中文",   //默认语言显示
+            index: 1,      //默认语言显示   0：简体   1：繁体   2：英文
             boo: false,    //控制多语音选项是否出现
         }
     },
     methods: {
         ...mapActions(['connectWallet']),
-        async connectWalletWrapper() {    //链接钱包
+        async connectWalletWrapper() {        //链接钱包
             // this.$router.push("/account/info")
             const res = await this.connectWallet();
             console.log(res)
 
             if (res === 'success') {
                 const regRes = await accountRegistered(this.userInfo.walletAddr);
+                console.log(regRes)
                 if (regRes.status === false) {
+                    console.log(1)
                     this.$router.push('/account/register');
                 } else {
+                    console.log(2)
+
                     const loginRes = await login(this.userInfo.walletAddr);
                     if (loginRes.status === false) {
                         this.$store.dispatch('pushErrorLog',
@@ -125,8 +119,8 @@ export default {
                 }
             }
         },
-        changeLanguage({ type, title }) {    //切换语言
-            this.title = title
+        changeLanguage({ type, index }) {    //切换语言
+            this.index = index
             this.$i18n.locale = type;
         },
         jumpPage() {    //跳转页面
@@ -139,8 +133,11 @@ export default {
     },
     computed: {
         ...mapState(['userInfo']),
-        info() {    //获取文字
+        info() {     //获取文字
             return this.$tm("home.heading")
+        },
+        title() {    //显示的哪门语言
+            return this.$tm("home.heading.languageCategory")[this.index].title
         }
     }
 };
