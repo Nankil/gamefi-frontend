@@ -3,37 +3,14 @@
 import { rewriteDefault } from 'vue/compiler-sfc';
 
 const baseUrl = 'http://103.117.102.225:8081';
+// const baseUrl = 'http://geneplayer.io/api';
+
 
 /**
  *
  * @param {String} code
  * @return {Object}
  */
-export async function existsPromotion(code) {
-    try {
-        const res = await fetch(baseUrl + '/invitationexists?' +
-            new URLSearchParams({
-                promote_code: code,
-            }));
-
-        const resObj = await res.json();
-        if (resObj.exists) {
-            return {
-                status: true,
-                invitor: resObj.name,
-            };
-        } else {
-            return {
-                status: false,
-            };
-        }
-    } catch (e) {
-        return {
-            status: false,
-            message: 'Error connecting to server',
-        };
-    }
-}
 
 /**
  *
@@ -145,34 +122,6 @@ export async function accountRegistered(pubkey) {
  * @param {String} username
  * @return {Object}
  */
-export async function userexists(username) {
-    try {
-        const res = await fetch(baseUrl + '/userexists?' + new URLSearchParams({
-            username: username,
-        }));
-        const resObj = await res.json();
-        if (resObj.exists) {
-            return {
-                status: true,
-            };
-        } else {
-            return {
-                status: false,
-            };
-        }
-    } catch (e) {
-        return {
-            status: false,
-            message: 'Error connecting to server',
-        };
-    }
-}
-
-/**
- *
- * @param {String} username
- * @return {Object}
- */
 export async function emailVerified(username) {
     try {
         const res = await fetch(baseUrl + '/emailverified?' + new URLSearchParams({
@@ -203,34 +152,7 @@ export async function emailVerified(username) {
  * @param {String} phone
  * @return {Object}
  */
-export async function sendSmsVerification(phone) {
-    try {
-        const res = await fetch(baseUrl + '/sendverificationcode', {
-            method: 'POST',
-            body: new URLSearchParams({
-                phone: phone,
-            }),
-        });
 
-        const resObj = await res.json();
-        console.log(resObj);
-        if (resObj.status === 'success') {
-            return {
-                status: true,
-            };
-        } else {
-            return {
-                status: false,
-                message: resObj.message,
-            };
-        }
-    } catch (e) {
-        return {
-            status: false,
-            message: 'Error connecting to server',
-        };
-    }
-}
 
 /**
  *
