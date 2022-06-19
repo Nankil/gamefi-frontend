@@ -172,7 +172,7 @@
 
 
 <script>
-import { userexists, existsPromotion, sendSmsVerification, verifySms } from "@/api/account.js"
+import { userExists, existsPromotion, sendSmsVerification, verifySms } from "@/api/account.mjs"
 
 import {
     emailVerified,

@@ -1,0 +1,104 @@
+{
+    "header": {
+        "cw": "Connect Wallet"
+    },
+    "Home": {
+        "message": "spot news",
+        "communitybank": "community bank",
+        "usercount": "user count",
+        "tokeneconomy": "token economy",
+        "PDR": "Project Development Roadmap",
+        "partners": "partners"
+    },
+    "Account": {
+        "Info": {
+            "promote_code": "Promote Code",
+            "wallet_addr": "Wallet",
+            "id": "ID",
+            "privilege": "Privilege",
+            "username": "Username",
+            "phone": "Phone",
+            "email": "Email"
+        },
+        "routes": [
+            {
+                "display_name": "Info"
+            },
+            {
+                "display_name":"Recommend"
+            },
+            {
+                "display_name": "Tasks"
+            },
+            {
+                "display_name": "Credit"
+            },
+            {
+                "display_name": "Assets"
+            },
+            {
+                "display_name": "NFT"
+            },
+            {
+                "display_name": "Investment"
+            }
+        ]
+    },
+    "Turorial": {
+        "Wallet": {
+            "Create": "Create a new wallet",
+            "Transfer": "Transfer tokens",
+            "Buy": "Buy",
+            "Content": "Content"
+        },
+        "Updatetime": "Update time",
+        "Author": "Author",
+        "Gamename": "Game name",
+        "Filename": "File name",
+        "offcial": "Official",
+        "user": "User"
+    },
+    "Media": {
+        "photo": "photo",
+        "video": "video"
+    },
+    "ICO": {
+        "ru": "Registration",
+        "Parties": " Parties",
+        "Holders": " Holders",
+        "Market Size": " Market Size"
+    },
+    "RoadMap": "RoadMap",
+    "routes": [
+        {
+            "display_name": "Home"
+        },
+        {
+            "display_name": "Events"
+        },
+        {
+            "display_name": "Community"
+        },
+        {
+            "display_name": "Lock"
+        },
+        {
+            "display_name": "Account"
+        },
+        {
+            "display_name": "Turorial"
+        },
+        {
+            "display_name": "Media"
+        },
+        {
+            "display_name": "Road Map"
+        },
+        {
+            "display_name": "Game Phase"
+        },
+        {
+            "display_name": "Contact Us"
+        }
+    ]
+}
