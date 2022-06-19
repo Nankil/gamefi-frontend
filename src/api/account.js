@@ -9,11 +9,11 @@ export const userexists = (username) => request.get(`/userexists?username=${user
 
 
 //发送验证码
-export const sendSmsVerification = (phone) => request.post(`/sendverificationcode?phone=${phone}`)
+export const sendSmsVerification = (phone) => request.post('/sendverificationcode', { phone })
 
 
 //验证验证码
-export const verifySms = () => request.post(`/checkverificationcode?phone=+17542001818&&code=041685`)
+export const verifySms = (phone, code) => request.post('/checkverificationcode', { phone, code })
 
 
 //链接钱包
