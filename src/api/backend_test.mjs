@@ -1,4 +1,5 @@
-import { register, existsPromotion, login, accountRegistered, updatePhone, updateUsername, updateEmail } from './account.js';
+
+import { login, updatePhone, updateUsername, updateEmail } from './backend.mjs';
 
 import * as readline from 'node:readline';
 import { stdin, stdout } from 'node:process';

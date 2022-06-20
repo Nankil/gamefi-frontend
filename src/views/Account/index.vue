@@ -1,7 +1,6 @@
 <template>
     <!-- 我的账户 -->
     <div class="wrapper w-full">
-        <div class="background"></div>
         <div class="account-container">
             <div class="content-container">
                 <div>
@@ -35,13 +34,9 @@ export default {
 
 
 <style scoped>
-.background {
-    width: 100%;
-    height: 2500px;
-    position: absolute;
-    background: white;
-    opacity: 50%;
-    z-index: -1;
+.w-full {
+    background: rgba(255, 255, 255, 0.5);
+    padding-bottom: 200px;
 }
 .content-container {
     padding-top: 79px;

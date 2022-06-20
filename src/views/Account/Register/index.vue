@@ -172,7 +172,7 @@
 
 
 <script>
-import { userexists, existsPromotion, sendSmsVerification, verifySms } from "@/api/account.js"
+import { userExists, existsPromotion, sendSmsVerification, verifySms } from "@/api/account.mjs"
 
 import {
     emailVerified,
@@ -273,7 +273,7 @@ export default {
                 this.notify = true;
             }
         },
-        onPromoteCodeChange() {    //验证推荐人推荐人码
+        async onPromoteCodeChange() {    //验证推荐人推荐人码
             this.referral_Nickname = ''
             if (this.promote_code.length == 0) {
                 this.invitor = ''
@@ -284,17 +284,18 @@ export default {
                 this.invitor = `${this.promote_code.length} / 10`;
             } else {
                 this.invitor = '*檢查中...';
-                existsPromotion(this.promote_code).then((res) => {
-                    if (res.data.exists) {
-                        this.invitor = '*存在';
-                        this.referral_Nickname = res.data.name
-                    } else {
-                        this.invitor = '*查無此推薦人';
-                    }
-                });
+                //连接口
+                let res = await existsPromotion(this.promote_code)
+                console.log(res)
+                if (res.exists) {
+                    this.invitor = '*存在';
+                    this.referral_Nickname = res.name
+                } else {
+                    this.invitor = '*查無此推薦人';
+                }
             }
         },
-        onUsernameChange() {    //验证昵称
+        async onUsernameChange() {    //验证昵称
             if (this.username.length == 0) {
                 this.user_exists = ''
                 return
@@ -317,13 +318,12 @@ export default {
                 return
             }
 
-            userexists(this.username).then((res) => {
-                if (!res.data.exists) {
-                    this.user_exists = '*可以使用'
-                } else {
-                    this.user_exists = '*昵稱已有人使用'
-                }
-            });
+            // 连接口
+            let res = await userExists(this.username)
+
+            res.exists && (this.user_exists = '*昵稱已有人使用')
+            !res.exists && (this.user_exists = '*可以使用')
+
         },
         onEmailChange() {    //验证邮箱
             if (this.email.length == 0) {

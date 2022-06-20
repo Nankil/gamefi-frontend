@@ -1,0 +1,43 @@
+<svg id="组_42" data-name="组 42" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1678" height="387" viewBox="0 0 1678 387">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0.5;
+      }
+
+      .cls-1, .cls-3, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        filter: url(#filter);
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #d459d8;
+        stroke-width: 5px;
+      }
+
+      .cls-4 {
+        fill: #d459d8;
+      }
+
+      .cls-5 {
+        fill: #5c5c5c;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="-0.375" y="0" width="1678.875" height="387.281" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMTY3OC44NzUiIGhlaWdodD0iMzg3LjI4MSIgdmlld0JveD0iMCAwIDE2NzguODc1IDM4Ny4yODEiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50KTsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iMTY3OC44NzUiIHkxPSIxOTMuNjQiIHgyPSIwIiB5Mj0iMTkzLjY0MSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjMTRmYzQiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNTNjYmVkIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSIxNjc4Ljg3NSIgaGVpZ2h0PSIzODcuMjgxIi8+Cjwvc3ZnPgo="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="矩形_23" data-name="矩形 23" class="cls-1" d="M2.135,45.19H1675.86V260.448L1676,340H1429l-64.16,44.783L2.135,383.831h0V45.19h0Z"/>
+  <g id="组_36" data-name="组 36" class="cls-2">
+    <path id="矩形_23_拷贝_5" data-name="矩形 23 拷贝 5" class="cls-3" d="M2.135,45.19H1675.86V260.448L1676,340H1429l-64.16,44.783L2.135,383.831h0V45.19h0Z"/>
+    <path id="矩形_24" data-name="矩形 24" class="cls-4" d="M1426,0h252V45H1367Z"/>
+    <path id="矩形_26" data-name="矩形 26" class="cls-5" d="M584,45h5V387h-5V45h0Z"/>
+  </g>
+</svg>

@@ -84,7 +84,7 @@
 
 <script>
 import { login, } from '../api/backend.mjs';
-import { accountRegistered } from '@/api/account.js';
+import { accountRegistered } from '@/api/account.mjs';
 
 import { mapActions, mapState } from 'vuex';
 export default {
