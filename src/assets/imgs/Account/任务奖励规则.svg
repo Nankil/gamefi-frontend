@@ -1,0 +1,27 @@
+<svg id="组_40" data-name="组 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1747" height="228" viewBox="0 0 1747 228">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke-width: 2px;
+        opacity: 0.5;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+        stroke: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke-width: 7.74px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="89.875" y1="540" x2="1829.12" y2="540" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#53cbed"/>
+      <stop offset="1" stop-color="#c14fc4"/>
+    </linearGradient>
+  </defs>
+  <path id="矩形_32" data-name="矩形 32" class="cls-1" d="M89.865,429.865H1829.14v220.27H89.865V429.865h0Z" transform="translate(-86 -426)"/>
+  <path id="矩形_32_拷贝" data-name="矩形 32 拷贝" class="cls-2" d="M89.865,429.865H1829.14v220.27H89.865V429.865h0Z" transform="translate(-86 -426)"/>
+</svg>
