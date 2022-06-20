@@ -2,7 +2,7 @@
     <!-- 會員階級提升規則 -->
     <div class="promoteRule">
         <!-- 會員階級提升規則 -->
-        <div class="rule" v-show="index==0">
+        <div class="rule" v-show="!index==1">
             <h4>【{{promoteRule.rule}}】</h4>
             <div class="con">
                 <div class="left">
@@ -37,9 +37,8 @@ export default {
 
 <style lang='less' scoped>
 .promoteRule {
-    background: rgba(255, 255, 255, 0.3);
+    margin: 0 auto;
     .rule {
-        padding: 0 8px 25px 53px;
         h4 {
             font-size: 27px;
             letter-spacing: 2px;
@@ -62,8 +61,8 @@ export default {
     }
 
     ul {
-        margin: 0 26px;
         display: flex;
+        justify-content: center;
 
         li {
             line-height: 80px;

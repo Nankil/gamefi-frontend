@@ -33,8 +33,15 @@ export default createStore({
     getters: {
     },
     mutations: {
-        updateWalletAddr(state, walletAddr) {
+        updateWalletAddr(state, walletAddr) {    //更新钱包地址
+            localStorage.walletAddr = walletAddr    ////防止刷新
             state.userInfo.walletAddr = walletAddr;
+        },
+        pushInfoLog(state, info) {    //推送日志
+            state.infoLog.push(info);
+        },
+        shiftInfoLog(state) {   //删除日志
+            state.infoLog.shift();
         },
         updateWalletInstalled(state, walletInstalled) {
             state.wallet_installed = walletInstalled;
@@ -42,17 +49,11 @@ export default createStore({
         setWeb3(state, web3) {
             state.ethereum = web3;
         },
-        pushInfoLog(state, info) {
-            state.infoLog.push(info);
-        },
         pushErrorLog(state, error) {
             state.errorLog.push(error);
             setTimeout(() => {
                 state.errorLog.shift();
             }, 5000);
-        },
-        shiftInfoLog(state) {
-            state.infoLog.shift();
         },
         shiftErrorLog(state) {
             state.errorLog.shift();
@@ -72,15 +73,6 @@ export default createStore({
             commit('setWeb3', web3);
         },
         async connectWallet({ commit, state }) {    //链接钱包
-
-            // if (typeof window.ethereum !== 'undefined') {
-            //     let addr = await ethereum.request({ method: 'eth_requestAccounts' });//授权连接钱包
-            //     console.log('用户钱包地址:', addr[0]);
-            // } else {
-            //     console.log('未安装钱包插件！');
-            // }compare changes
-
-            console.log(window.ethereum)
             if (state.ethereum === undefined) {
                 state.errorLog.push('web3 is undefined');
                 console.log('web3 is undefined');
@@ -95,9 +87,7 @@ export default createStore({
                 // This error code indicates that
                 // the chain has not been added to MetaMask.
                 if (switchError.code === 4902) {
-                    console.log(888)
                     try {
-                        console.log(66666)
                         await ethereum.request({
                             method: 'wallet_addEthereumChain',
                             params: [
@@ -108,7 +98,6 @@ export default createStore({
                                 },
                             ],
                         });
-                        console.log(77777)
                     } catch (addError) {
                         // handle "add" error
                         state.errorLog.append('failed to add network');
@@ -117,14 +106,11 @@ export default createStore({
                 }
                 // handle other "switch" errors
             }
-
             const accounts =
                 await ethereum.request({ method: 'eth_requestAccounts' });
             commit('updateWalletAddr', accounts[0]);
             commit('pushInfoLog', 'wallet connected');
-            // await delay(5000);
             commit('shiftInfoLog');
-
             return 'success';
         },
         async transferTo({ commit, state }) {
@@ -132,7 +118,7 @@ export default createStore({
                 state.errorLog.push('web3 is undefined');
             }
         },
-        async register({ commit, state }, { walletAddr, username, phone, email, invitation_code }) {
+        async register({ commit, state }, { walletAddr, username, phone, email, invitation_code }) {    //注册
             const res = await apiRegister(walletAddr, username, phone, email, invitation_code);
             if (res.status === true) {
                 commit('pushInfoLog', 'register success');

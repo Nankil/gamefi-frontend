@@ -24,11 +24,14 @@ const baseUrl = 'http://geneplayer.io/api';
  */
 export async function register(wallet, username, phone, email, invitation_code) {
     const formData = new URLSearchParams();
+    console.log(formData)
     formData.append('wallet_pubkey', wallet);
     formData.append('username', username);
     formData.append('email', email);
     formData.append('phone', phone);
     formData.append('promote_code', invitation_code);
+    console.log(formData)
+
 
     try {
         const res = await fetch(baseUrl + '/register', {

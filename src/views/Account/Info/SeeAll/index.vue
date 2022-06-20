@@ -73,6 +73,7 @@ ul {
 
         &.active {
             background: rgba(255, 255, 255, 0.3);
+            border-bottom-color: transparent;
         }
     }
 }

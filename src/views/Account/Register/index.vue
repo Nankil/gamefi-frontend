@@ -155,14 +155,23 @@
                     </div>
                 </div>
                 <div class="protocol">
-                    <input type="checkbox" v-model="agreement" style="margin-top:-4px;" />
+                    <input
+                        type="checkbox"
+                        v-model="agreement"
+                        style="margin-top:-4px;cursor:pointer"
+                    />
                     我已經仔細閱讀並名瞭
                     <a href>『隱私與聲明』</a>、
                     <a href>『免責聲明及其他相關聲明』</a>
                     等所載內容及其意義，茲同意該等條款規定，並願遵守網站現今、嗣後規範的各種規則。
                 </div>
                 <!-- 立即注册 -->
-                <button class="registernow" @click="registerWrapper" :disabled="disabled"></button>
+                <button
+                    class="registernow"
+                    :style="{cursor:rule?'pointer':'auto'}"
+                    @click="registerWrapper"
+                    :disabled="disabled"
+                ></button>
             </div>
         </div>
     </div>
@@ -172,12 +181,8 @@
 
 
 <script>
-import { userExists, existsPromotion, sendSmsVerification, verifySms } from "@/api/account.mjs"
+import { userExists, existsPromotion, sendSmsVerification, verifySms, emailVerified, register } from "@/api/account.mjs"
 
-import {
-    emailVerified,
-}
-    from '@/api/backend.mjs';
 import { mapActions } from 'vuex';
 
 // import FailVerify from '@/components/FailVerify.vue';
@@ -216,22 +221,33 @@ export default {
         ];
 
         return {
-            agreement: false,
-            promote_code: '',
-            phone: '',
+            promote_code: '',       //推荐人码
             referral_Nickname: '',  //推荐人昵称
             invitor: '',            //推荐人码提示文字
-            verify_code: '',
+
             username: '',           //昵称
             user_exists: '',        //昵称提示文字
+            usernameed: false,      //昵称是否正确
+
             email: '',              //邮箱
             email_correct: '',      //邮箱提示文字
+            emailed: false,         //邮箱是否正确
+
             region: '',             //地区
-            phone_prefix: '',       //手机号
+
+            phone_prefix: '+86',    //手机号前缀
+            phone: '',              //手机号
             phone_correct: '',      //手机号提示文字
+            phoneed: false,         //手机是否正确
+
+            verify_code: '',        //验证码
+            smsVerified: false,     //验证码是否正确
+
             send_verification_code: '發送驗證碼',    //发送验证码文字
             send_verification_code_boo: false,       //是否等待60s
             disabled: false,        //“立即注册”按钮是否禁用
+
+            agreement: false,       //打勾：隐私声明、免责声明等等
             blur: '0px',
             success: false,
             notify: false,
@@ -239,23 +255,32 @@ export default {
             registered: false,
             emailVerified: false,
             countries,
-            smsVerified: false,
-            regButtonPressed: false,
+
             smsEligible: true,
         };
     },
 
     computed: {
         wallet_addr() {    //钱包地址
+            if (!this.$store.state.userInfo.walletAddr) {    //防止刷新
+                return localStorage.walletAddr
+            }
             return this.$store.state.userInfo.walletAddr;
         },
-        phonenumber() {
-            return this.phone_prefix + this.phone;
-        },
+        rule() {    //推荐了码、昵称、邮箱、地区、电话号码、打勾（隐私声明等）等是否按照规定写好了
+            if (this.promote_code == '' || this.referral_Nickname) {
+                if (this.usernameed && this.emailed && this.region && this.phoneed && this.agreement) {
+                    return true
+                }
+            }
+
+            return false
+
+        }
     },
 
     methods: {
-        ...mapActions(['register']),
+        // ...mapActions(['register']),
         closeSmsNotify() {
             this.smsEligible = true;
             this.notify = false;
@@ -296,6 +321,7 @@ export default {
             }
         },
         async onUsernameChange() {    //验证昵称
+            this.usernameed = false
             if (this.username.length == 0) {
                 this.user_exists = ''
                 return
@@ -320,12 +346,19 @@ export default {
 
             // 连接口
             let res = await userExists(this.username)
-
-            res.exists && (this.user_exists = '*昵稱已有人使用')
-            !res.exists && (this.user_exists = '*可以使用')
-
+            if (res.status == 200) {
+                if (res.exists) {
+                    this.user_exists = '*昵稱已有人使用'
+                } else {
+                    this.user_exists = '*可以使用'
+                    this.usernameed = true
+                }
+            } else {
+                console.log("网络连接错误")
+            }
         },
         onEmailChange() {    //验证邮箱
+            this.emailed = false
             if (this.email.length == 0) {
                 this.email_correct = ''
                 return
@@ -333,11 +366,13 @@ export default {
 
             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
                 this.email_correct = '*格式正确';
+                this.emailed = true
             } else {
                 this.email_correct = '*格式错误';
             }
         },
         onPhoneChange() {    //验证手机号
+            this.phoneed = false
             if (this.phone.length == 0) {
                 this.phone_correct = ''
                 return
@@ -347,11 +382,13 @@ export default {
 
             if (regEx.test(this.phone)) {
                 this.phone_correct = '*格式正确';
+                this.phoneed = true
             } else {
                 this.phone_correct = '*格式错误';
             }
         },
         async sendSms() {    //发送验证码
+            this.verify_code = ''
             if (this.send_verification_code != "發送驗證碼") {    //若不等于'发送验证码'，说明在倒计时，需等待60s
                 return
             } else {     ///若等于'发送验证码'，则需要开启倒计时,并发送验证码
@@ -366,58 +403,71 @@ export default {
 
             }
 
-            const res = await sendSmsVerification(this.phonenumber);
+            const res = await sendSmsVerification(this.phone_prefix + ' ' + this.phone);
             console.log(res)
-            if (res.status === 'success') {
-                this.smsSendingTime = new Date();
+            if (res.status == 200) {
+                if (res.data.status === 'success') {
+                    this.smsSendingTime = new Date();
+                } else {
+                    this.$store.dispatch('pushErrorLog', 'sms send failed');
+                    this.notify = true;
+                }
+                this.smsEligible = false;
             } else {
-                this.$store.dispatch('pushErrorLog', 'sms send failed');
-                this.notify = true;
+                console.log("网络连接错误")
             }
-            this.smsEligible = false;
+
+
         },
         async registerWrapper() {    //立即注册
+            if (!this.rule) {
+                return
+            }
+
+            this.smsVerified = false    //清楚验证码的正确
+
             this.disabled = true    //点击“立即注册后”，禁用按钮2s，防止用户连点
             setTimeout(() => {
                 this.disabled = false
             }, 2000)
 
-            this.regButtonPressed = true;
-            const smsRes = await verifySms(this.phonenumber, this.verify_code);
-            console.log(smsRes);
-            if (smsRes.status !== true) {
+            //验证验证码
+            const smsRes = await verifySms(this.phone_prefix + this.phone, this.verify_code);
+            console.log(smsRes)
+            if (smsRes.data.status !== 'success') {
                 this.$store.dispatch('pushErrorLog', 'verify sms failed');
-
                 return;
             }
-            this.smsVerified = true;
-            console.log('sms correct');
+            this.smsVerified = true
 
-            const res = await this.register({
-                walletAddr: this.wallet_addr,
+            console.log("你在进行注册")
+            const res = await register({
                 username: this.username,
-                phone: this.phone,
+                wallet_pubkey: this.wallet_addr,
                 email: this.email,
-                invitation_code: this.promote_code,
+                phone: this.phone_prefix + this.phone,
+                password: '12346'
             });
+            console.log(res)
 
-            if (!res) {
-                this.$store.dispatch('pushErrorLog', 'register failed');
-                this.notify = true;
-                this.registered = false;
-                console.log('register failed');
-                return;
-            }
-            this.registered = true;
-            console.log('registered');
-
-            this.notify = true;
-            const resEmail = await emailVerified(this.username);
-            if (resEmail.status) {
-                this.emailVerified = true;
-            } else {
-                this.$store.dispatch('pushErrorLog', 'email verify failed');
-            }
+            // if (!res) {
+            //     this.$store.dispatch('pushErrorLog', 'register failed');
+            //     this.notify = true;
+            //     this.registered = false;
+            //     console.log('register failed');
+            //     return;
+            // }
+            // this.registered = true;
+            // console.log('registered');
+            // // 验证邮箱
+            // const resEmail = await emailVerified(this.email);
+            // console.log(resEmail)
+            // if (resEmail.status) {
+            //     this.emailVerified = true;
+            // } else {
+            //     this.$store.dispatch('pushErrorLog', 'email verify failed');
+            // }
+            // this.notify = true;
         },
     },
 
