@@ -328,7 +328,7 @@ export default {
             this.emailVerified = false
             this.failverify = false
             this.reemail = true
-            let resEmai = await emailVerified(this.email);
+            let resEmai = await emailVerified(this.username);
             if (resEmai.data.verified) {        //邮箱验证成功
                 this.verification_mailbox = true
             }
@@ -518,7 +518,7 @@ export default {
             console.log(res.data.status == 0)
             if (res.data.status == 0) {
                 // 验证邮箱
-                const resEmail = await emailVerified(this.email);
+                const resEmail = await emailVerified(this.username);
 
                 this.emailVerified = true    //邮箱弹窗出现
 
