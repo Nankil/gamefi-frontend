@@ -126,6 +126,7 @@ export default {
         changeLanguage({ type, index }) {    //切换语言
             this.index = index
             this.$i18n.locale = type;
+            // console.log(this.$i18n.locale)
         },
         jumpPage() {    //跳转页面
             if (this.userInfo.registered) {    //已注册

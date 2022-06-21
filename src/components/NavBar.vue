@@ -12,9 +12,14 @@
                 <div
                     v-if="$route.path == item.path"
                     class="dark:text-white selected router-btn"
+                    :style="{'font-size':language}"
                 >{{ item.title}}</div>
                 <!-- 背景不亮 -->
-                <div v-else class="dark:text-white router-btn">{{ item.title }}</div>
+                <div
+                    v-else
+                    class="dark:text-white router-btn"
+                    :style="{'font-size':language}"
+                >{{ item.title }}</div>
             </div>
         </div>
     </div>
@@ -22,6 +27,15 @@
 
 <script>
 export default {
+    computed: {
+        language() {
+            if (this.$i18n.locale == "EN") {
+                return '21px'
+            }
+
+            return '27px'
+        }
+    }
 };
 </script>
 
@@ -44,7 +58,6 @@ export default {
             .router-btn {
                 height: 56px;
                 width: 185px;
-                font-size: 27px;
                 line-height: 56px;
             }
             .selected {
