@@ -1,0 +1,25 @@
+<svg id="组_46" data-name="组 46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="709.157" height="201.844" viewBox="0 0 709.157 201.844">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke-width: 7.742px;
+        stroke: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="74.563" y1="671.515" x2="775.969" y2="671.515" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#53cbed"/>
+      <stop offset="1" stop-color="#c14fc4"/>
+    </linearGradient>
+  </defs>
+  <path id="矩形_29_拷贝_5" data-name="矩形 29 拷贝 5" class="cls-1" d="M373.309,574.454H775.968V723.246l-174.277-1.131-34.268,46.446H291.344l-32.82-45.671H74.548V574.454H373.309Z" transform="translate(-70.688 -570.594)"/>
+  <path id="矩形_29_拷贝" data-name="矩形 29 拷贝" class="cls-2" d="M373.309,574.454H775.968V723.246l-174.277-1.131-34.268,46.446H291.344l-32.82-45.671H74.548V574.454H373.309Z" transform="translate(-70.688 -570.594)"/>
+</svg>

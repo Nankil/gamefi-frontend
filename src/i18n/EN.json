@@ -5,11 +5,11 @@
             "languageCategory": [
                 {
                     "type": "ZH",
-                    "title": "Simplified Chinese"
+                    "title": "Simplified"
                 },
                 {
                     "type": "CN",
-                    "title": "traditional Chinese"
+                    "title": "traditional"
                 },
                 {
                     "type": "EN",
@@ -20,15 +20,15 @@
         "navber": [
             {
                 "path": "/",
-                "title": "Home"
+                "title": "Home page"
             },
             {
                 "path": "/events",
-                "title": "Activity"
+                "title": "Activity Area"
             },
             {
                 "path": "/community",
-                "title": "Community"
+                "title": "Join community"
             },
             {
                 "path": "/lock",
@@ -44,23 +44,23 @@
             },
             {
                 "path": "/media",
-                "title": "Videos/Pictures"
+                "title": "Vide/Picture"
             },
             {
                 "path": "/contract",
-                "title": "contract address"
+                "title": "Contract address"
             },
             {
                 "path": "/gamephase",
-                "title": "Game Roadmap"
+                "title": "Game blueprint"
             },
             {
                 "path": "/roadmap",
-                "title": "Project Roadmap"
+                "title": "ICO White Paper"
             },
             {
                 "path": "/contactus",
-                "title": "contact us"
+                "title": "Contact Us"
             }
         ]
     },

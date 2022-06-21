@@ -43,11 +43,8 @@ export const emailVerified = (username) => get_request.get(`/emailverified?usern
 
 //注册
 export const register = (obj) => post_request.post('/register', qs.stringify(obj)).then(res => {
-    console.log(88888)
-    console.log(obj)
     return res
 }).catch(err => {
-    console.log(99999)
     return err.response
 })
 

@@ -1,25 +1,41 @@
 <template>
     <!-- 注册 -->
     <div>
-        <!-- <div class="absolute w-screen h-screen" v-if="notify">
-            <div class="absolute notifier">
-                <div class="absolute" v-if="!smsEligible && !smsVerified" @click="closeSmsNotify">
+        <div class="notifier" v-show="popUpBackground">
+            <!-- <div v-if="!smsEligible && !smsVerified" @click="closeSmsNotify">
                     <VerifyPhone />
-                </div>
-                <div class="absolute" v-else-if="!emailVerified && registered" @click="verifyEmail">
-                    <VerifyEmail />
-                </div>
-                <div class="absolute" v-else-if="invitorUsed && registered && emailVerified">
-                    <RegSuccess2 />
-                </div>
-                <div class="absolute" v-else-if="registered && emailVerified">
-                    <RegSucess />
-                </div>
-                <div class="absolute" v-else-if="!registered">
-                    <FailVerify />
-                </div>
+            </div>-->
+
+            <!-- 验证您的邮箱--弹窗 -->
+            <div v-if="emailVerified">
+                <VerifyEmail
+                    @aaa="unmotnedPages"
+                    @bbb="resenn"
+                    @ccc="emailVerified=false"
+                    :email="email"
+                />
             </div>
-        </div>-->
+
+            <!-- 注册成功（无推荐人）--弹窗 -->
+            <div v-if="registered">
+                <RegSucess />
+            </div>
+
+            <!-- 注册成功（有推荐人）--弹窗 -->
+            <div v-if="registered2">
+                <RegSuccess2 />
+            </div>
+
+            <!-- 邮箱未验证成功--弹窗 -->
+            <div v-if="failverify">
+                <FailVerify @aaa="resenn" @bbb="failverify=false" />
+            </div>
+
+            <!-- 重新发送验证--弹窗 -->
+            <div v-if="reemail">
+                <ReEmail @aaa="confirmatio" />
+            </div>
+        </div>
 
         <div class="main">
             <div class="header">
@@ -185,20 +201,22 @@ import { userExists, existsPromotion, sendSmsVerification, verifySms, emailVerif
 
 import { mapActions } from 'vuex';
 
-// import FailVerify from '@/components/FailVerify.vue';
-// import RegSucess from '@/components/RegSucess.vue';
-// import VerifyEmail from '@/components/VerifyEmail.vue';
+import VerifyEmail from '@/components/VerifyEmail.vue';
 // import VerifyPhone from '@/components/VerifyPhone.vue';
-// import RegSuccess2 from '@/components/RegSuccess2.vue';
+import RegSucess from '@/components/RegSucess.vue';
+import RegSuccess2 from '@/components/RegSuccess2.vue';
+import FailVerify from '@/components/FailVerify.vue';
+import ReEmail from '@/components/ReEmail.vue';
 
 export default {
-    // components: {
-    //     FailVerify,
-    //     RegSucess,
-    //     VerifyEmail,
-    //     VerifyPhone,
-    //     RegSuccess2,
-    // },
+    components: {
+        VerifyEmail,
+        // VerifyPhone,
+        RegSucess,
+        RegSuccess2,
+        FailVerify,
+        ReEmail
+    },
     setup() { },
     data() {
         const countries = [
@@ -231,7 +249,11 @@ export default {
 
             email: '',              //邮箱
             email_correct: '',      //邮箱提示文字
-            emailed: false,         //邮箱是否正确
+            emailed: false,         //邮箱格式是否正确
+            verification_mailbox: false,    //验证邮箱是否成功
+            emailVerified: false,   //验证您的邮箱--弹窗是否出现
+            failverify: false,       //未验证成功--弹窗是否出现
+            reemail: false,        //重新发送验证码--弹窗是否出现
 
             region: '',             //地区
 
@@ -242,18 +264,19 @@ export default {
 
             verify_code: '',        //验证码
             smsVerified: false,     //验证码是否正确
-
             send_verification_code: '發送驗證碼',    //发送验证码文字
             send_verification_code_boo: false,       //是否等待60s
+
             disabled: false,        //“立即注册”按钮是否禁用
+            registered: false,      //注册成功（无推荐人）弹窗是否出现
+            registered2: false,      //注册成功（有推荐人）弹窗是否出现
 
             agreement: false,       //打勾：隐私声明、免责声明等等
             blur: '0px',
             success: false,
             notify: false,
             smsSendingTime: null,
-            registered: false,
-            emailVerified: false,
+
             countries,
 
             smsEligible: true,
@@ -267,20 +290,61 @@ export default {
             }
             return this.$store.state.userInfo.walletAddr;
         },
-        rule() {    //推荐了码、昵称、邮箱、地区、电话号码、打勾（隐私声明等）等是否按照规定写好了
+        rule() {    //推荐了码、昵称、邮箱、地区、电话号码、验证码、打勾（隐私声明等）等是否按照规定写好了
             if (this.promote_code == '' || this.referral_Nickname) {
-                if (this.usernameed && this.emailed && this.region && this.phoneed && this.agreement) {
+                if (this.usernameed && this.emailed && this.region && this.phoneed && this.agreement && this.verify_code) {
                     return true
                 }
             }
 
             return false
-
+        },
+        popUpBackground() {    //弹窗背景
+            if (this.emailVerified || this.failverify || this.reemail || this.registered || this.registered2) {
+                return true
+            }
+            return false
         }
     },
 
     methods: {
         // ...mapActions(['register']),
+        unmotnedPages() {    //验证码邮箱未自动跳转页面
+            this.emailVerified = false
+
+            if (!this.verification_mailbox) {   //邮箱未验证成功
+                this.failverify = true
+                return
+            }
+
+            //邮箱验证成功
+            if (this.referral_Nickname) {    //有推荐人
+                this.registered2 = true      //注册成功（有推荐人）--弹窗出现
+            } else {
+                this.registered = true       //注册成功（无推荐人）--弹窗出现
+            }
+        },
+        async resenn() {    //重新发送验证码
+            this.emailVerified = false
+            this.failverify = false
+            this.reemail = true
+            let resEmai = await emailVerified(this.email);
+            if (resEmai.data.verified) {        //邮箱验证成功
+                this.verification_mailbox = true
+            }
+        },
+        confirmatio() {    //确认重发
+            this.reemail = false
+            this.emailVerified = true
+            if (this.verification_mailbox) {
+                if (this.referral_Nickname) {    //有推荐人
+                    this.registered2 = true      //注册成功（有推荐人）--弹窗出现
+                } else {
+                    this.registered = true       //注册成功（无推荐人）--弹窗出现
+                }
+            }
+
+        },
         closeSmsNotify() {
             this.smsEligible = true;
             this.notify = false;
@@ -424,6 +488,7 @@ export default {
                 return
             }
 
+            this.verification_mailbox = false
             this.smsVerified = false    //清楚验证码的正确
 
             this.disabled = true    //点击“立即注册后”，禁用按钮2s，防止用户连点
@@ -449,6 +514,32 @@ export default {
                 password: '12346'
             });
             console.log(res)
+            console.log(res.data.status == 0)
+            // if (res.data.status == 0) {
+            // 验证邮箱
+            const resEmail = await emailVerified(this.email);
+
+            this.emailVerified = true    //邮箱弹窗出现
+
+            console.log(resEmail)
+
+            if (resEmail.data.verified) {        //邮箱验证成功
+                console.log("邮箱验证成功")
+                this.verification_mailbox = true
+                this.emailVerified = false       //邮箱弹窗消失
+
+                if (this.referral_Nickname) {    //有推荐人
+                    this.registered2 = true      //注册成功（有推荐人）--弹窗出现
+                } else {
+                    this.registered = true       //注册成功（无推荐人）--弹窗出现
+                }
+            } else {                             //邮箱验证成功
+
+                console.log("邮箱验证失败")
+            }
+            // }
+
+
 
             // if (!res) {
             //     this.$store.dispatch('pushErrorLog', 'register failed');
@@ -459,14 +550,7 @@ export default {
             // }
             // this.registered = true;
             // console.log('registered');
-            // // 验证邮箱
-            // const resEmail = await emailVerified(this.email);
-            // console.log(resEmail)
-            // if (resEmail.status) {
-            //     this.emailVerified = true;
-            // } else {
-            //     this.$store.dispatch('pushErrorLog', 'email verify failed');
-            // }
+
             // this.notify = true;
         },
     },
@@ -481,9 +565,16 @@ export default {
     filter: blur(5px);
 }
 .notifier {
-    top: 40%;
-    left: 21%;
-    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .header {
     background-image: url("@/assets/imgs/register_header.png");
