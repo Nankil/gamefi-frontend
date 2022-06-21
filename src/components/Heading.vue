@@ -117,6 +117,7 @@ export default {
                         this.$store.dispatch('pushErrorLog',
                             `login failed with ${loginRes.message}`);
                     } else {
+                        this.$router.push('/account/register');
                         this.$store.dispatch('setToken', loginRes.token);
                         console.log(loginRes);
                     }

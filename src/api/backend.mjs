@@ -65,7 +65,7 @@ export async function register(wallet, username, phone, email, invitation_code) 
  */
 export async function login(pubkey) {
     try {
-        const res = await fetch(baseUrl + '/login', {
+        const res = await fetch('/api' + '/login', {
             method: 'POST',
             body: new URLSearchParams({
                 type: 'wallet',
