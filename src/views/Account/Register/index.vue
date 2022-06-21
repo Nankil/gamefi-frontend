@@ -411,7 +411,7 @@ export default {
             // 连接口
             let res = await userExists(this.username)
             if (res.status == 200) {
-                if (res.exists) {
+                if (res.data.exists) {
                     this.user_exists = '*昵稱已有人使用'
                 } else {
                     this.user_exists = '*可以使用'
@@ -508,36 +508,36 @@ export default {
             console.log("你在进行注册")
             const res = await register({
                 username: this.username,
-                wallet_pubkey: this.wallet_addr,
+                wallet_pubkey: this.wallet_addr + 'dd',
                 email: this.email,
                 phone: this.phone_prefix + this.phone,
                 password: '12346'
             });
             console.log(res)
             console.log(res.data.status == 0)
-            // if (res.data.status == 0) {
-            // 验证邮箱
-            const resEmail = await emailVerified(this.email);
+            if (res.data.status == 0) {
+                // 验证邮箱
+                const resEmail = await emailVerified(this.email);
 
-            this.emailVerified = true    //邮箱弹窗出现
+                this.emailVerified = true    //邮箱弹窗出现
 
-            console.log(resEmail)
+                console.log(resEmail)
 
-            if (resEmail.data.verified) {        //邮箱验证成功
-                console.log("邮箱验证成功")
-                this.verification_mailbox = true
-                this.emailVerified = false       //邮箱弹窗消失
+                if (resEmail.data.verified) {        //邮箱验证成功
+                    console.log("邮箱验证成功")
+                    this.verification_mailbox = true
+                    this.emailVerified = false       //邮箱弹窗消失
 
-                if (this.referral_Nickname) {    //有推荐人
-                    this.registered2 = true      //注册成功（有推荐人）--弹窗出现
-                } else {
-                    this.registered = true       //注册成功（无推荐人）--弹窗出现
+                    if (this.referral_Nickname) {    //有推荐人
+                        this.registered2 = true      //注册成功（有推荐人）--弹窗出现
+                    } else {
+                        this.registered = true       //注册成功（无推荐人）--弹窗出现
+                    }
+                } else {                             //邮箱验证成功
+
+                    console.log("邮箱验证失败")
                 }
-            } else {                             //邮箱验证成功
-
-                console.log("邮箱验证失败")
             }
-            // }
 
 
 
