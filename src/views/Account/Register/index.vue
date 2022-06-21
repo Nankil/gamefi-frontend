@@ -386,6 +386,7 @@ export default {
         },
         async onUsernameChange() {    //验证昵称
             this.usernameed = false
+            this.user_exists = ''
             if (this.username.length == 0) {
                 this.user_exists = ''
                 return
@@ -411,11 +412,11 @@ export default {
             // 连接口
             let res = await userExists(this.username)
             if (res.status == 200) {
-                if (res.data.exists) {
-                    this.user_exists = '*昵稱已有人使用'
-                } else {
+                if (res.data.exists === false) {
                     this.user_exists = '*可以使用'
                     this.usernameed = true
+                } else {
+                    this.user_exists = '*昵稱已有人使用'
                 }
             } else {
                 console.log("网络连接错误")
@@ -592,7 +593,7 @@ export default {
     letter-spacing: 2px;
 }
 .middle {
-    background-image: url("@/assets/imgs/register_middle.png");
+    background: url("@/assets/imgs/register_middle.png") no-repeat;
     height: 225px;
     width: 1740px;
     padding-left: 137px;
@@ -655,7 +656,7 @@ export default {
     }
 }
 .bottom {
-    background-image: url("@/assets/imgs/register_bottom.png");
+    background: url("@/assets/imgs/register_bottom.png") no-repeat;
     height: 707px;
     width: 1740px;
 }
