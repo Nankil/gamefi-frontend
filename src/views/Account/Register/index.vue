@@ -124,7 +124,11 @@
                     <div>
                         <!-- 地区 -->
                         <div>
-                            <select class="rightinput" v-model="region" @change="changeRegion">
+                            <select
+                                class="rightinput"
+                                v-model="region"
+                                @change="changeTheAreaOrMobilePhoneNumber($event,'region')"
+                            >
                                 <option v-for="item in countries" :key="item.name">{{ item.name }}</option>
                             </select>
                             <span class="inforformtip" v-if="region === ''">*请选择地址</span>
@@ -136,7 +140,7 @@
                                 class="rightinput"
                                 style="width: 135px;border-right:1px solid #efefef;margin-right:1px"
                                 v-model="phonePrefix"
-                                @change="changePhonePrefix"
+                                @change="changeTheAreaOrMobilePhoneNumber($event,'prefix')"
                             >
                                 <option v-for="item in countries" :key="item.code">{{ item.code }}</option>
                             </select>
@@ -325,9 +329,13 @@ export default {
     },
 
     methods: {
-        changeRegion($event) {    //改变地区
+        changeTheAreaOrMobilePhoneNumber($event, type) {    //改变地区 or 改变手机号前缀
             this.index = $event.target.selectedIndex
-            this.phonePrefix = this.countries[this.index].code
+            if (type === 'region') {    //改地区
+                this.phonePrefix = this.countries[this.index].code
+            } else if (type === 'prefix') {    //改手机号前缀
+                this.region = this.countries[this.index].name
+            }
 
             if (this.index == 0) {
                 this.maxPhone = 11
@@ -339,24 +347,7 @@ export default {
                 this.maxPhone = 7
             }
 
-            this.onPhoneChange()
-
-        },
-        changePhonePrefix($event) {    //改变手机号前缀
-            this.index = $event.target.selectedIndex
-            this.region = this.countries[this.index].name
-
-            if (this.index == 0) {
-                this.maxPhone = 11
-            } else if (this.index == 1) {
-                this.maxPhone = 10
-            } else if (this.index == 2) {
-                this.maxPhone = 9
-            } else if (this.index == 3) {
-                this.maxPhone = 7
-            }
-
-            this.onPhoneChange()
+            this.onPhoneChange()  //需要验证下手机号
         },
         // ...mapActions(['register']),
         unmotnedPages() {    //验证码邮箱未自动跳转页面
@@ -489,44 +480,20 @@ export default {
         onPhoneChange() {    //验证手机号
             this.phone = this.phone.replace(/[^0-9]/g, '')
             this.phoneed = false
-            if (this.phone.length == 0) {
-                this.phone_correct = ''
-                return
-            }
 
             if (this.phonePrefix == "+86") {    //中国
-                const regEx = /^\d{11}$/;
-
-                if (regEx.test(this.phone)) {
-                    this.phoneed = true
-                }
+                var regEx = /^\d{11}$/;
+            } else if (this.phonePrefix == "+1") {    //美国
+                var regEx = /^\d{10}$/;
+            } else if (this.phonePrefix == "+886") {    //台湾
+                var regEx = /^\d{9}$/;
+            } else if (this.phonePrefix == "+852") {    //香港
+                var regEx = /^\d{7}$/;
             }
 
-            if (this.phonePrefix == "+1") {    //美国
-                const regEx = /^\d{10}$/;
-
-                if (regEx.test(this.phone)) {
-                    this.phoneed = true
-                }
+            if (regEx.test(this.phone)) {
+                this.phoneed = true
             }
-
-            if (this.phonePrefix == "+886") {    //台湾
-                const regEx = /^\d{9}$/;
-
-                if (regEx.test(this.phone)) {
-                    this.phoneed = true
-                }
-            }
-
-            if (this.phonePrefix == "+852") {    //香港
-                const regEx = /^\d{7}$/;
-
-                if (regEx.test(this.phone)) {
-                    this.phoneed = true
-                }
-            }
-
-
         },
         async sendSms() {    //发送验证码
             //发送验证码倒计时
