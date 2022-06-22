@@ -151,8 +151,9 @@
                             />
                             <span
                                 class="inforformtip"
-                                :style="{color:phone_correct=='*格式正确'?'green':'red'}"
-                            >{{ phone_correct }}</span>
+                                :style="{color:phoneed?'green':'red'}"
+                                v-if="phone"
+                            >{{ phone.length }}/{{maxPhone}}</span>
                         </div>
 
                         <div>
@@ -253,7 +254,7 @@ export default {
         ];
 
         return {
-            index: -1,              //控制地区与电话号前缀的显示
+            index: 0,              //控制地区与电话号前缀的显示
 
             promote_code: '',       //推荐人码
             referral_Nickname: '',  //推荐人昵称
@@ -271,10 +272,11 @@ export default {
             failverify: false,      //未验证成功--弹窗是否出现
             reemail: false,        //重新发送验证码--弹窗是否出现
 
-            region: '',             //地区
+            region: '中国',             //地区
 
-            phonePrefix: '',       //手机号前缀
+            phonePrefix: '+86',       //手机号前缀
             phone: '',              //手机号
+            maxPhone: 11,               //手机位数
             phone_correct: '',      //手机号提示文字
             phoneed: false,         //手机是否正确
 
@@ -326,10 +328,35 @@ export default {
         changeRegion($event) {    //改变地区
             this.index = $event.target.selectedIndex
             this.phonePrefix = this.countries[this.index].code
+
+            if (this.index == 0) {
+                this.maxPhone = 11
+            } else if (this.index == 1) {
+                this.maxPhone = 10
+            } else if (this.index == 2) {
+                this.maxPhone = 9
+            } else if (this.index == 3) {
+                this.maxPhone = 7
+            }
+
+            this.onPhoneChange()
+
         },
         changePhonePrefix($event) {    //改变手机号前缀
             this.index = $event.target.selectedIndex
             this.region = this.countries[this.index].name
+
+            if (this.index == 0) {
+                this.maxPhone = 11
+            } else if (this.index == 1) {
+                this.maxPhone = 10
+            } else if (this.index == 2) {
+                this.maxPhone = 9
+            } else if (this.index == 3) {
+                this.maxPhone = 7
+            }
+
+            this.onPhoneChange()
         },
         // ...mapActions(['register']),
         unmotnedPages() {    //验证码邮箱未自动跳转页面
@@ -466,14 +493,39 @@ export default {
                 return
             }
 
-            const regEx = /^\d{9,14}$/;
+            if (this.phonePrefix == "+86") {    //中国
+                const regEx = /^\d{11}$/;
 
-            if (regEx.test(this.phone)) {
-                this.phone_correct = '*格式正确';
-                this.phoneed = true
-            } else {
-                this.phone_correct = '*格式错误';
+                if (regEx.test(this.phone)) {
+                    this.phoneed = true
+                }
             }
+
+            if (this.phonePrefix == "+1") {    //美国
+                const regEx = /^\d{10}$/;
+
+                if (regEx.test(this.phone)) {
+                    this.phoneed = true
+                }
+            }
+
+            if (this.phonePrefix == "+886") {    //台湾
+                const regEx = /^\d{9}$/;
+
+                if (regEx.test(this.phone)) {
+                    this.phoneed = true
+                }
+            }
+
+            if (this.phonePrefix == "+852") {    //香港
+                const regEx = /^\d{7}$/;
+
+                if (regEx.test(this.phone)) {
+                    this.phoneed = true
+                }
+            }
+
+
         },
         async sendSms() {    //发送验证码
             //发送验证码倒计时
