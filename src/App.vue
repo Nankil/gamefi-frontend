@@ -76,6 +76,9 @@ export default {
         </div>
 
         <div class="flex flex-row w-full h-full content">
+            <div class="bg"></div>
+
+            <!-- 首页左边 -->
             <div v-show="isBarActive" class="navbar">
                 <!-- 首页导航 -->
                 <NavBar />
@@ -84,6 +87,7 @@ export default {
                 </div>
             </div>
 
+            <!-- 首页右边 -->
             <div
                 :class="[isBarActive ? 'content' : 'w-full']"
                 style="margin: 0 auto; height: fit-content"
@@ -107,6 +111,19 @@ export default {
 }
 
 .invest-wrapper {
-    margin-top: 96px;
+    margin-top: 92px;
+}
+
+.content {
+    position: relative;
+    .bg {
+        width: 100%;
+        height: calc(100% + 52px);
+        position: absolute;
+        top: -52px;
+        left: 0;
+        z-index: -1;
+        background: rgba(255, 255, 255, 0.3);
+    }
 }
 </style>

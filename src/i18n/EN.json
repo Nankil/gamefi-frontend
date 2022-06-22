@@ -1,6 +1,7 @@
 {
     "home": {
         "heading": {
+            "linkWallet": "Linked Wallet",
             "account": "Account",
             "languageCategory": [
                 {
@@ -56,13 +57,23 @@
             },
             {
                 "path": "/roadmap",
+                "title": "Project blueprint"
+            },
+            {
+                "path": "/ico",
                 "title": "ICO White Paper"
             },
             {
                 "path": "/contactus",
                 "title": "Contact Us"
             }
-        ]
+        ],
+        "investAuthority": {
+            "title": "Investment Authority",
+            "seedWheel": "Seed Round",
+            "privateOfferings": "Private Round",
+            "preSaleRound": "Pre-sale Round"
+        }
     },
     "account": {
         "routes": [

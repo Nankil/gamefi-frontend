@@ -7,16 +7,17 @@
                 v-for="(x, index) in data"
                 :key="index"
                 class="notactive"
-                :class="{ active: x.isactive }"
+                :class="{ 'active': x.isactive,'border-top':index==0,'border-bottom':index==6}"
                 @click="swiper(index-1)"
             >
                 <div class="message">{{ x.message }}</div>
-                <div class="time">{{ x.time }}</div>
+                <div class="time" :class="{'border-bottom':index==6}">{{ x.time }}</div>
+                <div class="border" v-if="x.isactive" :class="{'border-bottom':index==6}"></div>
             </div>
         </div>
     </div>
 </template>
-<style scoped>
+<style lang="less" scoped>
 .swiper {
     width: 1344px;
     height: 530px;
@@ -25,7 +26,7 @@
     background-color: #fff;
     opacity: 0.8;
     width: 340px;
-    overflow: hidden;
+    // overflow: hidden;
 }
 .left-img {
     height: auto;
@@ -42,41 +43,43 @@
     text-overflow: ellipsis;
 }
 .notactive .time {
+    height: 26px;
     line-height: 13px;
     font-size: 13px;
     color: #5d5d5d;
     margin-top: 8px;
+    border-bottom: 1px dashed #5d5d5d;
+
+    /* 去掉最后一个的下虚线 */
+    &.border-bottom {
+        border-bottom: none;
+    }
 }
+
 .notactive {
-    padding: 0 24px;
+    padding: 17px 24px 0;
     height: 70px;
-    padding-top: 17px;
-    padding-bottom: 14px;
-    border-top: 1px dashed #5d5d5d;
-    overflow: hidden;
+    // overflow: hidden;
     cursor: pointer;
+    position: relative;
+
+    .border {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -1px;
+        left: 0;
+        border: 1px solid #000;
+        border-left: none;
+
+        &.border-bottom {
+            border-bottom: none;
+        }
+    }
 }
 
 .myanimotion {
     animation: move1 5s infinite ease-in-out;
-}
-
-@keyframes move1 {
-    0% {
-        /* transform: translateX(0); */
-        opacity: 0.5;
-    }
-
-    25% {
-        /* transform: translateX(-100%); */
-        opacity: 1;
-    }
-    75% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
 }
 
 .notactive2 {
@@ -90,12 +93,32 @@
 .active {
     padding: 0 24px;
     padding-top: 24px;
-    padding-bottom: 23px;
     height: 110px;
-    border: #000000 solid 1px;
+    // border: #000000 solid 1px;
     border-left: none;
-    overflow: hidden;
+    // overflow: hidden;
     text-overflow: ellipsis;
+    position: relative;
+
+    &.border-top:after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: #000;
+        position: absolute;
+        top: -1px;
+        left: 0;
+    }
+
+    &.border-bottom:after {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background: #000;
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+    }
 }
 .active .message {
     font-size: 26px;
@@ -108,6 +131,7 @@
     font-size: 17px;
     color: #000000;
     margin-top: 14px;
+    height: 45px;
 }
 </style>
 
@@ -166,7 +190,7 @@ let n = 0;
 function swiper(n) {
     n++
     n >= data.length && (n = 0)
-    data.forEach((x, index) => {
+    data.forEach(x => {
         x.isactive = false;
     });
     data[n].isactive = true;
@@ -182,8 +206,11 @@ function swiper(n) {
     }, 1000);
     imgurl.value = data[n].imgurl;
 }
+
 let timer = setInterval(() => {
     swiper(n)
 }, 5000);
+
+
 </script>
 

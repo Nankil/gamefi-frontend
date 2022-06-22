@@ -78,10 +78,10 @@ export default {
     padding-top: 79px;
 }
 .wrapper {
-    margin-top: 260px;
+    /* margin-top: 260px;
     position: absolute;
     background-size: 100% 100%;
-    top: -10%;
+    top: -10%; */
 }
 .account-container {
     margin-left: 86px;

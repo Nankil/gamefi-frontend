@@ -67,7 +67,13 @@
                 "path": "/contactus",
                 "title": "聯繫我們"
             }
-        ]
+        ],
+        "investAuthority": {
+            "title": "已開放投資許可權",
+            "seedWheel": "種子輪",
+            "privateOfferings": "私募輪",
+            "preSaleRound": "預售輪"
+        }
     },
     "account": {
         "routes": [

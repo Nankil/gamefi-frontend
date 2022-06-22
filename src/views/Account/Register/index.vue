@@ -124,11 +124,8 @@
                     <div>
                         <!-- 地区 -->
                         <div>
-                            <select class="rightinput" v-model="region" placeholder="ddd">
-                                <option
-                                    v-for="country in countries"
-                                    :key="country"
-                                >{{ country.name }}</option>
+                            <select class="rightinput" v-model="region" @change="changeRegion">
+                                <option v-for="item in countries" :key="item.name">{{ item.name }}</option>
                             </select>
                             <span class="inforformtip" v-if="region === ''">*请选择地址</span>
                         </div>
@@ -138,10 +135,12 @@
                             <select
                                 class="rightinput"
                                 style="width: 135px;border-right:1px solid #efefef;margin-right:1px"
-                                v-model="phone_prefix"
+                                v-model="phonePrefix"
+                                @change="changePhonePrefix"
                             >
-                                <option v-for="item in countries" :key="item.code">+{{ item.code }}</option>
+                                <option v-for="item in countries" :key="item.code">{{ item.code }}</option>
                             </select>
+
                             <input
                                 class="rightinput"
                                 style="width:315px;"
@@ -197,6 +196,7 @@
 
 
 <script>
+import { ElMessage } from 'element-plus'    //消息提示
 import { userExists, existsPromotion, sendSmsVerification, verifySms, emailVerified, register } from "@/api/account.mjs"
 
 import { mapActions } from 'vuex';
@@ -217,28 +217,44 @@ export default {
         FailVerify,
         ReEmail
     },
-    setup() { },
+    created() {
+        if (localStorage.countdown) {   //倒计时60s
+            this.send_verification_code = localStorage.countdown + 's'
+
+            let time = setInterval(() => {
+                this.send_verification_code = parseInt(this.send_verification_code) - 1 + 's'
+                localStorage.countdown--
+                if (this.send_verification_code == '0s') {
+                    localStorage.removeItem('countdown')
+                    clearInterval(time)
+                    this.send_verification_code = "發送驗證碼"
+                }
+            }, 1000)
+        }
+    },
     data() {
         const countries = [
             {
                 name: '中国',
-                code: '86',
+                code: '+86',
             },
             {
                 name: '美国',
-                code: '1',
+                code: '+1',
             },
             {
                 name: '台湾',
-                code: '886',
+                code: '+886',
             },
             {
                 name: '香港',
-                code: '852',
+                code: '+852',
             },
         ];
 
         return {
+            index: -1,              //控制地区与电话号前缀的显示
+
             promote_code: '',       //推荐人码
             referral_Nickname: '',  //推荐人昵称
             invitor: '',            //推荐人码提示文字
@@ -252,12 +268,12 @@ export default {
             emailed: false,         //邮箱格式是否正确
             verification_mailbox: false,    //验证邮箱是否成功
             emailVerified: false,   //验证您的邮箱--弹窗是否出现
-            failverify: false,       //未验证成功--弹窗是否出现
+            failverify: false,      //未验证成功--弹窗是否出现
             reemail: false,        //重新发送验证码--弹窗是否出现
 
             region: '',             //地区
 
-            phone_prefix: '+86',    //手机号前缀
+            phonePrefix: '',       //手机号前缀
             phone: '',              //手机号
             phone_correct: '',      //手机号提示文字
             phoneed: false,         //手机是否正确
@@ -282,7 +298,6 @@ export default {
             smsEligible: true,
         };
     },
-
     computed: {
         wallet_addr() {    //钱包地址
             if (!this.$store.state.userInfo.walletAddr) {    //防止刷新
@@ -308,6 +323,14 @@ export default {
     },
 
     methods: {
+        changeRegion($event) {    //改变地区
+            this.index = $event.target.selectedIndex
+            this.phonePrefix = this.countries[this.index].code
+        },
+        changePhonePrefix($event) {    //改变手机号前缀
+            this.index = $event.target.selectedIndex
+            this.region = this.countries[this.index].name
+        },
         // ...mapActions(['register']),
         unmotnedPages() {    //验证码邮箱未自动跳转页面
             this.emailVerified = false
@@ -395,8 +418,8 @@ export default {
                 this.user_exists = '*最少輸入2個字'
                 return
             }
-            if (this.username.length > 12) {
-                this.user_exists = '*最多輸入12個字'
+            if (this.username.length > 15) {
+                this.user_exists = '*最多輸入15個字'
                 return
             }
 
@@ -453,14 +476,52 @@ export default {
             }
         },
         async sendSms() {    //发送验证码
-            this.verify_code = ''
+            //发送验证码倒计时
+            if (localStorage.countdown) {
+                ElMessage({
+                    message: '请稍等',
+                    grouping: true,
+                    type: 'error',
+                })
+                return
+            }
+
+            //没输入手机号
+            if (!this.phoneed) {
+                ElMessage({
+                    message: '請輸入正确的手機號碼',
+                    grouping: true,
+                    type: 'error',
+                })
+                return
+            }
+
+            //只能发送3次验证码，3次后需等待30分钟
+            if (localStorage.sendQuantity === undefined) {
+                localStorage.sendQuantity = 2
+            } else {
+                localStorage.sendQuantity--
+                if (localStorage.sendQuantity < 0) {
+                    ElMessage({
+                        message: '次数用完',
+                        grouping: true,
+                        type: 'error',
+                    })
+                    return
+                }
+            }
+
+            //倒计时60s
             if (this.send_verification_code != "發送驗證碼") {    //若不等于'发送验证码'，说明在倒计时，需等待60s
                 return
             } else {     ///若等于'发送验证码'，则需要开启倒计时,并发送验证码
                 this.send_verification_code = "60s"
+                localStorage.countdown = 60
                 let time = setInterval(() => {
                     this.send_verification_code = parseInt(this.send_verification_code) - 1 + 's'
+                    localStorage.countdown--
                     if (this.send_verification_code == '0s') {
+                        localStorage.removeItem('countdown')
                         clearInterval(time)
                         this.send_verification_code = "發送驗證碼"
                     }
@@ -468,7 +529,8 @@ export default {
 
             }
 
-            const res = await sendSmsVerification(this.phone_prefix + ' ' + this.phone);
+            //连接口
+            const res = await sendSmsVerification(this.phonePrefix + ' ' + this.phone);
             console.log(res)
             if (res.status == 200) {
                 if (res.data.status === 'success') {
@@ -485,20 +547,65 @@ export default {
 
         },
         async registerWrapper() {    //立即注册
+            if (this.promote_code != '' && this.referral_Nickname == '') {
+                ElMessage({
+                    message: '推薦人碼不存在',
+                    grouping: true,
+                    type: 'error',
+                })
+            } else if (!this.usernameed) {
+                ElMessage({
+                    message: '請輸入可使用的昵稱',
+                    grouping: true,
+                    type: 'error',
+                })
+            } else if (!this.emailed) {
+                ElMessage({
+                    message: '請輸入正確的郵箱格式',
+                    grouping: true,
+                    type: 'error',
+                })
+            } else if (!this.region) {
+                ElMessage({
+                    message: '請選擇地區',
+                    grouping: true,
+                    type: 'error',
+                })
+            } else if (!this.phoneed) {
+                ElMessage({
+                    message: '請輸入正確的手機號碼',
+                    grouping: true,
+                    type: 'error',
+                })
+            } else if (!this.verify_code) {
+                ElMessage({
+                    message: '請輸驗證碼',
+                    grouping: true,
+                    type: 'error',
+                })
+            } else if (!this.agreement) {
+                ElMessage({
+                    message: '請同意隱私與聲明',
+                    grouping: true,
+                    type: 'error',
+                })
+            }
+
             if (!this.rule) {
                 return
             }
 
-            this.verification_mailbox = false
-            this.smsVerified = false    //清楚验证码的正确
+            this.verification_mailbox = false  //清除邮箱的验证正确
+            this.smsVerified = false    //清除验证码的正确
 
-            this.disabled = true    //点击“立即注册后”，禁用按钮2s，防止用户连点
+            //禁用按钮2s，防止用户连点
+            this.disabled = true
             setTimeout(() => {
                 this.disabled = false
             }, 2000)
 
             //验证验证码
-            const smsRes = await verifySms(this.phone_prefix + this.phone, this.verify_code);
+            const smsRes = await verifySms(this.phonePrefix + this.phone, this.verify_code);
             console.log(smsRes)
             if (smsRes.data.status !== 'success') {
                 this.$store.dispatch('pushErrorLog', 'verify sms failed');
@@ -506,22 +613,18 @@ export default {
             }
             this.smsVerified = true
 
-            console.log("你在进行注册")
+            //注册
             const res = await register({
                 username: this.username,
                 wallet_pubkey: this.wallet_addr + 'dd',
                 email: this.email,
-                phone: this.phone_prefix + this.phone,
+                phone: this.phonePrefix + this.phone,
                 password: '12346'
             });
-            console.log(res)
-            console.log(res.data.status == 0)
             if (res.data.status == 0) {
                 // 验证邮箱
                 const resEmail = await emailVerified(this.username);
-
                 this.emailVerified = true    //邮箱弹窗出现
-
                 console.log(resEmail)
 
                 if (resEmail.data.verified) {        //邮箱验证成功
@@ -535,7 +638,6 @@ export default {
                         this.registered = true       //注册成功（无推荐人）--弹窗出现
                     }
                 } else {                             //邮箱验证成功
-
                     console.log("邮箱验证失败")
                 }
             }

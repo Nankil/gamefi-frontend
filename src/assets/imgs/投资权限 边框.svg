@@ -1,0 +1,20 @@
+<svg id="组_66" data-name="组 66" xmlns="http://www.w3.org/2000/svg" width="184.437" height="60.38" viewBox="0 0 184.437 60.38">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        opacity: 0.5;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #c050c5;
+      }
+    </style>
+  </defs>
+  <path id="矩形_24" data-name="矩形 24" class="cls-1" d="M87,1502H269v57H87v-57h0Z" transform="translate(-86.094 -1501.62)"/>
+  <path id="形状_17" data-name="形状 17" class="cls-2" d="M87.019,1505.62h40.03l9.733,12.18H269.6v0.79l-2.67,2.37H129.762l-10.622-12.84H87.019v-2.5Zm56.805,9.69H138.6l-7.89-9.69h5.219Zm8.86,0h-5.219l-7.889-9.69h5.219Zm8.861,0h-5.219l-7.89-9.69h5.219Zm8.861,0h-5.22l-7.889-9.69h5.219Zm8.86,0h-5.219l-7.89-9.69h5.22Zm91.269,44.36H86.087v-58.05H270.535v58.05Zm-182.584-1.86H268.67v-54.32H87.951v54.32Zm46.163,4.2h-30.1v-6.54h30.1v6.54Z" transform="translate(-86.094 -1501.62)"/>
+</svg>

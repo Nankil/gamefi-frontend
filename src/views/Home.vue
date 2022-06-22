@@ -1,40 +1,10 @@
-<style scoped>
-.Home {
-    margin: 0 auto;
-    width: 1385px;
-}
-
-.new-message {
-    margin-top: 43px;
-    margin-bottom: 54px;
-}
-.icon-more {
-}
-.message-bar {
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 47px;
-}
-.economic-bar {
-    margin: 0 auto;
-    margin-top: 15px;
-    margin-bottom: 51px;
-    width: 923px;
-    height: 85px;
-}
-</style>
 <template>
-    <div>
+    <!-- 首页 -->
+    <div class="home">
         <div class="dark:text-white flex flex-col Home">
-            <img
-                src="@/assets/imgs/new_message.png"
-                width="894"
-                height="88"
-                alt
-                class="message-bar"
-            />
+            <img src="@/assets/imgs/最新消息中文版标题.svg" width="894" height="88" alt class="message-bar" />
             <Homeswiper />
-            <img class="self-end icon-more" src="@/assets/imgs/more.png" alt />
+            <img class="more self-end icon-more" src="@/assets/imgs/more.png" alt />
         </div>
         <img src="@/assets/imgs/spliter1.png" alt="splitter" class="spliter" />
 
@@ -44,7 +14,7 @@
         <img src="@/assets/imgs/spliter2.png" alt="splitter" class="spliter" />
 
         <div class="dark:text-white flex flex-col Home">
-            <img src="@/assets/imgs/economic_bar.png " class="economic-bar" alt />
+            <img src="@/assets/imgs/代币经济.svg " class="economic-bar" alt />
 
             <Hometoken />
 
@@ -71,3 +41,36 @@ export default {
     components: { Homeswiper, HomeNewMessage, Hometoken },
 };
 </script>
+
+
+<style lang="less" scoped>
+.home {
+    .more {
+        width: 191px;
+        margin: 6px 38px 0 0;
+    }
+}
+.Home {
+    margin: 0 auto;
+    width: 1385px;
+}
+
+.new-message {
+    margin-top: 43px;
+    margin-bottom: 54px;
+}
+.icon-more {
+}
+.message-bar {
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 47px;
+}
+.economic-bar {
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 51px;
+    width: 923px;
+    height: 85px;
+}
+</style>

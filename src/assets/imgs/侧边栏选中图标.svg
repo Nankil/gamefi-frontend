@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="183.656" height="59" viewBox="0 0 183.656 59">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4fd2f9;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="矩形_32_拷贝_2" data-name="矩形 32 拷贝 2" class="cls-1" d="M177,299h70.692L256,307l18,2H255l-7.427-6H177v-4Zm10.329,0H116.636l-8.307,8-18,2h19l7.427-6h70.573v-4Zm0.015,59H116.651l-8.307-8-18-2h19l7.427,6h70.573v4Zm-10.329,0h70.692l8.308-8,18-2h-19l-7.427,6H177.015v4Z" transform="translate(-90.344 -299)"/>
+</svg>

@@ -4,7 +4,7 @@ import NotFound from './views/NotFound.vue';
 export const routes = [
     {
         path: '/',
-        component: () => import('./views/Home.vue'),
+        component: () => import('@/views/Home.vue'),
         meta: { title: 'Home' }
     },
     {

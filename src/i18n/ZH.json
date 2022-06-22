@@ -67,7 +67,13 @@
                 "path": "/contactus",
                 "title": "联系我们"
             }
-        ]
+        ],
+        "investAuthority": {
+            "title": "已开放投资权限",
+            "seedWheel": "种子轮",
+            "privateOfferings": "私募轮",
+            "preSaleRound": "预售轮"
+        }
     },
     "account": {
         "routes": [
