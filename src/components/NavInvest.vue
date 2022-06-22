@@ -1,64 +1,58 @@
 <template>
-<div class="w-full">
-  <div class="invest-open"></div>
-  <div class="w-full invest-container">
-      <div class="w-full invest-tab1 tab">
-        <a href="/account/investment">种子轮</a>
-      </div>
-      <div class="w-full invest-tab2 tab">
-        <a href="/account/investment">私募轮</a>
-      </div>
-      <div class="w-full invest-tab3 tab">
-        <a href="/account/investment">预售轮</a>
-      </div>
+    <div class="w-full">
+        <div class="invest-container">
+            <div class="tab">
+                <a href="/account/investment">{{info.seedWheel}}</a>
+            </div>
+            <div class="tab">
+                <a href="/account/investment">{{info.privateOfferings}}</a>
+            </div>
+            <div class="tab">
+                <a href="/account/investment">{{info.preSaleRound}}</a>
+            </div>
+        </div>
     </div>
-</div>
-
 </template>
 
+<script>
+export default {
+    computed: {
+        info() {
+            return this.$tm('home.investAuthority')
+        }
+    }
+}
+</script>
+
 <style scoped>
+.w-full {
+    padding-top: 91px;
+    height: 374px;
+    background: url("@/assets/imgs/已开放投资权限en.svg") no-repeat;
+}
+
 .invest-container {
-  background-image: url('@/assets/imgs/invest_container.png');
-  width: 246px;
-  height: 319px;
-  background-size: 100% 100%;
-  position: absolute;
-}
-.invest-tab1 {
-  background-image: url('@/assets/imgs/invest_tab1.png');
-  background-size: 100% 100%;
-  margin-top: 34px;
-}
-
-.invest-tab2 {
-  background-image: url('@/assets/imgs/invest_tab2.png');
-  background-size: 100% 100%;
-}
-
-.invest-tab3 {
-  background-image: url('@/assets/imgs/invest_tab3.png');
-  background-size: 100% 100%;
+    width: 246px;
+    height: 319px;
+    background-size: 100% 100%;
+    position: absolute;
 }
 .tab {
-  width: 187px;
-  height: 61px;
-  margin-bottom: 18px;
-  margin-left: 24px;
+    width: 187px;
+    height: 61px;
+    margin-bottom: 18px;
+    margin-left: 24px;
+    background-image: url("@/assets/imgs/投资权限 边框.svg");
+    background-size: 100% 100%;
 }
-.invest-open {
-  background-image: url('@/assets/imgs/invest_open.png');
-  background-size: 100% 100%;
-  width: 246px;
-  height: 63px;
-  margin-bottom: -2px;
-}
-
 .tab > a {
-  margin-top: 21px;
-  margin-left: 64px;
-  position: absolute;
-  color: #8e8e8e;
-  font-size: 23px;
-  font-family: 'PingFang-medium';
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #c050c5;
+    text-align: center;
+    font-size: 21px;
+    font-family: "PingFang-SC-Bold";
+    padding-top: 21px;
 }
 </style>

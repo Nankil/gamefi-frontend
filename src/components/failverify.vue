@@ -1,4 +1,5 @@
 <template>
+    <!-- 未验证成功--弹窗 -->
     <div class="bg">
         <div class="tip" style="padding-top: 91px">請再次至您填寫的電子郵件中</div>
         <div class="tip" style="padding-top: 21px">打開驗證簡訊並點擊『驗證電郵郵件』</div>

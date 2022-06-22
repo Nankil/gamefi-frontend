@@ -6,7 +6,7 @@
                 v-for="item in $tm('home.navber')"
                 :key="item"
                 @click="$router.push(item.path)"
-                class="flex flex-col items-center text-center"
+                class="flex flex-col justify-center items-center text-center"
             >
                 <!-- 背景亮 -->
                 <div
@@ -41,14 +41,15 @@ export default {
 
 <style lang="less" scoped>
 .nav-container {
-    background-image: url("@/assets/imgs/nav_left.png");
-    background-size: 100% 100%;
     width: 247px;
-    padding-top: 37px;
+    margin-top: 30px;
 
     .router-wrapper {
-        height: 1054px;
-        margin-top: 17px;
+        // margin-top: 17px;
+        background-image: url("@/assets/imgs/nav_left.png");
+        background-size: 100% 1079px;
+        height: 1055px;
+        padding: 60px 0 31px 0;
         display: flex;
         flex-flow: column;
         > div {
@@ -61,8 +62,8 @@ export default {
                 line-height: 56px;
             }
             .selected {
-                background-image: url("@/assets/imgs/nav_selected.png");
-                background-size: 185px 56px;
+                background-image: url("@/assets/imgs/侧边栏选中图标.svg");
+                background-size: 185px 57px;
             }
         }
     }

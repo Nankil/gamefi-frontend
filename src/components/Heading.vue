@@ -7,23 +7,25 @@
 
         <div class="flex flex-col right-bar">
             <div class="flex flex-row items-center row-funcs">
+                <!-- 链接钱包 -->
                 <div
                     id="wallet"
-                    class="flex flex-row h-8 border rounded-full border-teal-400 hover:cursor-pointer justify-center items-center"
+                    class="flex flex-row h-8 border rounded-full hover:cursor-pointer justify-center items-center"
                     @click="connectWalletWrapper"
                     v-if="userInfo.walletAddr === ''"
                 >
-                    <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
+                    <img src="@/assets/imgs/我的账户图标.svg" alt="fox" class="h-6 mr-1" />
                     {{info.linkWallet}}
                 </div>
 
+                <!-- 我的账户 -->
                 <div
                     id="wallet"
-                    class="flex fle-row h-8 justify-center text-center border rounded-full border-teal-400 hover:cursor-pointer items-center"
+                    class="flex fle-row h-8 justify-center text-center border rounded-full hover:cursor-pointer items-center"
                     @click="jumpPage"
                     v-else
                 >
-                    <img src="@/assets/imgs/fox_icon.png" alt="fox" class="h-6 mr-1" />
+                    <img src="@/assets/imgs/我的账户图标.svg" alt="fox" class="h-6 mr-1" />
                     {{info.account}}
                 </div>
 
@@ -34,7 +36,7 @@
                     @mouseleave="boo = false"
                     class="flex flex-row h-8 justify-center border rounded-full border-purple-400 hover:cursor-pointer items-center"
                 >
-                    <img src="@/assets/imgs/internet_icon.png" alt="fox" class="h-6 mr-1" />
+                    <img src="@/assets/imgs/语言图标.svg" alt="fox" class="h-6 mr-1" />
 
                     <div class="selectLanguage">
                         <p>
@@ -190,6 +192,19 @@ export default {
     width: 575px;
 }
 
+#wallet {
+    color: #44c1e6;
+    border: 1px solid #44c1e6;
+    img {
+        width: 32px;
+    }
+}
+
+#lang {
+    img {
+        width: 25px;
+    }
+}
 #wallet,
 #lang {
     width: 240px;

@@ -1,6 +1,6 @@
 <template>
     <!-- 导航 -->
-    <div class="route flex flex-row">
+    <div class="route flex flex-row" v-show="boo">
         <span @click="$router.push('/')">网站首页</span>
 
         <div class="con" v-for="item of routers" :key="item.path">
@@ -21,6 +21,13 @@ export default {
             })
 
             return arr
+        },
+        boo() {    //注册页不出现
+            if (this.$route.path == '/account/register') {
+                return false
+            }
+
+            return true
         }
 
     }
@@ -32,6 +39,7 @@ export default {
 .route {
     font-family: PingFang;
     font-size: 24px;
+    margin-top: 25px;
 
     .con {
         display: flex;

@@ -1,6 +1,6 @@
 <template>
     <!-- 我的资料、推荐管理......的选项卡 -->
-    <div class="father" style="padding-top:48px;padding-bottom:60px;">
+    <div class="father" style="padding-top:47px;padding-bottom:60px;">
         <div v-for="item in $tm('account.routes')" :key="item" @click="jumpPage(item.path)">
             <!-- 注册页面时 -->
             <button
