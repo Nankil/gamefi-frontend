@@ -487,6 +487,7 @@ export default {
             }
         },
         onPhoneChange() {    //验证手机号
+            this.phone = this.phone.replace(/[^0-9]/g, '')
             this.phoneed = false
             if (this.phone.length == 0) {
                 this.phone_correct = ''
