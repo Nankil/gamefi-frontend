@@ -35,6 +35,11 @@
             <div v-if="reemail">
                 <ReEmail @aaa="confirmatio" />
             </div>
+
+            <!-- 发送验证码过于频繁 -- 弹窗 -->
+            <div v-if="frequently">
+                <Frequently @aaa="frequently = false" />
+            </div>
         </div>
 
         <div class="main">
@@ -205,12 +210,13 @@ import { userExists, existsPromotion, sendSmsVerification, verifySms, emailVerif
 
 import { mapActions } from 'vuex';
 
-import VerifyEmail from '@/components/VerifyEmail.vue';
+import VerifyEmail from '@/components/Account/VerifyEmail.vue';
 // import VerifyPhone from '@/components/VerifyPhone.vue';
-import RegSucess from '@/components/RegSucess.vue';
-import RegSuccess2 from '@/components/RegSuccess2.vue';
-import FailVerify from '@/components/FailVerify.vue';
-import ReEmail from '@/components/ReEmail.vue';
+import RegSucess from '@/components/Account/RegSucess.vue';
+import RegSuccess2 from '@/components/Account/RegSuccess2.vue';
+import FailVerify from '@/components/Account/FailVerify.vue';
+import ReEmail from '@/components/Account/ReEmail.vue';
+import Frequently from '@/components/Account/Frequently.vue';
 
 export default {
     components: {
@@ -219,21 +225,16 @@ export default {
         RegSucess,
         RegSuccess2,
         FailVerify,
-        ReEmail
+        ReEmail,
+        Frequently
     },
     created() {
         if (localStorage.countdown) {   //倒计时60s
-            this.send_verification_code = localStorage.countdown + 's'
+            this.sixtySecondCountdown()
+        }
 
-            let time = setInterval(() => {
-                this.send_verification_code = parseInt(this.send_verification_code) - 1 + 's'
-                localStorage.countdown--
-                if (this.send_verification_code == '0s') {
-                    localStorage.removeItem('countdown')
-                    clearInterval(time)
-                    this.send_verification_code = "發送驗證碼"
-                }
-            }, 1000)
+        if (localStorage.thirtyMinutes) {    //倒计时30分钟
+            this.thirtyMinuteCountdown()
         }
     },
     data() {
@@ -273,7 +274,7 @@ export default {
             verification_mailbox: false,    //验证邮箱是否成功
             emailVerified: false,   //验证您的邮箱--弹窗是否出现
             failverify: false,      //未验证成功--弹窗是否出现
-            reemail: false,        //重新发送验证码--弹窗是否出现
+            reemail: false,         //确认--弹窗是否出现
 
             region: '中国',             //地区
 
@@ -286,6 +287,7 @@ export default {
             smsVerified: false,     //验证码是否正确
             send_verification_code: '發送驗證碼',    //发送验证码文字
             send_verification_code_boo: false,       //是否等待60s
+            frequently: false,        //验证码发送频繁 -- 弹窗
 
             disabled: false,        //“立即注册”按钮是否禁用
             registered: false,      //注册成功（无推荐人）弹窗是否出现
@@ -319,13 +321,12 @@ export default {
             return false
         },
         popUpBackground() {    //弹窗背景
-            if (this.emailVerified || this.failverify || this.reemail || this.registered || this.registered2) {
+            if (this.emailVerified || this.failverify || this.reemail || this.registered || this.registered2 || this.frequently) {
                 return true
             }
             return false
         }
     },
-
     methods: {
         changeTheAreaOrMobilePhoneNumber($event, type) {    //改变地区 or 改变手机号前缀
             this.index = $event.target.selectedIndex
@@ -351,26 +352,21 @@ export default {
         unmotnedPages() {    //验证码邮箱未自动跳转页面
             this.emailVerified = false
 
-            if (!this.verification_mailbox) {   //邮箱未验证成功
-                this.failverify = true
-                return
-            }
-
-            //邮箱验证成功
-            if (this.referral_Nickname) {    //有推荐人
-                this.registered2 = true      //注册成功（有推荐人）--弹窗出现
+            if (this.verification_mailbox) {   //邮箱验证成功
+                if (this.referral_Nickname) {    //有推荐人
+                    this.registered2 = true      //注册成功（有推荐人）--弹窗出现
+                } else {
+                    this.registered = true       //注册成功（无推荐人）--弹窗出现
+                }
             } else {
-                this.registered = true       //注册成功（无推荐人）--弹窗出现
+                this.failverify = true
             }
         },
         async resenn() {    //重新发送验证码
-            this.emailVerified = false
             this.failverify = false
             this.reemail = true
-            let resEmai = await emailVerified(this.username);
-            if (resEmai.data.verified) {        //邮箱验证成功
-                this.verification_mailbox = true
-            }
+
+            this.registerAndEmail()    //重发邮件
         },
         confirmatio() {    //确认重发
             this.reemail = false
@@ -504,7 +500,7 @@ export default {
                 return
             }
 
-            //没输入手机号
+            //手机号格式不正确
             if (!this.phoneed) {
                 ElMessage({
                     message: '請輸入正确的手機號碼',
@@ -520,11 +516,13 @@ export default {
             } else {
                 localStorage.sendQuantity--
                 if (localStorage.sendQuantity < 0) {
-                    ElMessage({
-                        message: '次数用完',
-                        grouping: true,
-                        type: 'error',
-                    })
+                    //等待30分钟
+                    if (!localStorage.thirtyMinutes) {
+                        localStorage.thirtyMinutes = 0
+                        this.thirtyMinuteCountdown()
+                    }
+
+                    this.frequently = true    //发送频繁弹窗出现
                     return
                 }
             }
@@ -533,18 +531,8 @@ export default {
             if (this.send_verification_code != "發送驗證碼") {    //若不等于'发送验证码'，说明在倒计时，需等待60s
                 return
             } else {     ///若等于'发送验证码'，则需要开启倒计时,并发送验证码
-                this.send_verification_code = "60s"
                 localStorage.countdown = 60
-                let time = setInterval(() => {
-                    this.send_verification_code = parseInt(this.send_verification_code) - 1 + 's'
-                    localStorage.countdown--
-                    if (this.send_verification_code == '0s') {
-                        localStorage.removeItem('countdown')
-                        clearInterval(time)
-                        this.send_verification_code = "發送驗證碼"
-                    }
-                }, 1000)
-
+                this.sixtySecondCountdown()
             }
 
             //连接口
@@ -562,12 +550,17 @@ export default {
                 console.log("网络连接错误")
             }
 
-
         },
-        async registerWrapper() {    //立即注册
+        async registerWrapper() {     //立即注册
             if (this.promote_code != '' && this.referral_Nickname == '') {
                 ElMessage({
                     message: '推薦人碼不存在',
+                    grouping: true,
+                    type: 'error',
+                })
+            } else if (!this.wallet_addr) {
+                ElMessage({
+                    message: '钱包地址不存在',
                     grouping: true,
                     type: 'error',
                 })
@@ -616,58 +609,87 @@ export default {
                 this.disabled = false
             }, 2000)
 
-            //验证验证码
+            //验证电话号码验证码
             const smsRes = await verifySms(this.phonePrefix + this.phone, this.verify_code);
-            console.log(smsRes)
             if (smsRes.data.status !== 'success') {
-                this.$store.dispatch('pushErrorLog', 'verify sms failed');
+                ElMessage({
+                    message: '验证码错误',
+                    grouping: true,
+                    type: 'error',
+                })
                 return;
             }
             this.smsVerified = true
 
-            //注册
-            const res = await register({
+            this.registerAndEmail()
+        },
+        async registerAndEmail() {    //注册和验证邮箱
+            const res = await register({     //注册接口
                 username: this.username,
-                wallet_pubkey: this.wallet_addr + 'dd',
+                wallet_pubkey: this.wallet_addr,
                 email: this.email,
                 phone: this.phonePrefix + this.phone,
                 password: '12346'
             });
-            if (res.data.status == 0) {
-                // 验证邮箱
-                const resEmail = await emailVerified(this.username);
-                this.emailVerified = true    //邮箱弹窗出现
-                console.log(resEmail)
-
-                if (resEmail.data.verified) {        //邮箱验证成功
-                    console.log("邮箱验证成功")
-                    this.verification_mailbox = true
-                    this.emailVerified = false       //邮箱弹窗消失
-
-                    if (this.referral_Nickname) {    //有推荐人
-                        this.registered2 = true      //注册成功（有推荐人）--弹窗出现
-                    } else {
-                        this.registered = true       //注册成功（无推荐人）--弹窗出现
-                    }
-                } else {                             //邮箱验证成功
-                    console.log("邮箱验证失败")
-                }
+            if (res.data.status == 1) {           //失败
+                ElMessage({
+                    message: '此錢包地址已注册過',
+                    grouping: true,
+                    type: 'error',
+                })
             }
 
+            if (res.data.status == 0) {           //成功
 
+                this.emailVerified = true          //邮箱弹窗出现
 
-            // if (!res) {
-            //     this.$store.dispatch('pushErrorLog', 'register failed');
-            //     this.notify = true;
-            //     this.registered = false;
-            //     console.log('register failed');
-            //     return;
-            // }
-            // this.registered = true;
-            // console.log('registered');
+                let num = 0;
+                let time = setInterval(async () => {
+                    const resEmail = await emailVerified(this.username);    // 邮箱接口
+                    num++
+                    if (resEmail.data.verified) {
+                        clearInterval(time)
+                        this.verification_mailbox = true
+                        this.emailVerified = false       //三个弹窗都消失
+                        this.failverify = false
+                        this.reemail = false
 
-            // this.notify = true;
+                        if (this.referral_Nickname) {    //有推荐人
+                            this.registered2 = true      //注册成功（有推荐人）--弹窗出现
+                        } else {
+                            this.registered = true       //注册成功（无推荐人）--弹窗出现
+                        }
+                    }
+
+                    if (num > 60) {    //只给5分钟时间
+                        clearInterval(time)
+                    }
+                }, 5000)
+            }
         },
+        sixtySecondCountdown() {      //60s倒计时
+            this.send_verification_code = localStorage.countdown + 's'
+            let time = setInterval(() => {
+                this.send_verification_code = parseInt(this.send_verification_code) - 1 + 's'
+                localStorage.countdown--
+                if (this.send_verification_code == '0s') {
+                    localStorage.removeItem('countdown')
+                    clearInterval(time)
+                    this.send_verification_code = "發送驗證碼"
+                }
+            }, 1000)
+        },
+        thirtyMinuteCountdown() {     //30分钟倒计时
+            let time = setInterval(() => {
+                localStorage.thirtyMinutes++
+                if (localStorage.thirtyMinutes >= 1800) {
+                    console.log(9999)
+                    clearInterval(time)
+                    localStorage.removeItem('thirtyMinutes')
+                    localStorage.removeItem('sendQuantity')
+                }
+            }, 1000)
+        }
     },
 
 };

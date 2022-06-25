@@ -1,6 +1,6 @@
 <template>
     <!-- 验证您的邮箱--弹窗 -->
-    <div class="bg">
+    <div class="verifyYourMailbox">
         <div class="first">我們已將電子郵件發送至</div>
         <div class="second">{{email}}</div>
         <div class="tip" style="margin-top: 12px">您必須在五分鐘內驗證電子郵箱，才能完成注册並開啟會員！</div>
@@ -48,7 +48,7 @@ export default {
     cursor: pointer;
     text-decoration: underline;
 }
-.bg {
+.verifyYourMailbox {
     background-image: url("@/assets/imgs/验证邮箱.svg");
     width: 709px;
     height: 424px;

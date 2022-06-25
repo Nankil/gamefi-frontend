@@ -3,11 +3,11 @@
     <div class="latestNews">
         <!-- 返回和首页 -->
         <div class="returnAndHome">
-            <!-- <img src alt />
-            <img src alt />-->
+            <img src="@/assets/imgs/返回.svg" @click="$router.go(-1)" alt="return" />
+            <img src="@/assets/imgs/首页图标.svg" @click="$router.push('/')" alt="home" />
         </div>
 
-        <LatestnewslistVue></LatestnewslistVue>
+        <Item />
         <div style="margin-left: 377px;">
             <div class="flex" style="width: fit-content; padding-top: 50px">
                 <img src="@/assets/imgs/上一页.svg" alt />
@@ -21,18 +21,29 @@
 </template>
 
 <script>
-export default {};
-</script>
-
-<script setup>
-import LatestnewslistVue from "@/components/Latestnewslist.vue";
+import Item from "@/components/LatestNews/Item.vue"
+export default {
+    components: {
+        Item
+    }
+}
 </script>
 
 <style lang="less" scoped>
 .latestNews {
     width: 1302px;
-    padding-top: 7px;
+    padding-top: 1px;
     position: relative;
+    .returnAndHome {
+        position: absolute;
+        top: -31px;
+        right: 0;
+        display: flex;
+        img {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+    }
 }
 .number {
     margin-left: 47px;

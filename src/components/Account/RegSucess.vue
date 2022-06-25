@@ -1,6 +1,6 @@
 <template>
     <!-- 注册成功（无推荐人）--弹窗 -->
-    <div class="bg">
+    <div class="nothingToRegister">
         <div style="text-align: center;padding-top: 42px;">
             <img
                 style="display:inline-block"
@@ -21,7 +21,7 @@ export default {};
 </script>
 
 <style scoped>
-.bg {
+.nothingToRegister {
     background-image: url("@/assets/imgs/注册成功无推荐码2.svg");
     width: 709px;
     height: 633px;

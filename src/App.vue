@@ -40,7 +40,6 @@ import { RouterView } from 'vue-router';
 import NavBar from './components/NavBar.vue';
 import Log from './components/Log.vue';
 import NavInvest from './components/NavInvest.vue';
-import lastestnewsdetailVue from './views/lastestnewsdetail.vue';
 </script>
 
 

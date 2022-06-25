@@ -1,6 +1,6 @@
 <template>
     <!-- 注册成功（有推荐人）--弹窗 -->
-    <div class="bg">
+    <div class="thereIsASuccessfulRegistration">
         <div style="text-align: center;padding-top: 42px;">
             <img
                 style="display:inline-block"
@@ -23,7 +23,7 @@ export default {};
 </script>
 
 <style scoped>
-.bg {
+.thereIsASuccessfulRegistration {
     background-image: url("@/assets/imgs/注册成功有推荐码2.svg");
     width: 709px;
     height: 744px;

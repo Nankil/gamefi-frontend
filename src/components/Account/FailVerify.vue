@@ -1,6 +1,6 @@
 <template>
     <!-- 未验证成功--弹窗 -->
-    <div class="bg">
+    <div class="unsuccessful">
         <div class="tip" style="padding-top: 91px">請再次至您填寫的電子郵件中</div>
         <div class="tip" style="padding-top: 21px">打開驗證簡訊並點擊『驗證電郵郵件』</div>
         <div class="tip2" style="padding-top: 27px">如果您尚未收到驗證電子郵件，</div>
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-.bg {
+.unsuccessful {
     background-image: url("@/assets/imgs/未验证成功2.svg");
     width: 709px;
     height: 417px;

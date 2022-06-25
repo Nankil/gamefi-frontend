@@ -1,5 +1,5 @@
 <template>
-    <!-- 重发电子邮件 -->
+    <!-- 重发电子邮件-确认键 -->
     <div class="reEmail">
         <p>電子郵件驗證信已重新發送至您的電子郵箱中</p>
         <img src="@/assets/imgs/确认.svg" alt="确认" @click="closure" />
