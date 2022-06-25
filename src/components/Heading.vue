@@ -96,10 +96,17 @@ export default {
             boo: false,    //控制多语音选项是否出现
         }
     },
+    created() {
+        if (localStorage.language) {
+            localStorage.language == "ZH" && (this.index = 0)
+            localStorage.language == "CN" && (this.index = 1)
+            localStorage.language == "EN" && (this.index = 2)
+            this.$i18n.locale = localStorage.language
+        }
+    },
     methods: {
         ...mapActions(['connectWallet']),
         async connectWalletWrapper() {        //链接钱包
-            // this.$router.push("/account/info")
             const res = await this.connectWallet();
             console.log(res)
 
@@ -128,8 +135,8 @@ export default {
         },
         changeLanguage({ type, index }) {    //切换语言
             this.index = index
-            this.$i18n.locale = type;
-            // console.log(this.$i18n.locale)
+            this.$i18n.locale = type
+            localStorage.language = type    //为了刷新后也可以保持选中的语言
         },
         jumpPage() {    //跳转页面
             if (this.userInfo.registered) {    //已注册
@@ -141,10 +148,10 @@ export default {
     },
     computed: {
         ...mapState(['userInfo']),
-        info() {     //获取文字
+        info() {     //获取文本
             return this.$tm("home.heading")
         },
-        title() {    //显示的哪门语言
+        title() {    //展示语言
             return this.$tm("home.heading.languageCategory")[this.index].title
         }
     }
@@ -211,6 +218,7 @@ export default {
     height: 58px;
     font-size: 25px;
     position: relative;
+    background: white;
 }
 
 #lang {

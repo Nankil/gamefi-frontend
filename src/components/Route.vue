@@ -1,5 +1,5 @@
 <template>
-    <!-- 导航 -->
+    <!-- 导航-路由导航 -->
     <div class="route flex flex-row" v-show="boo">
         <span @click="$router.push('/')">网站首页</span>
 
@@ -22,8 +22,8 @@ export default {
 
             return arr
         },
-        boo() {    //注册页不出现
-            if (this.$route.path == '/account/register') {
+        boo() {    //注册页、首页不出现
+            if (this.$route.path == '/account/register' || this.$route.path == '/') {
                 return false
             }
 
@@ -37,9 +37,10 @@ export default {
 
 <style lang="less" scoped>
 .route {
-    font-family: PingFang;
-    font-size: 24px;
-    margin-top: 25px;
+    font-family: PingFang-SC-Regular;
+    font-size: 26px;
+    padding-top: 35px;
+    color: #5d5d5d;
 
     .con {
         display: flex;

@@ -131,6 +131,13 @@ export const routes = [
         ],
     },
     {
+        path: '/latestNews',
+        component: () => import('./views/LatestNews/index.vue'),
+        meta: {
+            name: "最新消息",
+        },
+    },
+    {
         path: '/community', component: () => import('./views/Community.vue'),
         meta: { title: 'Community' }
     },

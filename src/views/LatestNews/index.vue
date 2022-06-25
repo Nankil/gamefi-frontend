@@ -1,16 +1,12 @@
 <template>
-    <div class="bg">
-        <div class="nav">
-            网站首页
-            <img
-                style="display: inline; height: 26px"
-                src="@/assets/imgs/箭头4.svg"
-                height="26"
-                width="30"
-                alt
-            />
-            最新消息
+    <!-- 最新消息 -->
+    <div class="latestNews">
+        <!-- 返回和首页 -->
+        <div class="returnAndHome">
+            <!-- <img src alt />
+            <img src alt />-->
         </div>
+
         <LatestnewslistVue></LatestnewslistVue>
         <div style="margin-left: 377px;">
             <div class="flex" style="width: fit-content; padding-top: 50px">
@@ -27,20 +23,22 @@
 <script>
 export default {};
 </script>
+
 <script setup>
 import LatestnewslistVue from "@/components/Latestnewslist.vue";
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.latestNews {
+    width: 1302px;
+    padding-top: 7px;
+    position: relative;
+}
 .number {
     margin-left: 47px;
     font-style: 32px;
     line-height: 32px;
     color: #000;
-}
-.bg {
-    padding-left: 125px;
-    padding-top: 25px;
 }
 .nav {
     font-family: PingFang-regular;

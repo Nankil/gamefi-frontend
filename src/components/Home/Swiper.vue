@@ -1,4 +1,5 @@
 <template>
+    <!-- 轮播 -->
     <div class="flex swiper">
         <img :src="imgurl" class="left-img" :class="{myanimotion:isanimotion}" alt="轮播图" />
 

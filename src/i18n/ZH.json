@@ -73,6 +73,39 @@
             "seedWheel": "种子轮",
             "privateOfferings": "私募轮",
             "preSaleRound": "预售轮"
+        },
+        "latestNews": "最新消息",
+        "communityVault": "总资产",
+        "statistics": {
+            "con": {
+                "member": "会员注册人数",
+                "GPC": "GPC(母币)持币地址数量",
+                "SSC": "SSC(子币)持币地址数量",
+                "telegraph": "电报人数(中/英)",
+                "DC": "DC频道人数",
+                "twitter": "推特追踪人数"
+            },
+            "increase": "近七天增量"
+        },
+        "tokenEconomy": "代币经济",
+        "maternal": {
+            "center": [
+                "24小时涨跌",
+                "币价",
+                "市值",
+                "持币地址数",
+                "滑点"
+            ],
+            "GPC": "GPC币安全合约地址",
+            "bottom": [
+                "合约机制查看",
+                "屎币查价网站",
+                "购买 $GPC"
+            ]
+        },
+        "bottom": {
+            "PDR": "项目发展路线",
+            "partners": "合作方"
         }
     },
     "account": {

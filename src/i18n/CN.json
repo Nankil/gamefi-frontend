@@ -73,13 +73,46 @@
             "seedWheel": "種子輪",
             "privateOfferings": "私募輪",
             "preSaleRound": "預售輪"
+        },
+        "latestNews": "最新消息",
+        "communityVault": "總資產",
+        "statistics": {
+            "con": {
+                "member": "會員注册人數",
+                "GPC": "GPC(母幣)持幣地址數量",
+                "SSC": "SSC(子幣)持幣地址數量",
+                "telegraph": "電報人數(中/英)",
+                "DC": "DC頻道人數",
+                "twitter": "推特追跡人數"
+            },
+            "increase": "近七天增量"
+        },
+        "tokenEconomy": "代幣經濟",
+        "maternal": {
+            "center": [
+                "24小時漲跌",
+                "幣價",
+                "市值",
+                "持幣地址數",
+                "滑點"
+            ],
+            "GPC": "GPC幣安全合約地址",
+            "bottom": [
+                "合約機制查看",
+                "屎幣查價網站",
+                "購買 $GPC"
+            ]
+        },
+        "bottom": {
+            "PDR": "項目發展路線",
+            "partners": "合作方"
         }
     },
     "account": {
         "routes": [
             {
                 "path": "/account/info",
-                "title": "我的资料"
+                "title": "我的資料"
             },
             {
                 "path": "/account/recommend",
@@ -139,17 +172,6 @@
             "fill_your_nickname": "請填寫您的昵稱",
             "least_input_2_words": "*最少輸入2個字"
         }
-    },
-    "header": {
-        "cw": "连接钱包"
-    },
-    "Home": {
-        "message": "最新消息",
-        "communitybank": "社區金庫",
-        "usercount": "用戶數量統計",
-        "tokeneconomy": "代幣經濟",
-        "PDR": "項目發展路線",
-        "partners": "合作方"
     },
     "Turorial": {
         "Wallet": {

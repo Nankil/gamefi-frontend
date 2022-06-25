@@ -1,5 +1,5 @@
 <template>
-    <!-- 首页导航 -->
+    <!-- 首页导航--左边 -->
     <div class="nav-container">
         <div class="w-full router-wrapper">
             <div
@@ -12,13 +12,13 @@
                 <div
                     v-if="$route.path == item.path"
                     class="dark:text-white selected router-btn"
-                    :style="{'font-size':language}"
+                    :style="{'font-size':language?'21px':'27px'}"
                 >{{ item.title}}</div>
                 <!-- 背景不亮 -->
                 <div
                     v-else
                     class="dark:text-white router-btn"
-                    :style="{'font-size':language}"
+                    :style="{'font-size':language?'21px':'27px'}"
                 >{{ item.title }}</div>
             </div>
         </div>
@@ -28,12 +28,9 @@
 <script>
 export default {
     computed: {
-        language() {
-            if (this.$i18n.locale == "EN") {
-                return '21px'
-            }
-
-            return '27px'
+        language() {    //判断当前是什么语言
+            if (this.$i18n.locale == "EN") return true
+            return false
         }
     }
 };

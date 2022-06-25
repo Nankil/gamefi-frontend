@@ -131,7 +131,6 @@
                             >
                                 <option v-for="item in countries" :key="item.name">{{ item.name }}</option>
                             </select>
-                            <span class="inforformtip" v-if="region === ''">*请选择地址</span>
                         </div>
 
                         <!-- 手机号 -->
@@ -278,10 +277,9 @@ export default {
 
             region: '中国',             //地区
 
-            phonePrefix: '+86',       //手机号前缀
+            phonePrefix: '+86',     //手机号前缀
             phone: '',              //手机号
-            maxPhone: 11,               //手机位数
-            phone_correct: '',      //手机号提示文字
+            maxPhone: 11,           //手机位数
             phoneed: false,         //手机是否正确
 
             verify_code: '',        //验证码
@@ -582,12 +580,6 @@ export default {
             } else if (!this.emailed) {
                 ElMessage({
                     message: '請輸入正確的郵箱格式',
-                    grouping: true,
-                    type: 'error',
-                })
-            } else if (!this.region) {
-                ElMessage({
-                    message: '請選擇地區',
                     grouping: true,
                     type: 'error',
                 })
