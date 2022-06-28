@@ -137,7 +137,7 @@ export default {
         }
 
         .token-title {
-            font-size: 33px;
+            font-size: 32px;
         }
 
         .token-symbol {

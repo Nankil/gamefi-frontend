@@ -86,7 +86,7 @@
 
                     <div>
                         <!-- 钱包地址 -->
-                        <div
+                        <div class="walletaddress"
                             style="text-align:center;width: 450px;height:71px; line-height: 71px; margin-bottom: 31px;width:636px;background:white;"
                         >{{ wallet_addr }}</div>
 
@@ -700,6 +700,11 @@ export default {
 }
 .notifier-wrapper {
     filter: blur(5px);
+}
+input::-webkit-input-placeholder,.walletaddress,select {
+    color: #54cbed;
+    font-size: 29px;
+    font-family: PingFang-SC-Bold;
 }
 .notifier {
     width: 100vw;

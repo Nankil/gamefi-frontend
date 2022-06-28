@@ -161,7 +161,7 @@ export default {
 <style lang='less' scoped>
 .selectLanguage {
     p {
-        color: #ba4de4;
+        color: #d83cef;
         position: relative;
 
         span {
@@ -216,7 +216,7 @@ export default {
 #lang {
     width: 240px;
     height: 58px;
-    font-size: 25px;
+    font-size: 24px;
     position: relative;
     background: white;
 }
